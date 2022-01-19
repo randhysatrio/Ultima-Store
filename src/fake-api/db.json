@@ -1,0 +1,636 @@
+{
+  "users": [
+    {
+      "firstname": "Randhy",
+      "lastname": "Satrio",
+      "username": "randhysatrio",
+      "password": "123456",
+      "role": "admin",
+      "id": 1
+    }
+  ],
+  "transactions": [],
+  "cart": [],
+  "products": [
+    {
+      "id": 1,
+      "category": "Motherboard",
+      "name": "Asus ROG STRIX Z690-A GAMING WIFI",
+      "image": "https://dlcdnwebimgs.asus.com/gain/CC82B2CA-3556-491B-936E-C46577251275/w717/h525",
+      "description": "Intel® Z690, LGA 1700, ATX, PCIe® 5.0, 16+1 DrMos, DDR5, WiFi 6 (802.11ax)",
+      "price": 5950000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 2,
+      "category": "Motherboard",
+      "name": "Asus ROG STRIX Z690-A GAMING WIFI D4",
+      "image": "https://dlcdnwebimgs.asus.com/gain/CC82B2CA-3556-491B-936E-C46577251275/w717/h525",
+      "description": "Intel® Z690, LGA 1700, ATX, PCIe® 5.0, 16+1 DrMos, DDR4, WiFi 6 (802.11ax)",
+      "price": 5550000,
+      "new": false,
+      "best": true
+    },
+    {
+      "id": 3,
+      "category": "Motherboard",
+      "name": "Asus ROG STRIX B660-G GAMING WIFI",
+      "image": "https://dlcdnwebimgs.asus.com/gain/532DFE20-82F0-43F5-82CE-7E40D7AD7D5A/w717/h525",
+      "description": "Intel® B660, LGA 1700, mATX, PCIe® 5.0, 12+1 power stages, DDR5, WiFi 6 (802.11ax)",
+      "price": 4110000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 4,
+      "category": "Motherboard",
+      "name": "Asus ROG STRIX B660-A GAMING WIFI",
+      "image": "https://dlcdnwebimgs.asus.com/gain/C87AFF02-3935-4A86-A1A5-A3F385B9AA01/w717/h525",
+      "description": "Intel® B660, LGA 1700, ATX, PCIe® 5.0, 12+1 power stages, DDR5, WiFi 6 (802.11ax)",
+      "price": 3990000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 5,
+      "category": "Motherboard",
+      "name": "Asus ROG MAXIMUS Z690 APEX",
+      "image": "https://dlcdnwebimgs.asus.com/gain/385EC9B8-4271-4E1C-BDF0-CC83039C9492/w717/h525",
+      "description": "Intel® Z690 ATX motherboard with 24+0 power stages, DDR5, Five M.2, PCIe® 5.0, Onboard Wi-Fi 6E",
+      "price": 11700000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 6,
+      "category": "Motherboard",
+      "name": "Asus ROG STRIX Z690-E GAMING WIFI",
+      "image": "https://dlcdnwebimgs.asus.com/gain/4A7DC4DD-E991-4006-9F59-9830BA0E22C1/w717/h525",
+      "description": "Intel® Z690, LGA 1700, ATX, PCIe® 5.0, 18+1 power stages, DDR5, Two-Way AI Noise Cancelation, WiFi 6E",
+      "price": 6500000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 7,
+      "category": "Motherboard",
+      "name": "Asus ROG STRIX Z690-I GAMING WIFI",
+      "image": "https://dlcdnwebimgs.asus.com/gain/C8110672-7CB2-4BCD-8531-458250089EA2/w717/h525",
+      "description": "Intel® Z690, LGA 1700, ITX ,PCIe® 5.0, 10+1 power stages, AI Overclocking, AI Cooling, WiFi 6E (802.11ax)",
+      "price": 7050000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 8,
+      "category": "Motherboard",
+      "name": "Asus ROG MAXIMUS Z690 EXTREME GLACIAL",
+      "image": "https://dlcdnwebimgs.asus.com/gain/A62B3DD1-3884-45BE-A81A-8E13D9CF0E26/w717/h525",
+      "description": "Intel® Z690, EATX, 24+1 power stages, Integrated EK® Ultrablock DDR5 with OptiMem III, Five M.2, Dual Thunderbolt™ 4, PCIe® 5.0, Onboard Wi-Fi 6E",
+      "price": 34000000,
+      "new": true,
+      "best": false
+    },
+    {
+      "id": 9,
+      "category": "Motherboard",
+      "name": "Asus ROG MAXIMUS Z690 EXTREME",
+      "image": "https://dlcdnwebimgs.asus.com/gain/293AC7FB-F2DB-4559-A749-9AD4A23598EF/w717/h525",
+      "description": "Intel® Z690, EATX, 24+1 power stages, DDR5 with OptiMem III, Five M.2, Dual Thunderbolt™ 4, PCIe® 5.0, Onboard Wi-Fi 6E",
+      "price": 17330000,
+      "new": false,
+      "best": true
+    },
+    {
+      "id": 10,
+      "category": "Motherboard",
+      "name": "Asus ROG MAXIMUS Z690 HERO",
+      "image": "https://dlcdnwebimgs.asus.com/gain/87919CF6-0088-450F-8C61-5E52D6D434E1/w717/h525",
+      "description": "Intel® Z690, ATX, 20+1 power stages, DDR5, Five M.2, Dual Thunderbolt™ 4, PCIe® 5.0, Onboard WiFi 6E",
+      "price": 10500000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 11,
+      "category": "Motherboard",
+      "name": "MSI MPG Z690 CARBON WIFI",
+      "image": "https://asset.msi.com/resize/image/global/product/product_16353266754b2399db2303ae09fa31e21af8120d5c.png62405b38c58fe0f07fcef2367d8a9ba1/1024.png",
+      "description": "Intel® Z690, ATX, DDR5, Five M.2, PCIe® 5.0, Onboard WiFi 6E, AMD® CrossFire™ Support",
+      "price": 7300000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 12,
+      "category": "Motherboard",
+      "name": "MSI MPG Z690 EDGE WIFI DDR4",
+      "image": "https://asset.msi.com/resize/image/global/product/product_163532765456209b9d5e981f9e05ab26ee2865a740.png62405b38c58fe0f07fcef2367d8a9ba1/1024.png",
+      "description": "Intel® Z690, ATX, DDR4, Five M.2, PCIe® 5.0, Intel WiFi 6, AMD® CrossFire™ Support",
+      "price": 6250000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 13,
+      "category": "Motherboard",
+      "name": "MSI MPG Z690 FORCE WIFI",
+      "image": "https://asset.msi.com/resize/image/global/product/product_163532789751f41e842d284292ad667e3d475afb7f.png62405b38c58fe0f07fcef2367d8a9ba1/1024.png",
+      "description": "Intel® Z690, ATX, DDR5, Five M.2, PCIe® 5.0, Onboard WiFi 6E, AMD® CrossFire™ Support",
+      "price": 6950000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 14,
+      "category": "Motherboard",
+      "name": "Gigabyte Z690 AORUS MASTER (rev. 1.x)",
+      "image": "https://static.gigabyte.com/StaticFile/Image/Global/7604255faa64a51c5e3556e65759d8d3/Product/30055/webp/1000",
+      "description": "Intel® Z690, ATX, DDR5, Five M.2, PCIe® 5.0, Onboard WiFi 6E, AMD® CrossFire™ Support",
+      "price": 7350000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 15,
+      "category": "Motherboard",
+      "name": "Gigabyte Z690 AORUS PRO (rev. 1.x)",
+      "image": "https://static.gigabyte.com/StaticFile/Image/Global/151941eb26b4384ac96acc15a6125b03/Product/30045/webp/1000",
+      "description": "Intel® Z690, ATX, DDR5, Four M.2, PCIe® 5.0, WiFi 6 (802.11ax), AMD® CrossFire™ Support",
+      "price": 5950000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 16,
+      "category": "Motherboard",
+      "name": "Gigabyte Z690I AORUS ULTRA DDR4 (rev. 1.0)",
+      "image": "https://static.gigabyte.com/StaticFile/Image/Global/07998fc7bc355fac3b73acb4d90fca7c/Product/30014/webp/1000",
+      "description": "Intel® Z690, ITX, DDR4, Two M.2, PCIe® 5.0, Intel® Wi-Fi 6 AX201, AMD® CrossFire™ Support",
+      "price": 5550000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 17,
+      "category": "Motherboard",
+      "name": "Gigabyte Z690 AORUS ELITE AX DDR4 (rev. 1.0)",
+      "image": "https://static.gigabyte.com/StaticFile/Image/Global/07998fc7bc355fac3b73acb4d90fca7c/Product/30014/webp/1000",
+      "description": "Intel® Z690, mATX, DDR4, Four M.2, PCIe® 5.0, Intel® Wi-Fi 6 AX201, AMD® CrossFire™ Support",
+      "price": 4950000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 18,
+      "category": "Graphic Card",
+      "name": "Gigabyte GeForce RTX™ 3080 Ti EAGLE 12G",
+      "image": "https://www.gigabyte.com/FileUpload/Global/WebPage/826/img/1.png",
+      "description": "GeForce RTX™ 3080 Ti, 12Gb GDDR6X, 10240 CUDA Cores, PCI-E 4.0 16x",
+      "price": 25900000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 19,
+      "category": "Graphic Card",
+      "name": "Gigabyte AORUS GeForce RTX™ 3090 MASTER 24G (rev. 1.0)",
+      "image": "https://www.gigabyte.com/Image/ee44a5d928bc2d8c6836e4e2ae204001/Product/26178/webp/1000",
+      "description": "GeForce RTX™ 3090, 1785 MHz, 24Gb GDDR6X, 10496 CUDA Cores, PCI-E 4.0 16x",
+      "price": 40750000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 20,
+      "category": "Graphic Card",
+      "name": "Gigabyte AORUS GeForce RTX™ 3090 XTREME WATERFORCE 24G",
+      "image": "https://www.gigabyte.com/FileUpload/Global/WebPage/686/img/4.png",
+      "description": "GeForce RTX™ 3090, WATERFORCE water-cooling, 24Gb GDDR6X, 10496 CUDA Cores, PCI-E 4.0 16x",
+      "price": 44550000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 21,
+      "category": "Graphic Card",
+      "name": "Gigabyte GeForce RTX™ 3070 Ti GAMING OC 8G",
+      "image": "https://www.gigabyte.com/FileUpload/Global/WebPage/825/img/1.png",
+      "description": "GeForce RTX™ 3070 Ti, 1830 MHz, 8Gb GDDR6X, 6144 CUDA Cores, PCI-E 4.0 16x",
+      "price": 17600000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 22,
+      "category": "Graphic Card",
+      "name": "ZOTAC GAMING GeForce RTX 3080 Ti Trinity OC",
+      "image": "https://www.zotac.com/download/files/styles/w1024/public/product_gallery/graphics_cards/zt-a30810j-10p-image01.jpg?itok=Rdg7Iqmd",
+      "description": "GeForce RTX™ 3080 Ti, 1695 MHz, 12Gb GDDR6X, IceStorm 2.0, PCI-E 4.0 16x",
+      "price": 28400000,
+      "new": true,
+      "best": false
+    },
+    {
+      "id": 23,
+      "category": "Graphic Card",
+      "name": "ZOTAC GAMING GeForce RTX 3080 Ti AMP Holo",
+      "image": "https://www.zotac.com/download/files/styles/w1024/public/product_gallery/graphics_cards/zt-a30810f-10p-image01_0.jpg?itok=VfpAr-lR",
+      "description": "GeForce RTX™ 3080 Ti, 1710 MHz, 12Gb GDDR6X, IceStorm 2.0, PCI-E 4.0 16x",
+      "price": 29800000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 24,
+      "category": "Graphic Card",
+      "name": "ZOTAC GAMING GeForce RTX 3090 Trinity OC",
+      "image": "https://www.zotac.com/download/files/styles/w1024/public/product_gallery/graphics_cards/zt-a30900j-10p-image01.jpg?itok=6oHEY1qn",
+      "description": "GeForce RTX™ 3090, 1710 MHz, 24Gb GDDR6X, IceStorm 2.0, PCI-E 4.0 16x",
+      "price": 39700000,
+      "new": true,
+      "best": false
+    },
+    {
+      "id": 25,
+      "category": "Graphic Card",
+      "name": "ZOTAC GAMING GeForce RTX 3090 AMP Core Holo",
+      "image": "https://www.zotac.com/download/files/styles/w1024/public/product_gallery/graphics_cards/zt-a30900c-10p-image01.jpg?itok=DDT2xsdT",
+      "description": "GeForce RTX™ 3090, 1755 MHz, 24Gb GDDR6X, IceStorm 2.0, PCI-E 4.0 16x",
+      "price": 40600000,
+      "new": true,
+      "best": false
+    },
+    {
+      "id": 26,
+      "category": "Graphic Card",
+      "name": "ZOTAC GAMING GeForce RTX 3070 Ti Trinity",
+      "image": "https://www.zotac.com/download/files/styles/w1024/public/product_gallery/graphics_cards/zt-a30710d-10p-image01.jpg?itok=yiA-qlD8",
+      "description": "GeForce RTX™ 3070 Ti, 1770 MHz, 8Gb GDDR6X, IceStorm 2.0, PCI-E 4.0 16x",
+      "price": 16900000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 27,
+      "category": "Graphic Card",
+      "name": "ZOTAC GAMING GeForce RTX 3060 Ti Twin Edge OC",
+      "image": "https://www.zotac.com/download/files/styles/w1024/public/product_gallery/graphics_cards/zt-a30610h-10m-image01.jpg?itok=w7ygZr8-",
+      "description": "GeForce RTX™ 3060 Ti, 1695 MHz, 8Gb GDDR6, IceStorm 2.0, PCI-E 4.0 16x",
+      "price": 13600000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 28,
+      "category": "Graphic Card",
+      "name": "INNO3D GEFORCE RTX 3080 TI X3 OC",
+      "image": "https://www.inno3d.com/assets/files/product_image/image/3080Ti_X3OC_set.png",
+      "description": "GeForce RTX™ 3080 Ti, 1680 MHz, 12Gb GDDR6X, 10240 CUDA Cores, PCI-E 4.0 16x",
+      "price": 26900000,
+      "new": false,
+      "best": true
+    },
+    {
+      "id": 29,
+      "category": "Graphic Card",
+      "name": "INNO3D GEFORCE RTX 3080 TI ICHILL X3",
+      "image": "https://www.inno3d.com/assets/files/product_image/image/3080Ti_iCHILLX3_set.png",
+      "description": "GeForce RTX™ 3080 Ti, 1710 MHz, 12Gb GDDR6X, 10240 CUDA Cores, PCI-E 4.0 16x",
+      "price": 28800000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 30,
+      "category": "Graphic Card",
+      "name": "INNO3D GEFORCE RTX 3090 ICHILL X3",
+      "image": "https://www.inno3d.com/assets/files/product_image/image/3090iCHILLX3_set.png",
+      "description": "GeForce RTX™ 3090, 1755 MHz, 12Gb GDDR6X, 10496 CUDA Cores, PCI-E 4.0 16x",
+      "price": 38200000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 31,
+      "category": "Graphic Card",
+      "name": "Palit GeForce RTX™ 3080 Ti GamingPro",
+      "image": "https://www.palit.com/product/vga/picture/p04152/p04152_bigimage_11046077986ec43c7.png",
+      "description": "GeForce RTX™ 3080 Ti, 1665 MHz, 12Gb GDDR6X, 10240 CUDA Cores, PCI-E 4.0 16x",
+      "price": 26800000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 32,
+      "category": "Graphic Card",
+      "name": "Palit GeForce RTX™ 3080 GameRock V1",
+      "image": "https://www.palit.com/product/vga/picture/p04170/p04170_bigimage_7666090ed77376d3.png",
+      "description": "GeForce RTX™ 3080, 1440 MHz, 10Gb GDDR6X, 8704 CUDA Cores, PCI-E 4.0 16x",
+      "price": 24300000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 33,
+      "category": "Graphic Card",
+      "name": "Palit GeForce RTX™ 3070 JetStream OC V1",
+      "image": "https://www.palit.com/product/vga/picture/p04215/p04215_bigimage_1338609a21687af94.png",
+      "description": "GeForce RTX™ 3070, 1500 MHz, 8Gb GDDR6, 5888 CUDA Cores, PCI-E 4.0 16x",
+      "price": 18700000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 34,
+      "category": "Graphic Card",
+      "name": "Palit GeForce RTX™ 3090 GameRock",
+      "image": "https://www.palit.com/product/vga/picture/p03795/p03795_bigimage_3365f7446c3b93f1.png",
+      "description": "GeForce RTX™ 3090, 1500 MHz, 24Gb GDDR6X, 10496 CUDA Cores, PCI-E 4.0 16x",
+      "price": 41600000,
+      "new": false,
+      "best": true
+    },
+    {
+      "id": 35,
+      "category": "Graphic Card",
+      "name": "XFX Speedster MERC 319 AMD Radeon™ RX 6800 XT CORE",
+      "image": "https://assets-global.website-files.com/5d1911406ad3cbdb9924a753/614339fa91e08b20e0fcab16_6800_XT_Merc_319_Core_Box_Mockup_100b-p-1080.jpeg",
+      "description": "AMD Radeon™ RX 6800 XT, 2250 MHz, 16Gb GDDR6, AMD RDNA™ 2, PCI-E 4.0 16x",
+      "price": 20300000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 36,
+      "category": "Graphic Card",
+      "name": "XFX Speedster SWFT 319 AMD Radeon™ RX 6800 XT CORE",
+      "image": "https://assets-global.website-files.com/5d1911406ad3cbdb9924a753/611126f20285aa3a6437ab72_6800XT%20SWFT319%20box%2Bcard-p-1080.jpeg",
+      "description": "AMD Radeon™ RX 6800 XT, 2250 MHz, 16Gb GDDR6, AMD RDNA™ 2, PCI-E 4.0 16x",
+      "price": 22800000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 36,
+      "category": "Graphic Card",
+      "name": "XFX Speedster MERC 319 AMD Radeon™ RX 6900 XT Limited Black Gaming",
+      "image": "https://assets-global.website-files.com/5d1911406ad3cbdb9924a753/61433a5e1a80d75e8c0b9cef_6900_XT_Merc_319_01b-p-800.jpeg",
+      "description": "AMD Radeon™ RX 6900 XT, 2325 MHz, 16Gb GDDR6, AMD RDNA™ 2, 5120 SP, PCI-E 4.0 16x",
+      "price": 26300000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 37,
+      "category": "Graphic Card",
+      "name": "XFX Speedster SWFT 319 AMD Radeon™ RX 6900 XT CORE",
+      "image": "https://assets-global.website-files.com/5d1911406ad3cbdb9924a753/6111256f55fcabbff2eacd22_6900XT%20SWFT319%20box%2Bcard-p-1080.jpeg",
+      "description": "AMD Radeon™ RX 6900 XT, 2250 MHz, 16Gb GDDR6, AMD RDNA™ 2, 5120 SP, PCI-E 4.0 16x",
+      "price": 27800000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 38,
+      "category": "Graphic Card",
+      "name": "XFX Speedster ZERO AMD Radeon™ RX 6900XT RGB EKWB Waterblock",
+      "image": "https://assets-global.website-files.com/5d1911406ad3cbdb9924a753/61410c43c77f05680f7bc53b_6900_XT_Zero_WB_01b-p-1080.jpeg",
+      "description": "AMD Radeon™ RX 6900 XT, 2525 MHz, 16Gb GDDR6, EKWB Waterblock, 5120 SP, PCI-E 4.0 16x",
+      "price": 33300000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 39,
+      "category": "Graphic Card",
+      "name": "Sapphire PULSE AMD Radeon™ RX 6800 XT",
+      "image": "https://media.cdn.sapphiretech.com.cn/-/media/sites/sapphire/pim/product-images/11304_03_rx6800xt_pulse_16ggddr6/11304_03_rx6800xt_pulse_c01_r_800x500.ashx?v=3a63e18b58c242e591a8d0cd61c51564",
+      "description": "AMD Radeon™ RX 6800 XT, 2310 MHz, 16Gb GDDR6, 4608 SP, PCI-E 4.0 16x",
+      "price": 21800000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 40,
+      "category": "Graphic Card",
+      "name": "Sapphire NITRO+ AMD Radeon™ RX 6800 XT",
+      "image": "https://media.cdn.sapphiretech.com.cn/-/media/sites/sapphire/pim/product-images/11304_02_rx6800xt_nitro_16ggddr6/11304_02_rx6800xt_nitro_16gbgddr6_c01_800x500.ashx?v=a1e745aa01944b95b3d432eb6258ed8a",
+      "description": "AMD Radeon™ RX 6800 XT, 2360 MHz, 16Gb GDDR6, 4608 SP, PCI-E 4.0 16x",
+      "price": 22300000,
+      "new": false,
+      "best": true
+    },
+    {
+      "id": 41,
+      "category": "Graphic Card",
+      "name": "Sapphire NITRO+ AMD Radeon™ RX 6900 XT SE",
+      "image": "https://media.cdn.sapphiretech.com.cn/-/media/sites/sapphire/pim/product-images/11308_03_rx6900xtse_nitro_16gddr6/11308_03_rx6900xtse_nitro_16gbgddr6_3dp_hdmi_c01_800x500.ashx?v=192cebd7c8d94948a4870a891c370e40",
+      "description": "AMD Radeon™ RX 6900 XT, 2360 MHz, 16Gb GDDR6, 5120 SP, PCI-E 4.0 16x",
+      "price": 28800000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 42,
+      "category": "Graphic Card",
+      "name": "PowerColor Red Dragon AMD Radeon™ RX 6800 XT",
+      "image": "https://www.powercolor.com/_upload/images//2011251111300.png",
+      "description": "AMD Radeon™ RX 6800 XT, 2310 MHz, 16Gb GDDR6, 4608  SP, PCI-E 4.0 16x",
+      "price": 18860000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 43,
+      "category": "Graphic Card",
+      "name": "PowerColor Red Devil AMD Radeon™ RX 6800 XT",
+      "image": "https://www.powercolor.com/_upload/images//2011251047440.png",
+      "description": "AMD Radeon™ RX 6800 XT, 2340 MHz, 16Gb GDDR6, 4608  SP, PCI-E 4.0 16x",
+      "price": 20300000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 44,
+      "category": "Graphic Card",
+      "name": "PowerColor Red Devil AMD Radeon™ RX 6900 XT",
+      "image": "https://www.powercolor.com/_upload/images//2012071505360.png",
+      "description": "AMD Radeon™ RX 6900 XT, 2340 MHz, 16Gb GDDR6, 5120  SP, PCI-E 4.0 16x",
+      "price": 27270000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 45,
+      "category": "Graphic Card",
+      "name": "PowerColor Liquid Devil AMD Radeon™ RX 6900 XT 16GB GDDR6",
+      "image": "https://www.powercolor.com/_upload/images//2102081438060.png",
+      "description": "AMD Radeon™ RX 6900 XT, 2365 MHz, 16Gb GDDR6, 5120  SP, PCI-E 4.0 16x",
+      "price": 29500000,
+      "new": false,
+      "best": true
+    },
+    {
+      "id": 46,
+      "category": "Processor",
+      "name": "Intel Core i7-12700K",
+      "image": "https://c1.neweggimages.com/ProductImageCompressAll1280/19-118-343-05.jpg",
+      "description": "12-Core (8P+4E), 3.6 GHz, LGA 1700, 125W, Intel UHD Graphics 770",
+      "price": 6850000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 47,
+      "category": "Processor",
+      "name": "Intel Core i7-12700KF",
+      "image": "https://c1.neweggimages.com/ProductImageCompressAll1280/19-118-343-05.jpg",
+      "description": "12-Core (8P+4E), 3.6 GHz, 125W, LGA 1700",
+      "price": 6450000,
+      "new": false,
+      "best": true
+    },
+    {
+      "id": 48,
+      "category": "Processor",
+      "name": "Intel Core i9-12900K",
+      "image": "https://c1.neweggimages.com/ProductImageCompressAll1280/19-118-339-05.jpg",
+      "description": "16-Core (8P+8E), 3.2 GHz, 125W, LGA 1700, Intel UHD Graphics 770",
+      "price": 9900000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 49,
+      "category": "Processor",
+      "name": "Intel Core i9-12900KF",
+      "image": "https://c1.neweggimages.com/ProductImageCompressAll1280/19-118-341-06.jpg",
+      "description": "16-Core (8P+8E), 3.2 GHz, 125W, LGA 1700",
+      "price": 9400000,
+      "new": true,
+      "best": false
+    },
+    {
+      "id": 50,
+      "category": "Processor",
+      "name": "Intel Core i5-12600K",
+      "image": "https://c1.neweggimages.com/ProductImageCompressAll1280/19-118-347-05.jpg",
+      "description": "10-Core (6P+4E), 3.2 GHz, 125W, LGA 1700, Intel UHD Graphics 770",
+      "price": 4650000,
+      "new": true,
+      "best": false
+    },
+    {
+      "id": 51,
+      "category": "Processor",
+      "name": "Intel Core i5-12600KF",
+      "image": "https://c1.neweggimages.com/ProductImageCompressAll1280/19-118-347-05.jpg",
+      "description": "10-Core (6P+4E), 3.2 GHz, 125W, LGA 1700",
+      "price": 4250000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 52,
+      "category": "Memory",
+      "name": "Corsair DOMINATOR® PLATINUM RGB First Edition 32GB DDR5 5200MHz",
+      "image": "https://www.corsair.com/ww/en/medias/sys_master/images/images/hf5/hb0/9890324119582/CMT32GX5M2B5200C36FE/Gallery/DOMINATOR_RGB_PLATINUM_BLACK_FE_DDR5_01/-CMT32GX5M2B5200C36FE-Gallery-DOMINATOR-RGB-PLATINUM-BLACK-FE-DDR5-01.png_1200Wx1200H",
+      "description": "32Gb (16 x 2) DDR5 Memory, 5200MHz, C36, RGB",
+      "price": 5600000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 53,
+      "category": "Memory",
+      "name": "Corsair DOMINATOR® PLATINUM RGB 32GB (2x16GB) DDR5 DRAM 6200MHz",
+      "image": "https://www.corsair.com/ww/en/medias/sys_master/images/images/hab/hb3/9894950338590/CMT32GX5M2C4800C34/Gallery/DOMINATOR_RGB_PLATINUM_BLACK_DDR5_01/-CMT32GX5M2C4800C34-Gallery-DOMINATOR-RGB-PLATINUM-BLACK-DDR5-01.png_1200Wx1200H",
+      "description": "32Gb (16 x 2) DDR5 Memory, 6200MHz, C36, RGB",
+      "price": 6800000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 54,
+      "category": "Memory",
+      "name": "Corsair VENGEANCE® 32GB (2x16GB) DDR5 DRAM 5600MHz C36",
+      "image": "https://www.corsair.com/ww/en/medias/sys_master/images/images/h8e/he5/9944523210782/CMK32GX5M2B5600C36/Gallery/VENGEANCE_DDR5_BLK_01/-CMK32GX5M2B5600C36-Gallery-VENGEANCE-DDR5-BLK-01.png_1200Wx1200H",
+      "description": "32Gb (16 x 2) DDR5 Memory, 5600MHz, C36",
+      "price": 6100000,
+      "new": true,
+      "best": false
+    },
+    {
+      "id": 55,
+      "category": "Memory",
+      "name": "Corsair VENGEANCE RGB PRO SL 16GB (2x8GB) DDR4  3200MHz C16 Black",
+      "image": "https://www.corsair.com/ww/en/medias/sys_master/images/images/h2a/h62/9681585799198/CMH16GX4M2E3200C16/Gallery/VENGEANCE_RGB_PRO_SL_BLACK_01/-CMH16GX4M2E3200C16-Gallery-VENGEANCE-RGB-PRO-SL-BLACK-01.png_1200Wx1200H",
+      "description": "16Gb (8 x 2) DDR4 Memory, 3200MHz, C16, RGB",
+      "price": 1360000,
+      "new": false,
+      "best": true
+    },
+    {
+      "id": 56,
+      "category": "Memory",
+      "name": "Corsair VENGEANCE RGB PRO SL 16GB (2x8GB) DDR4 3600MHz - White",
+      "image": "https://www.corsair.com/ww/en/medias/sys_master/images/images/h3b/hf0/9681644388382/CMH16GX4M2D3600C18W/Gallery/VENGEANCE_RGB_PRO_SL_WHITE_01/-CMH16GX4M2D3600C18W-Gallery-VENGEANCE-RGB-PRO-SL-WHITE-01.png_1200Wx1200H",
+      "description": "16Gb (8 x 2) DDR4 Memory, 3200MHz, C18, RGB",
+      "price": 1360000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 57,
+      "category": "Memory",
+      "name": "Corsair VENGEANCE RGB PRO SL 32GB (2x16GB) DDR4 3200MHz - Black",
+      "image": "https://www.corsair.com/ww/en/medias/sys_master/images/images/h93/h95/9678466547742/CMH32GX4M2E3200C16/Gallery/VENGEANCE_RGB_PRO_SL_BLACK_01/-CMH32GX4M2E3200C16-Gallery-VENGEANCE-RGB-PRO-SL-BLACK-01.png_1200Wx1200H",
+      "description": "32Gb (16 x 2) DDR4 Memory, 3200MHz, C16, RGB",
+      "price": 2470000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 58,
+      "category": "Memory",
+      "name": "GSKILL F5-5600U4040C16GX2-TZ5RK",
+      "image": "https://www.gskill.com/_upload/images/163582088710.png",
+      "description": "32Gb (16 x 2) DDR5 Memory, 5600MHz, Intel XMP 3.0, RGB",
+      "price": 6080000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 59,
+      "category": "Memory",
+      "name": "GSKILL F5-5600U3636C16GX2-TZ5RK",
+      "image": "https://www.gskill.com/_upload/images/163582100510.png",
+      "description": "32Gb (16 x 2) DDR5 Memory, 5600MHz, Intel XMP 3.0, RGB",
+      "price": 6250000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 60,
+      "category": "Memory",
+      "name": "GSKILL F5-6000U3636E16GX2-TZ5RK",
+      "image": "https://www.gskill.com/_upload/images/163600559710.png",
+      "description": "32Gb (16 x 2) DDR5 Memory, 6000MHz, Intel XMP 3.0, RGB",
+      "price": 6850000,
+      "new": false,
+      "best": false
+    },
+    {
+      "id": 61,
+      "category": "Memory",
+      "name": "GSKILL F5-6000U3636E16GX2-TZ5RK",
+      "image": "https://www.gskill.com/_upload/images/163600559710.png",
+      "description": "32Gb (16 x 2) DDR5 Memory, 6000MHz, Intel XMP 3.0, RGB",
+      "price": 6850000,
+      "new": true,
+      "best": false
+    }
+  ]
+}

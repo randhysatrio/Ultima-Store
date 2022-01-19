@@ -1,0 +1,81 @@
+.footer-upper {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(101, 102, 107, 0.37);
+  backdrop-filter: blur(2.5px);
+  -webkit-backdrop-filter: blur(2.5px);
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+.footer-upper-links {
+  width: 60%;
+  display: flex;
+  flex-direction: row;
+  margin-left: 4rem;
+  margin-right: auto;
+}
+
+.links-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+}
+
+.links-container h6 {
+  font-weight: 750;
+  letter-spacing: 0.2rem;
+  color: rgba(22, 22, 22, 0.679);
+  text-shadow: 0px 0px 13px rgba(204, 204, 204, 0.67);
+}
+
+.links-container a {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  font-weight: 400;
+  text-decoration: none;
+  text-shadow: -1px 1px 10px rgba(168, 168, 168, 0.56);
+  color: rgba(226, 226, 226, 0.898);
+  position: relative;
+}
+
+.links-container a::after {
+  content: '';
+  width: 0%;
+  height: 2px;
+  left: 0;
+  top: 1.5rem;
+  background: rgb(143, 54, 172);
+  background: linear-gradient(13deg, rgba(143, 54, 172, 1) 31%, rgba(62, 166, 213, 1) 87%);
+  position: absolute;
+  transition: ease-in-out all 150ms;
+}
+
+.links-container a:hover::after {
+  width: 100%;
+}
+
+.footer-upper-logo {
+  margin-right: 8rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.footer-upper-logo img {
+  height: 15vh;
+}
+
+.footer-lower {
+  background: rgba(39, 39, 141, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(2.5px);
+  -webkit-backdrop-filter: blur(2.5px);
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  color: rgba(213, 213, 213, 0.857);
+  font-size: 1rem;
+}
