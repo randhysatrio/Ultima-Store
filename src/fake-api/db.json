@@ -7,6 +7,60 @@
       "password": "123456",
       "role": "admin",
       "id": 1
+    },
+    {
+      "firstname": "yedi",
+      "lastname": "mulyadi",
+      "username": "yedimulz",
+      "email": "yedimulz@gmail.com",
+      "password": "123456",
+      "role": "user",
+      "id": 2
+    },
+    {
+      "firstname": "Yudi",
+      "lastname": "Mulyadi",
+      "username": "yudimulz",
+      "email": "randhysatrio@gmail.com",
+      "password": "123456",
+      "role": "user",
+      "id": 3
+    },
+    {
+      "firstname": "Max",
+      "lastname": "Verstappen",
+      "username": "crgboy007",
+      "email": "max@redbull.com",
+      "password": "123456",
+      "role": "user",
+      "id": 4
+    },
+    {
+      "firstname": "Max",
+      "lastname": "Verstappen",
+      "username": "crgboy008",
+      "email": "max@gmail.com",
+      "password": "123456",
+      "role": "user",
+      "id": 5
+    },
+    {
+      "firstname": "Max",
+      "lastname": "Verstappen",
+      "username": "crgboy009",
+      "email": "max@lion.com",
+      "password": "123456",
+      "role": "user",
+      "id": 6
+    },
+    {
+      "firstname": "John",
+      "lastname": "Smith",
+      "username": "johnsmith",
+      "email": "johnsmith@gmail.com",
+      "password": "123456",
+      "role": "user",
+      "id": 7
     }
   ],
   "transactions": [],
@@ -373,7 +427,7 @@
       "best": false
     },
     {
-      "id": 36,
+      "id": 37,
       "category": "Graphic Card",
       "name": "XFX Speedster MERC 319 AMD Radeon™ RX 6900 XT Limited Black Gaming",
       "image": "https://assets-global.website-files.com/5d1911406ad3cbdb9924a753/61433a5e1a80d75e8c0b9cef_6900_XT_Merc_319_01b-p-800.jpeg",
@@ -383,7 +437,7 @@
       "best": false
     },
     {
-      "id": 37,
+      "id": 38,
       "category": "Graphic Card",
       "name": "XFX Speedster SWFT 319 AMD Radeon™ RX 6900 XT CORE",
       "image": "https://assets-global.website-files.com/5d1911406ad3cbdb9924a753/6111256f55fcabbff2eacd22_6900XT%20SWFT319%20box%2Bcard-p-1080.jpeg",
@@ -393,7 +447,7 @@
       "best": false
     },
     {
-      "id": 38,
+      "id": 39,
       "category": "Graphic Card",
       "name": "XFX Speedster ZERO AMD Radeon™ RX 6900XT RGB EKWB Waterblock",
       "image": "https://assets-global.website-files.com/5d1911406ad3cbdb9924a753/61410c43c77f05680f7bc53b_6900_XT_Zero_WB_01b-p-1080.jpeg",
@@ -403,7 +457,7 @@
       "best": false
     },
     {
-      "id": 39,
+      "id": 40,
       "category": "Graphic Card",
       "name": "Sapphire PULSE AMD Radeon™ RX 6800 XT",
       "image": "https://media.cdn.sapphiretech.com.cn/-/media/sites/sapphire/pim/product-images/11304_03_rx6800xt_pulse_16ggddr6/11304_03_rx6800xt_pulse_c01_r_800x500.ashx?v=3a63e18b58c242e591a8d0cd61c51564",
@@ -413,7 +467,7 @@
       "best": false
     },
     {
-      "id": 40,
+      "id": 41,
       "category": "Graphic Card",
       "name": "Sapphire NITRO+ AMD Radeon™ RX 6800 XT",
       "image": "https://media.cdn.sapphiretech.com.cn/-/media/sites/sapphire/pim/product-images/11304_02_rx6800xt_nitro_16ggddr6/11304_02_rx6800xt_nitro_16gbgddr6_c01_800x500.ashx?v=a1e745aa01944b95b3d432eb6258ed8a",
@@ -423,7 +477,7 @@
       "best": true
     },
     {
-      "id": 41,
+      "id": 42,
       "category": "Graphic Card",
       "name": "Sapphire NITRO+ AMD Radeon™ RX 6900 XT SE",
       "image": "https://media.cdn.sapphiretech.com.cn/-/media/sites/sapphire/pim/product-images/11308_03_rx6900xtse_nitro_16gddr6/11308_03_rx6900xtse_nitro_16gbgddr6_3dp_hdmi_c01_800x500.ashx?v=192cebd7c8d94948a4870a891c370e40",
@@ -433,7 +487,7 @@
       "best": false
     },
     {
-      "id": 42,
+      "id": 43,
       "category": "Graphic Card",
       "name": "PowerColor Red Dragon AMD Radeon™ RX 6800 XT",
       "image": "https://www.powercolor.com/_upload/images//2011251111300.png",
@@ -443,7 +497,7 @@
       "best": false
     },
     {
-      "id": 43,
+      "id": 44,
       "category": "Graphic Card",
       "name": "PowerColor Red Devil AMD Radeon™ RX 6800 XT",
       "image": "https://www.powercolor.com/_upload/images//2011251047440.png",
@@ -453,7 +507,7 @@
       "best": false
     },
     {
-      "id": 44,
+      "id": 45,
       "category": "Graphic Card",
       "name": "PowerColor Red Devil AMD Radeon™ RX 6900 XT",
       "image": "https://www.powercolor.com/_upload/images//2012071505360.png",
@@ -463,7 +517,7 @@
       "best": false
     },
     {
-      "id": 45,
+      "id": 46,
       "category": "Graphic Card",
       "name": "PowerColor Liquid Devil AMD Radeon™ RX 6900 XT 16GB GDDR6",
       "image": "https://www.powercolor.com/_upload/images//2102081438060.png",
@@ -473,7 +527,7 @@
       "best": true
     },
     {
-      "id": 46,
+      "id": 47,
       "category": "Processor",
       "name": "Intel Core i7-12700K",
       "image": "https://c1.neweggimages.com/ProductImageCompressAll1280/19-118-343-05.jpg",
@@ -483,7 +537,7 @@
       "best": false
     },
     {
-      "id": 47,
+      "id": 48,
       "category": "Processor",
       "name": "Intel Core i7-12700KF",
       "image": "https://c1.neweggimages.com/ProductImageCompressAll1280/19-118-343-05.jpg",
@@ -493,7 +547,7 @@
       "best": true
     },
     {
-      "id": 48,
+      "id": 49,
       "category": "Processor",
       "name": "Intel Core i9-12900K",
       "image": "https://c1.neweggimages.com/ProductImageCompressAll1280/19-118-339-05.jpg",
@@ -503,7 +557,7 @@
       "best": false
     },
     {
-      "id": 49,
+      "id": 50,
       "category": "Processor",
       "name": "Intel Core i9-12900KF",
       "image": "https://c1.neweggimages.com/ProductImageCompressAll1280/19-118-341-06.jpg",
@@ -513,7 +567,7 @@
       "best": false
     },
     {
-      "id": 50,
+      "id": 51,
       "category": "Processor",
       "name": "Intel Core i5-12600K",
       "image": "https://c1.neweggimages.com/ProductImageCompressAll1280/19-118-347-05.jpg",
@@ -523,7 +577,7 @@
       "best": false
     },
     {
-      "id": 51,
+      "id": 52,
       "category": "Processor",
       "name": "Intel Core i5-12600KF",
       "image": "https://c1.neweggimages.com/ProductImageCompressAll1280/19-118-347-05.jpg",
@@ -533,7 +587,7 @@
       "best": false
     },
     {
-      "id": 52,
+      "id": 53,
       "category": "Memory",
       "name": "Corsair DOMINATOR® PLATINUM RGB First Edition 32GB DDR5 5200MHz",
       "image": "https://www.corsair.com/ww/en/medias/sys_master/images/images/hf5/hb0/9890324119582/CMT32GX5M2B5200C36FE/Gallery/DOMINATOR_RGB_PLATINUM_BLACK_FE_DDR5_01/-CMT32GX5M2B5200C36FE-Gallery-DOMINATOR-RGB-PLATINUM-BLACK-FE-DDR5-01.png_1200Wx1200H",
@@ -543,7 +597,7 @@
       "best": false
     },
     {
-      "id": 53,
+      "id": 54,
       "category": "Memory",
       "name": "Corsair DOMINATOR® PLATINUM RGB 32GB (2x16GB) DDR5 DRAM 6200MHz",
       "image": "https://www.corsair.com/ww/en/medias/sys_master/images/images/hab/hb3/9894950338590/CMT32GX5M2C4800C34/Gallery/DOMINATOR_RGB_PLATINUM_BLACK_DDR5_01/-CMT32GX5M2C4800C34-Gallery-DOMINATOR-RGB-PLATINUM-BLACK-DDR5-01.png_1200Wx1200H",
@@ -553,7 +607,7 @@
       "best": false
     },
     {
-      "id": 54,
+      "id": 55,
       "category": "Memory",
       "name": "Corsair VENGEANCE® 32GB (2x16GB) DDR5 DRAM 5600MHz C36",
       "image": "https://www.corsair.com/ww/en/medias/sys_master/images/images/h8e/he5/9944523210782/CMK32GX5M2B5600C36/Gallery/VENGEANCE_DDR5_BLK_01/-CMK32GX5M2B5600C36-Gallery-VENGEANCE-DDR5-BLK-01.png_1200Wx1200H",
@@ -563,7 +617,7 @@
       "best": false
     },
     {
-      "id": 55,
+      "id": 56,
       "category": "Memory",
       "name": "Corsair VENGEANCE RGB PRO SL 16GB (2x8GB) DDR4  3200MHz C16 Black",
       "image": "https://www.corsair.com/ww/en/medias/sys_master/images/images/h2a/h62/9681585799198/CMH16GX4M2E3200C16/Gallery/VENGEANCE_RGB_PRO_SL_BLACK_01/-CMH16GX4M2E3200C16-Gallery-VENGEANCE-RGB-PRO-SL-BLACK-01.png_1200Wx1200H",
@@ -573,7 +627,7 @@
       "best": true
     },
     {
-      "id": 56,
+      "id": 57,
       "category": "Memory",
       "name": "Corsair VENGEANCE RGB PRO SL 16GB (2x8GB) DDR4 3600MHz - White",
       "image": "https://www.corsair.com/ww/en/medias/sys_master/images/images/h3b/hf0/9681644388382/CMH16GX4M2D3600C18W/Gallery/VENGEANCE_RGB_PRO_SL_WHITE_01/-CMH16GX4M2D3600C18W-Gallery-VENGEANCE-RGB-PRO-SL-WHITE-01.png_1200Wx1200H",
@@ -583,7 +637,7 @@
       "best": false
     },
     {
-      "id": 57,
+      "id": 58,
       "category": "Memory",
       "name": "Corsair VENGEANCE RGB PRO SL 32GB (2x16GB) DDR4 3200MHz - Black",
       "image": "https://www.corsair.com/ww/en/medias/sys_master/images/images/h93/h95/9678466547742/CMH32GX4M2E3200C16/Gallery/VENGEANCE_RGB_PRO_SL_BLACK_01/-CMH32GX4M2E3200C16-Gallery-VENGEANCE-RGB-PRO-SL-BLACK-01.png_1200Wx1200H",
@@ -593,7 +647,7 @@
       "best": false
     },
     {
-      "id": 58,
+      "id": 59,
       "category": "Memory",
       "name": "GSKILL F5-5600U4040C16GX2-TZ5RK",
       "image": "https://www.gskill.com/_upload/images/163582088710.png",
@@ -603,7 +657,7 @@
       "best": false
     },
     {
-      "id": 59,
+      "id": 60,
       "category": "Memory",
       "name": "GSKILL F5-5600U3636C16GX2-TZ5RK",
       "image": "https://www.gskill.com/_upload/images/163582100510.png",
@@ -613,7 +667,7 @@
       "best": false
     },
     {
-      "id": 60,
+      "id": 61,
       "category": "Memory",
       "name": "GSKILL F5-6000U3636E16GX2-TZ5RK",
       "image": "https://www.gskill.com/_upload/images/163600559710.png",
@@ -623,7 +677,7 @@
       "best": false
     },
     {
-      "id": 61,
+      "id": 62,
       "category": "Memory",
       "name": "GSKILL F5-6000U3636E16GX2-TZ5RK",
       "image": "https://www.gskill.com/_upload/images/163600559710.png",

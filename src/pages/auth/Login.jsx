@@ -6,7 +6,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Axios from 'axios';
 import { API_URL } from '../../assets/constants';
-import { ImYoutube2 } from 'react-icons/im';
 
 const Login = () => {
   const [loginState, setLoginState] = useState({

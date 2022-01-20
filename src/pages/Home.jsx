@@ -15,8 +15,8 @@ import { API_URL } from '../assets/constants';
 
 const Home = () => {
   const navigate = useNavigate();
-  const navigateTo = () => {
-    navigate(`AllProducts`);
+  const navigateTo = (val) => {
+    navigate(`AllProducts`, { state: { passed_key: val } });
   };
 
   const [productListNew, setProductListNew] = useState([]);
@@ -29,7 +29,6 @@ const Home = () => {
       },
     })
       .then((response) => {
-        console.log(response.data);
         if (val === 'new') {
           setProductListNew(response.data);
         } else if (val === 'best') {
@@ -77,13 +76,28 @@ const Home = () => {
         </Carousel>
       </div>
       <div className="d-flex justify-content-center gap-3 px-5 mt-3" style={{ height: '10rem' }}>
-        <button className="shop processors d-flex justify-content-center align-items-center shadow" onClick={navigateTo}>
+        <button
+          className="shop processors d-flex justify-content-center align-items-center shadow"
+          onClick={() => {
+            navigateTo('Processor');
+          }}
+        >
           Shop Processors
         </button>
-        <button className="shop motherboard d-flex justify-content-center align-items-center shadow" onClick={navigateTo}>
+        <button
+          className="shop motherboard d-flex justify-content-center align-items-center shadow"
+          onClick={() => {
+            navigateTo('Motherboard');
+          }}
+        >
           Shop Motherboard
         </button>
-        <button className="shop gpu d-flex justify-content-center align-items-center shadow" onClick={navigateTo}>
+        <button
+          className="shop gpu d-flex justify-content-center align-items-center shadow"
+          onClick={() => {
+            navigateTo('Graphic Card');
+          }}
+        >
           Shop Graphic Cards
         </button>
       </div>
@@ -96,9 +110,13 @@ const Home = () => {
             <div className="product-container">
               {renderProductsNew()}
               <div className="product-link">
-                <Link to="AllProducts" style={{ textDecoration: 'none' }}>
-                  <h6>See All Products</h6>
-                </Link>
+                <h6
+                  onClick={() => {
+                    navigateTo('');
+                  }}
+                >
+                  See All Products
+                </h6>
               </div>
             </div>
             <div style={{ padding: '0 1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -107,9 +125,13 @@ const Home = () => {
             <div className="product-container">
               {renderProductsBest()}
               <div className="product-link">
-                <Link to="AllProducts" style={{ textDecoration: 'none' }}>
-                  <h6>See All Products</h6>
-                </Link>
+                <h6
+                  onClick={() => {
+                    navigateTo('');
+                  }}
+                >
+                  See All Products
+                </h6>
               </div>
             </div>
           </div>

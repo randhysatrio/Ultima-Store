@@ -50,9 +50,7 @@ function App() {
       <Routes>
         <Route path="Login" element={<Login />} />
         <Route path="Register" element={<Register />} />
-        <Route path="AllProducts" element={<AllProducts />}>
-          <Route path=":params" element={<AllProducts />} />
-        </Route>
+        <Route path="AllProducts" element={<AllProducts />} />
         <Route path="/" element={<Home />} />
       </Routes>
       <Footer />

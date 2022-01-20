@@ -71,12 +71,12 @@
 .product-link h6 {
   font-size: 1rem;
   color: rgb(196, 170, 24);
-  text-shadow: -1px 1px 9px rgba(168, 168, 168, 0.56);
+  text-shadow: -1px 1px 11px rgba(168, 168, 168, 0.446);
   transition: all ease-in-out 150ms;
 }
 
 .product-link h6:hover {
   color: rgb(204, 185, 40);
-
+  cursor: pointer;
   text-shadow: 0px 0px 13px rgba(204, 198, 92, 0.67);
 }

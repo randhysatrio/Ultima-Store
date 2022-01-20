@@ -7,6 +7,8 @@ import { API_URL } from '../../assets/constants';
 
 import '../../assets/styles/Register.css';
 
+const errMsg = 'Please fill out your';
+
 const Register = () => {
   const [userRegister, setUserRegister] = useState({
     firstname: '',
@@ -38,46 +40,58 @@ const Register = () => {
       },
     })
       .then((response) => {
+        console.log(response.data);
         if (response.data.length) {
-          if (response.data[0].username === userRegister.username) {
-            setErrorMessage('Username is already been taken!');
-          } else if (response.data[0].email === userRegister.email) {
-            setErrorMessage('This email has already been registered!');
-          }
+          setErrorMessage('Username is already been taken!');
         } else {
-          if (userRegister.username === '') {
-            setErrorMessage('Please fill your username');
-          } else if (userRegister.email === '') {
-            setErrorMessage('Please fill your email address!');
-          } else if (userRegister.firstname === '') {
-            setErrorMessage('Please fill your first name!');
-          } else if (userRegister.lastname === '') {
-            setErrorMessage('Please fill your last name!');
-          } else if (userRegister.password.length < 4) {
-            setErrorMessage('Password needs to be more than 3 characters!');
-          } else {
-            Axios.post(`${API_URL}/users`, userRegister)
-              .then((response) => {
-                delete response.data.password;
+          Axios.get(`${API_URL}/users`, {
+            params: {
+              email: userRegister.email,
+            },
+          })
+            .then((response) => {
+              if (response.data.length) {
+                setErrorMessage('This email has already been registered!');
+              } else {
+                if (userRegister.username === '') {
+                  setErrorMessage(`${errMsg} username!`);
+                } else if (userRegister.email === '') {
+                  setErrorMessage(`${errMsg} email address!`);
+                } else if (userRegister.firstname === '') {
+                  setErrorMessage(`${errMsg} first name!`);
+                } else if (userRegister.lastname === '') {
+                  setErrorMessage(`${errMsg} last name!`);
+                } else if (userRegister.password.length < 4) {
+                  setErrorMessage('Password needs to be more than 3 characters!');
+                } else {
+                  Axios.post(`${API_URL}/users`, userRegister)
+                    .then((response) => {
+                      setErrorMessage(false);
+                      delete response.data.password;
 
-                localStorage.setItem('emmerceData', JSON.stringify(response.data));
-                console.log(response.data);
+                      localStorage.setItem('emmerceData', JSON.stringify(response.data));
+                      console.log(response.data);
 
-                dispatch({
-                  type: 'USER_REGISTER',
-                  payload: response.data,
-                });
+                      dispatch({
+                        type: 'USER_REGISTER',
+                        payload: response.data,
+                      });
 
-                navigate(`/`);
-              })
-              .catch(() => {
-                alert('Server Error');
-              });
-          }
+                      navigate(`/`);
+                    })
+                    .catch(() => {
+                      alert('Server Error 1');
+                    });
+                }
+              }
+            })
+            .catch(() => {
+              alert('Server Error 2');
+            });
         }
       })
       .catch(() => {
-        alert('Server Error');
+        alert('Server Error 3');
       });
   };
 

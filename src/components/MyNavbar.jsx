@@ -11,7 +11,7 @@ import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const MyNavbar = () => {
   const userGlobal = useSelector((state) => state.user);
@@ -32,7 +32,7 @@ const MyNavbar = () => {
 
   return (
     <Navbar expand="lg" variant="dark" className="px-5 mb-0 navbar">
-      <Navbar.Brand href="/">
+      <Navbar.Brand as={Link} to="/">
         <img src={Logo} width="110" height="30" className="d-inline-block align-top" alt="React Bootstrap logo" />
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />

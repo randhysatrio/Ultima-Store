@@ -16,13 +16,15 @@
 
 .product-card .card-image {
   height: 11rem;
-  padding: 0.5rem 0.7rem;
+  padding: 1rem;
   background-color: white;
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
 .product-card img {
-  object-fit: fill;
+  object-fit: contain;
   height: 100%;
-  width: 100%;
 }
 .product-card .card-info {
   height: 8rem;
