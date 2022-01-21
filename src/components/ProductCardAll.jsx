@@ -5,11 +5,18 @@ import { FaShippingFast } from 'react-icons/fa';
 import { BiRightArrowAlt } from 'react-icons/bi';
 import { BsCartPlus, BsGlobe } from 'react-icons/bs';
 
+import { useNavigate } from 'react-router-dom';
+
 const ProductCardAll = ({ product }) => {
+  const navigate = useNavigate();
+  const navigateTo = () => {
+    navigate(`/ProductDetails/${product.id}`);
+  };
+
   return (
     <div className="items-card">
       <div className="items-card-product-button details">
-        <span>Product Details</span>
+        <span onClick={navigateTo}>Product Details</span>
         <BiRightArrowAlt />
       </div>
       <div className="items-card-product-button cart">

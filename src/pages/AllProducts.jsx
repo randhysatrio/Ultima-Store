@@ -7,6 +7,7 @@ import { faMicrochip } from '@fortawesome/free-solid-svg-icons';
 import { FaMemory } from 'react-icons/fa';
 import { GiCircuitry } from 'react-icons/gi';
 import { SiGraphql } from 'react-icons/si';
+import { GrFormNext, GrFormPrevious } from 'react-icons/gr';
 
 import ProductCardAll from '../components/ProductCardAll';
 
@@ -25,35 +26,49 @@ const AllProducts = () => {
   const [itemPerPage, setItemPerPage] = useState(15);
 
   const fetchProductList = () => {
-    Axios.get(`${API_URL}/products`)
-      .then((response) => {
-        setProductList(response.data);
-        setMaxPage(Math.ceil(response.data.length / itemPerPage));
+    if (state.passed_key) {
+      Axios.get(`${API_URL}/products`, {
+        params: {
+          category: state.passed_key,
+        },
       })
-      .catch(() => {
-        alert('Unable to load product data!');
-      });
+        .then((response) => {
+          delete state.passed_key;
+          setProductList(response.data);
+          setMaxPage(Math.ceil(response.data.length / itemPerPage));
+        })
+        .catch(() => {
+          alert('Unable to load product data!');
+        });
+    } else if (keyword) {
+      Axios.get(`${API_URL}/products`, {
+        params: {
+          category: keyword,
+        },
+      })
+        .then((response) => {
+          delete state.passed_key;
+          setProductList(response.data);
+          setMaxPage(Math.ceil(response.data.length / itemPerPage));
+        })
+        .catch(() => {
+          alert('Unable to load product data!');
+        });
+    } else {
+      Axios.get(`${API_URL}/products`)
+        .then((response) => {
+          delete state.passed_key;
+          setProductList(response.data);
+          setMaxPage(Math.ceil(response.data.length / itemPerPage));
+        })
+        .catch(() => {
+          alert('Unable to load product data!');
+        });
+    }
   };
 
   const renderProduct = () => {
-    const rawData = [...productList];
-    let dataToRender;
-
-    if (keyword) {
-      if (keyword === 'all') {
-        dataToRender = [...rawData];
-      } else {
-        dataToRender = rawData.filter((data) => {
-          return data.category === keyword;
-        });
-      }
-    } else if (state.passed_key) {
-      dataToRender = rawData.filter((data) => {
-        return data.category === state.passed_key;
-      });
-    } else {
-      dataToRender = [...rawData];
-    }
+    const dataToRender = [...productList];
 
     const asc = (a, b) => {
       if (a < b) {
@@ -105,29 +120,31 @@ const AllProducts = () => {
 
   useEffect(() => {
     fetchProductList();
-  }, []);
+  }, [keyword]);
 
   return (
     <div className="container">
       <div className="row">
         <div style={{ display: 'flex', justifyContent: 'flex-start', paddingLeft: '2rem', margin: '1rem 0' }}>
-          <h3 className="page-header">Our Products</h3>
+          <h3
+            className="page-header"
+            onClick={() => {
+              setKeyword();
+              setPage(1);
+            }}
+          >
+            Our Products
+          </h3>
         </div>
         <div className="col-2">
           <div className="category-container">
-            <span
-              className="category-title-header"
-              onClick={() => {
-                setKeyword('all');
-              }}
-            >
-              Categories
-            </span>
+            <span className="category-title-header">Categories</span>
             <div className="line" />
             <button
               className="category-btn"
               onClick={() => {
                 setKeyword('Processor');
+                setPage(1);
               }}
             >
               <span>
@@ -139,6 +156,7 @@ const AllProducts = () => {
               className="category-btn"
               onClick={() => {
                 setKeyword('Motherboard');
+                setPage(1);
               }}
             >
               <span>
@@ -150,6 +168,7 @@ const AllProducts = () => {
               className="category-btn"
               onClick={() => {
                 setKeyword('Graphic Card');
+                setPage(1);
               }}
             >
               <span>
@@ -161,6 +180,7 @@ const AllProducts = () => {
               className="category-btn"
               onClick={() => {
                 setKeyword('Memory');
+                setPage(1);
               }}
             >
               <span>
@@ -192,7 +212,8 @@ const AllProducts = () => {
               className="sort-select"
               onChange={(event) => {
                 setItemPerPage(event.target.value);
-                setMaxPage(Math.ceil(productList / event.target.value));
+                setMaxPage(Math.ceil(productList.length / event.target.value));
+                setPage(1);
               }}
             >
               <option value={15}>15</option>
@@ -206,12 +227,14 @@ const AllProducts = () => {
           <div className="items-container">{renderProduct()}</div>
           <div className="page-container">
             <div className="page-button-container">
-              <button onClick={prevPageHandler} disabled={page === 1}>
-                -
+              <button onClick={prevPageHandler} disabled={page === 1} className="btn-page">
+                <GrFormPrevious />
               </button>
-              <span>{page}</span>
-              <button onClick={nextPageHandler} disabled={page === maxPage}>
-                +
+              <span className="page-display">
+                {page} of {maxPage}
+              </span>
+              <button onClick={nextPageHandler} disabled={page === maxPage} className="btn-page">
+                <GrFormNext />
               </button>
             </div>
           </div>

@@ -54,10 +54,16 @@
 .product-card .card-link {
   height: 2rem;
   display: flex;
+  align-items: center;
   justify-content: flex-end;
   padding-right: 1rem;
 }
 
+.details-link {
+  padding-left: 0.1rem;
+}
+
 .details-link:hover {
+  padding-left: 0;
   text-decoration: underline;
 }

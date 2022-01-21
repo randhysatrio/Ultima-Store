@@ -8,7 +8,7 @@ import { useNavigate, Link } from 'react-router-dom';
 const ProductCardHome = ({ product }) => {
   const navigate = useNavigate();
   const navigateTo = () => {
-    navigate('AllProducts');
+    navigate(`/ProductDetails/${product.id}`);
   };
 
   return (
@@ -21,10 +21,8 @@ const ProductCardHome = ({ product }) => {
         <p className="card-subtitle">Rp. {product.price.toLocaleString('id')}</p>
       </div>
       <div className="card-link">
-        <Link to="AllProducts" style={{ textDecoration: 'none', color: 'black', fontSize: '13px', fontWeight: '400' }}>
-          <FontAwesomeIcon icon={faArrowRight} style={{ marginRight: '0.2rem' }} />
-          <span className="details-link">More Details</span>
-        </Link>
+        <FontAwesomeIcon icon={faArrowRight} style={{ marginRight: '0.2rem' }} />
+        <span className="details-link">More Details</span>
       </div>
     </div>
   );
