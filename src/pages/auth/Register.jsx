@@ -40,7 +40,6 @@ const Register = () => {
       },
     })
       .then((response) => {
-        console.log(response.data);
         if (response.data.length) {
           setErrorMessage('Username is already been taken!');
         } else {
@@ -50,13 +49,18 @@ const Register = () => {
             },
           })
             .then((response) => {
+              console.log(response.data);
               if (response.data.length) {
                 setErrorMessage('This email has already been registered!');
               } else {
                 if (userRegister.username === '') {
                   setErrorMessage(`${errMsg} username!`);
+                } else if (userRegister.username.includes(' ')) {
+                  setErrorMessage(`Username cannot contain spaces!`);
                 } else if (userRegister.email === '') {
                   setErrorMessage(`${errMsg} email address!`);
+                } else if (userRegister.email.includes(' ') || !userRegister.email.includes('@') || !userRegister.email.includes('.co')) {
+                  setErrorMessage('Please enter a valid email address!');
                 } else if (userRegister.firstname === '') {
                   setErrorMessage(`${errMsg} first name!`);
                 } else if (userRegister.lastname === '') {

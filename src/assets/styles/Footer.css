@@ -30,7 +30,7 @@
   text-shadow: 0px 0px 13px rgba(204, 204, 204, 0.67);
 }
 
-.links-container a {
+.links-container text {
   margin: 0.5rem 0;
   font-size: 1rem;
   letter-spacing: 1px;
@@ -39,9 +39,10 @@
   text-shadow: -1px 1px 10px rgba(168, 168, 168, 0.56);
   color: rgba(226, 226, 226, 0.898);
   position: relative;
+  cursor: pointer;
 }
 
-.links-container a::after {
+.links-container text::after {
   content: '';
   width: 0%;
   height: 2px;
@@ -53,7 +54,7 @@
   transition: ease-in-out all 150ms;
 }
 
-.links-container a:hover::after {
+.links-container text:hover::after {
   width: 100%;
 }
 

@@ -27,6 +27,23 @@ const Login = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const updateCartData = (userID) => {
+    Axios.get(`${API_URL}/carts`, {
+      params: {
+        userID,
+      },
+    })
+      .then((response) => {
+        console.log(response.data);
+        dispatch({
+          type: 'FILL_CART',
+          payload: response.data,
+        });
+      })
+      .catch(() => {
+        alert('Unable to update cart data');
+      });
+  };
   const loginBtnHandler = () => {
     Axios.get(`${API_URL}/users`, {
       params: {
@@ -44,6 +61,7 @@ const Login = () => {
             type: 'USER_REGISTER',
             payload: response.data[0],
           });
+          updateCartData(response.data[0].id);
 
           navigate(`/`);
         } else {

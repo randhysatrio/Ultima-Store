@@ -176,3 +176,50 @@
   -webkit-box-shadow: 2px 2px 223px -86px rgba(66, 131, 150, 0.67);
   -moz-box-shadow: 2px 2px 223px -86px rgba(66, 131, 150, 0.67);
 }
+
+.error-message-container {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-message-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.error-message-header text {
+  font-size: 5rem;
+  font-weight: bold;
+  background-color: #8ec5fc;
+  background: linear-gradient(15deg, rgba(238, 240, 71, 1), rgba(215, 216, 217, 1));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0px 0px 5px rgba(206, 206, 206, 0.28);
+}
+
+.error-message-content {
+  margin-bottom: 0.5rem;
+}
+
+.error-message-content text {
+  font-size: 1.3rem;
+  background: linear-gradient(15deg, rgba(238, 240, 71, 1), rgba(215, 216, 217, 1));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0px 0px 5px rgba(206, 206, 206, 0.28);
+}
+
+.error-message-link text {
+  color: rgb(221, 221, 221);
+  font-weight: 300;
+  cursor: pointer;
+  transition: all ease-in-out 150ms;
+}
+
+.error-message-link text:hover {
+  text-shadow: 0px 0px 14px rgba(206, 206, 206, 0.84);
+}

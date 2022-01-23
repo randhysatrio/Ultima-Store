@@ -19,47 +19,64 @@ const AllProducts = () => {
   const { state } = useLocation();
 
   const [productList, setProductList] = useState([]);
-  const [keyword, setKeyword] = useState('');
+  const [pageRenderer, setPageRenderer] = useState(0);
+  const [category, setCategory] = useState('');
   const [sortVal, setSortVal] = useState('');
   const [page, setPage] = useState(1);
   const [maxPage, setMaxPage] = useState(0);
   const [itemPerPage, setItemPerPage] = useState(15);
+  const [errorMsg, setErrorMsg] = useState(false);
 
   const fetchProductList = () => {
-    if (state.passed_key) {
+    if (state.passed_category) {
       Axios.get(`${API_URL}/products`, {
         params: {
-          category: state.passed_key,
+          category: state.passed_category,
         },
       })
         .then((response) => {
-          delete state.passed_key;
+          delete state.passed_category;
           setProductList(response.data);
           setMaxPage(Math.ceil(response.data.length / itemPerPage));
         })
         .catch(() => {
-          alert('Unable to load product data!');
+          alert('Unable to find selected product category!');
         });
-    } else if (keyword) {
+    } else if (category) {
       Axios.get(`${API_URL}/products`, {
         params: {
-          category: keyword,
+          category,
         },
       })
         .then((response) => {
-          delete state.passed_key;
+          setCategory();
           setProductList(response.data);
           setMaxPage(Math.ceil(response.data.length / itemPerPage));
         })
         .catch(() => {
-          alert('Unable to load product data!');
+          alert('Unable to get selected product category');
         });
     } else {
       Axios.get(`${API_URL}/products`)
         .then((response) => {
-          delete state.passed_key;
-          setProductList(response.data);
-          setMaxPage(Math.ceil(response.data.length / itemPerPage));
+          let result_data;
+          if (state.search_key) {
+            result_data = response.data.filter((data) => {
+              return (
+                data.name.toLowerCase().includes(state.search_key.toLowerCase()) ||
+                data.category.toLowerCase().includes(state.search_key.toLowerCase())
+              );
+            });
+            if (result_data.length) {
+              setProductList(result_data);
+              setMaxPage(Math.ceil(result_data.length / itemPerPage));
+            } else {
+              setErrorMsg(true);
+            }
+          } else {
+            setProductList(response.data);
+            setMaxPage(Math.ceil(response.data.length / itemPerPage));
+          }
         })
         .catch(() => {
           alert('Unable to load product data!');
@@ -118,9 +135,18 @@ const AllProducts = () => {
     }
   };
 
+  const categoryBtnHandler = (val) => {
+    delete state.search_key;
+    setErrorMsg(false);
+    setCategory(val);
+    setPageRenderer(pageRenderer + 1);
+    setPage(1);
+  };
+
+  // state.search_key masuk ke dalam dependencies array agar search bar bisa digunakan berkali2!
   useEffect(() => {
     fetchProductList();
-  }, [keyword]);
+  }, [state.search_key, pageRenderer]);
 
   return (
     <div className="container">
@@ -129,8 +155,7 @@ const AllProducts = () => {
           <h3
             className="page-header"
             onClick={() => {
-              setKeyword();
-              setPage(1);
+              categoryBtnHandler();
             }}
           >
             Our Products
@@ -143,8 +168,7 @@ const AllProducts = () => {
             <button
               className="category-btn"
               onClick={() => {
-                setKeyword('Processor');
-                setPage(1);
+                categoryBtnHandler('Processor');
               }}
             >
               <span>
@@ -155,8 +179,7 @@ const AllProducts = () => {
             <button
               className="category-btn"
               onClick={() => {
-                setKeyword('Motherboard');
-                setPage(1);
+                categoryBtnHandler('Motherboard');
               }}
             >
               <span>
@@ -167,8 +190,7 @@ const AllProducts = () => {
             <button
               className="category-btn"
               onClick={() => {
-                setKeyword('Graphic Card');
-                setPage(1);
+                categoryBtnHandler('Graphic Card');
               }}
             >
               <span>
@@ -179,8 +201,7 @@ const AllProducts = () => {
             <button
               className="category-btn"
               onClick={() => {
-                setKeyword('Memory');
-                setPage(1);
+                categoryBtnHandler('Memory');
               }}
             >
               <span>
@@ -224,7 +245,30 @@ const AllProducts = () => {
           </div>
         </div>
         <div className="col-10">
-          <div className="items-container">{renderProduct()}</div>
+          {/* <div className="items-container">{renderProduct()}</div> */}
+          <div className="items-container">
+            {errorMsg ? (
+              <div className="error-message-container">
+                <div className="error-message-header">
+                  <text>Oops..</text>
+                </div>
+                <div className="error-message-content">
+                  <text>It seems we're unable to find the product you're looking for :(</text>
+                </div>
+                <div className="error-message-link">
+                  <text
+                    onClick={() => {
+                      categoryBtnHandler();
+                    }}
+                  >
+                    Show all products instead?
+                  </text>
+                </div>
+              </div>
+            ) : (
+              renderProduct()
+            )}
+          </div>
           <div className="page-container">
             <div className="page-button-container">
               <button onClick={prevPageHandler} disabled={page === 1} className="btn-page">

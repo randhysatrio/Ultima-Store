@@ -4,67 +4,55 @@
       "firstname": "Randhy",
       "lastname": "Satrio",
       "username": "randhysatrio",
+      "email": "randhysatrio@gmail.com",
       "password": "123456",
       "role": "admin",
       "id": 1
-    },
-    {
-      "firstname": "yedi",
-      "lastname": "mulyadi",
-      "username": "yedimulz",
-      "email": "yedimulz@gmail.com",
-      "password": "123456",
-      "role": "user",
-      "id": 2
-    },
-    {
-      "firstname": "Yudi",
-      "lastname": "Mulyadi",
-      "username": "yudimulz",
-      "email": "randhysatrio@gmail.com",
-      "password": "123456",
-      "role": "user",
-      "id": 3
-    },
-    {
-      "firstname": "Max",
-      "lastname": "Verstappen",
-      "username": "crgboy007",
-      "email": "max@redbull.com",
-      "password": "123456",
-      "role": "user",
-      "id": 4
-    },
-    {
-      "firstname": "Max",
-      "lastname": "Verstappen",
-      "username": "crgboy008",
-      "email": "max@gmail.com",
-      "password": "123456",
-      "role": "user",
-      "id": 5
-    },
-    {
-      "firstname": "Max",
-      "lastname": "Verstappen",
-      "username": "crgboy009",
-      "email": "max@lion.com",
-      "password": "123456",
-      "role": "user",
-      "id": 6
-    },
-    {
-      "firstname": "John",
-      "lastname": "Smith",
-      "username": "johnsmith",
-      "email": "johnsmith@gmail.com",
-      "password": "123456",
-      "role": "user",
-      "id": 7
     }
   ],
   "transactions": [],
-  "cart": [],
+  "carts": [
+    {
+      "userID": 1,
+      "username": "randhysatrio",
+      "productID": 2,
+      "productName": "Asus ROG STRIX Z690-A GAMING WIFI D4",
+      "productImage": "https://dlcdnwebimgs.asus.com/gain/CC82B2CA-3556-491B-936E-C46577251275/w717/h525",
+      "productPrice": 5550000,
+      "productQty": 5,
+      "id": 1
+    },
+    {
+      "userID": 1,
+      "username": "randhysatrio",
+      "productID": 28,
+      "productName": "INNO3D GEFORCE RTX 3080 TI X3 OC",
+      "productImage": "https://www.inno3d.com/assets/files/product_image/image/3080Ti_X3OC_set.png",
+      "productPrice": 26900000,
+      "productQty": 1,
+      "id": 2
+    },
+    {
+      "userID": 1,
+      "username": "randhysatrio",
+      "productID": 1,
+      "productName": "Asus ROG STRIX Z690-A GAMING WIFI",
+      "productImage": "https://dlcdnwebimgs.asus.com/gain/CC82B2CA-3556-491B-936E-C46577251275/w717/h525",
+      "productPrice": 5950000,
+      "productQty": 1,
+      "id": 3
+    },
+    {
+      "userID": 1,
+      "username": "randhysatrio",
+      "productID": 3,
+      "productName": "Asus ROG STRIX B660-G GAMING WIFI",
+      "productImage": "https://dlcdnwebimgs.asus.com/gain/532DFE20-82F0-43F5-82CE-7E40D7AD7D5A/w717/h525",
+      "productPrice": 4110000,
+      "productQty": 1,
+      "id": 4
+    }
+  ],
   "products": [
     {
       "id": 1,
@@ -668,16 +656,6 @@
     },
     {
       "id": 61,
-      "category": "Memory",
-      "name": "GSKILL F5-6000U3636E16GX2-TZ5RK",
-      "image": "https://www.gskill.com/_upload/images/163600559710.png",
-      "description": "32Gb (16 x 2) DDR5 Memory, 6000MHz, Intel XMP 3.0, RGB",
-      "price": 6850000,
-      "new": false,
-      "best": false
-    },
-    {
-      "id": 62,
       "category": "Memory",
       "name": "GSKILL F5-6000U3636E16GX2-TZ5RK",
       "image": "https://www.gskill.com/_upload/images/163600559710.png",

@@ -2,36 +2,66 @@ import React from 'react';
 
 import '../../src/assets/styles/Footer.css';
 import Logo from '../assets/images/logo.png';
-
 import { FaTwitterSquare, FaFacebook, FaInstagram } from 'react-icons/fa';
 import { ImYoutube2 } from 'react-icons/im';
 
+import { useNavigate } from 'react-router-dom';
+
 const Footer = () => {
+  const navigate = useNavigate();
+  const navigateTo = (val) => {
+    navigate(`/AllProducts`, { state: { passed_category: val } });
+  };
+
   return (
     <div style={{ marginTop: '2rem' }}>
       <div className="footer-upper">
         <div className="footer-upper-links">
           <div className="links-container">
             <h6>SHOP</h6>
-            <a href="#">Processors</a>
-            <a href="#">Motheboard</a>
-            <a href="#">Graphics Card</a>
-            <a href="#">Memory</a>
+            <text
+              onClick={() => {
+                navigateTo('Processor');
+              }}
+            >
+              Processors
+            </text>
+            <text
+              onClick={() => {
+                navigateTo('Motherboard');
+              }}
+            >
+              Motherboard
+            </text>
+            <text
+              onClick={() => {
+                navigateTo('Graphic Card');
+              }}
+            >
+              Graphics Card
+            </text>
+            <text
+              onClick={() => {
+                navigateTo('Memory');
+              }}
+            >
+              Memory
+            </text>
           </div>
           <div className="links-container">
             <h6>ULTIMA</h6>
-            <a href="#">About</a>
-            <a href="#">Investor</a>
-            <a href="#">Partner</a>
-            <a href="#">Careers</a>
-            <a href="#">Blog</a>
+            <text href="#">About</text>
+            <text href="#">Investor</text>
+            <text href="#">Partner</text>
+            <text href="#">Careers</text>
+            <text href="#">Blog</text>
           </div>
           <div className="links-container">
             <h6>CUSTOMERS</h6>
-            <a href="#">Contact Us</a>
-            <a href="#">Track Your Order</a>
-            <a href="#">Return Item</a>
-            <a href="#">Privacy and Security</a>
+            <text href="#">Contact Us</text>
+            <text href="#">Track Your Order</text>
+            <text href="#">Return Item</text>
+            <text href="#">Privacy and Security</text>
           </div>
         </div>
         <div className="footer-upper-logo">

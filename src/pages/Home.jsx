@@ -16,7 +16,7 @@ import { API_URL } from '../assets/constants';
 const Home = () => {
   const navigate = useNavigate();
   const navigateTo = (val) => {
-    navigate(`AllProducts`, { state: { passed_key: val } });
+    navigate(`AllProducts`, { state: { passed_category: val } });
   };
 
   const [productListNew, setProductListNew] = useState([]);
@@ -112,7 +112,7 @@ const Home = () => {
               <div className="product-link">
                 <h6
                   onClick={() => {
-                    navigateTo('');
+                    navigateTo();
                   }}
                 >
                   See All Products
@@ -127,7 +127,7 @@ const Home = () => {
               <div className="product-link">
                 <h6
                   onClick={() => {
-                    navigateTo('');
+                    navigateTo();
                   }}
                 >
                   See All Products

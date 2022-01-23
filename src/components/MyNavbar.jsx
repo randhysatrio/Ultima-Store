@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import '../assets/styles/Navbar.css';
 import Logo from '../assets/images/logo.png';
@@ -10,15 +10,23 @@ import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 
+import Axios from 'axios';
+import { API_URL } from '../assets/constants';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 
 const MyNavbar = () => {
   const userGlobal = useSelector((state) => state.user);
+  const cartGlobal = useSelector((state) => state.cart);
+  const [searchkey, setSearchkey] = useState('');
 
   const navigate = useNavigate();
   const navigateTo = (val) => {
     navigate(`/${val}`);
+  };
+
+  const navigate_search = (val) => {
+    navigate(`/AllProducts`, { state: { search_key: val } });
   };
 
   const dispatch = useDispatch();
@@ -39,14 +47,28 @@ const MyNavbar = () => {
       {userGlobal.username ? (
         <Navbar.Collapse id="basic-navbar-nav">
           <Form className="d-flex mx-auto">
-            <FormControl type="search" placeholder="Search PC parts.." className="me-2 rounded-pill col-lg-4" aria-label="Search" />
-            <Button variant="light" className="rounded-pill">
+            <FormControl
+              type="search"
+              placeholder="Search PC parts.."
+              className="me-2 rounded-pill col-lg-4"
+              aria-label="Search"
+              onChange={(event) => {
+                setSearchkey(event.target.value);
+              }}
+            />
+            <Button
+              variant="light"
+              className="rounded-pill"
+              onClick={() => {
+                navigate_search(searchkey);
+              }}
+            >
               Search
             </Button>
           </Form>
           <Nav>
             <NavDropdown title={`Hello, ${userGlobal.username}!`} id="basic-nav-dropdown" variant="dark">
-              <NavDropdown.Item href="#action/3.1">Cart (0)</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.1">Cart ({cartGlobal.cartList.length})</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">History</NavDropdown.Item>
               {userGlobal.role === 'admin' ? <NavDropdown.Item href="#action/3.3">Admin Page</NavDropdown.Item> : null}
               <NavDropdown.Item href="#action/3.3">My Profile</NavDropdown.Item>
@@ -62,8 +84,22 @@ const MyNavbar = () => {
       ) : (
         <>
           <Form className="d-flex mx-auto">
-            <FormControl type="search" placeholder="Search PC parts.." className="me-2 rounded-pill col-lg-4" aria-label="Search" />
-            <Button variant="light" className="rounded-pill">
+            <FormControl
+              type="search"
+              placeholder="Search PC parts.."
+              className="me-2 rounded-pill col-lg-4"
+              aria-label="Search"
+              onChange={(event) => {
+                setSearchkey(event.target.value);
+              }}
+            />
+            <Button
+              variant="light"
+              className="rounded-pill"
+              onClick={() => {
+                navigate_search(searchkey);
+              }}
+            >
               Search
             </Button>
           </Form>

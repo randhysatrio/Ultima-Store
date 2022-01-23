@@ -14,8 +14,28 @@ import { API_URL } from './assets/constants';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
   const dispatch = useDispatch();
+  const updateCartData = (userID) => {
+    Axios.get(`${API_URL}/carts`, {
+      params: {
+        userID,
+      },
+    })
+      .then((response) => {
+        dispatch({
+          type: 'FILL_CART',
+          payload: response.data,
+        });
+      })
+      .catch(() => {
+        alert('Unable to update cart data');
+      });
+  };
+
   const userKeepLogin = () => {
     const data = localStorage.getItem('emmerceData');
 
@@ -24,7 +44,7 @@ function App() {
 
       Axios.get(`${API_URL}/users`, {
         params: {
-          username: userData.username,
+          id: userData.id,
         },
       })
         .then((response) => {
@@ -32,6 +52,7 @@ function App() {
             type: 'USER_REGISTER',
             payload: response.data[0],
           });
+          updateCartData(response.data[0].id);
         })
         .catch(() => {
           alert('Server Error');
@@ -55,6 +76,7 @@ function App() {
         <Route path="ProductDetails/:productID" element={<ProductDetails />} />
         <Route path="/" element={<Home />} />
       </Routes>
+      <ToastContainer />
       <Footer />
     </BrowserRouter>
   );

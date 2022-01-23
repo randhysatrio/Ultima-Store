@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from 'react';
 
 import '../assets/styles/ProductDetails.css';
+import { FaShippingFast } from 'react-icons/fa';
+import { AiFillStar } from 'react-icons/ai';
+import { GiDeliveryDrone } from 'react-icons/gi';
+import { MdOutlineRecommend } from 'react-icons/md';
+import { GoPlus } from 'react-icons/go';
+import { HiMinus } from 'react-icons/hi';
 
 import { useParams } from 'react-router-dom';
 import Axios from 'axios';
 import { API_URL } from '../assets/constants';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 const ProductDetails = () => {
   const params = useParams();
@@ -20,11 +27,97 @@ const ProductDetails = () => {
       },
     })
       .then((response) => {
-        console.log(response.data);
         setProductData(response.data[0]);
       })
       .catch(() => {
         alert('Unable to load product data');
+      });
+  };
+
+  const notify = (val, msg) => {
+    if (val === 'ok') {
+      toast.success(msg, {
+        position: 'bottom-left',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'colored',
+      });
+    } else {
+      toast.error(msg, {
+        position: 'bottom-left',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'colored',
+      });
+    }
+  };
+
+  const dispatch = useDispatch();
+  const updateCartData = (userID) => {
+    Axios.get(`${API_URL}/carts`, {
+      params: {
+        userID,
+      },
+    })
+      .then((response) => {
+        dispatch({
+          type: 'FILL_CART',
+          payload: response.data,
+        });
+      })
+      .catch(() => {
+        alert('Unable to update cart data');
+      });
+  };
+
+  const addToCartHandler = () => {
+    Axios.get(`${API_URL}/carts`, {
+      params: {
+        userID: userGlobal.id,
+        productID: productData.id,
+      },
+    })
+      .then((response) => {
+        if (response.data.length) {
+          Axios.patch(`${API_URL}/carts/${response.data[0].id}`, {
+            productQty: response.data[0].productQty + qty,
+          })
+            .then(() => {
+              notify('ok', 'Updated cart product quantity!');
+              updateCartData(userGlobal.id);
+            })
+            .catch(() => {
+              notify('fail', 'Failed to update product quantity!');
+            });
+        } else {
+          Axios.post(`${API_URL}/carts`, {
+            userID: userGlobal.id,
+            username: userGlobal.username,
+            productID: productData.id,
+            productName: productData.name,
+            productImage: productData.image,
+            productPrice: productData.price,
+            productQty: qty,
+          })
+            .then(() => {
+              notify('ok', 'Added product to your cart!');
+              updateCartData(userGlobal.id);
+            })
+            .catch(() => {
+              notify('fail', 'Unable to add product to your cart!');
+            });
+        }
+      })
+      .catch(() => {
+        notify('fail', 'Unable to get user cart data!');
       });
   };
 
@@ -41,44 +134,62 @@ const ProductDetails = () => {
         <div className="product-details-content-container">
           <div className="product-details-info">
             <div className="product-title-container">
-              <span className="product-title">{productData.name}</span>
-              <span className="product-price">{productData.price ? `Rp. ${productData.price.toLocaleString('id')}` : null}</span>
+              <text className="product-title">{productData.name}</text>
+              <text className="product-price">{productData.price ? `Rp. ${productData.price.toLocaleString('id')}` : null}</text>
             </div>
             <div className="product-info-container">
-              <span className="product-info">{productData.description}</span>
+              <text className="product-info">{productData.description}</text>
             </div>
             <div className="product-metadata-container">
-              {productData.new ? <span className="product-metadata best">Best</span> : null}
-              {productData.new ? <span className="product-metadata new">New</span> : null}
-              {productData.price > 10000000 ? <span className="product-metadata free">Free Shipping</span> : null}
+              {productData.price > 10000000 ? (
+                <div className="product-metadata free">
+                  <FaShippingFast />
+                  <text>Free Shipping</text>
+                </div>
+              ) : null}
+              {productData.best ? (
+                <div className="product-metadata">
+                  <MdOutlineRecommend />
+                  <AiFillStar />
+                  <text>Seller Recommendation</text>
+                </div>
+              ) : null}
+              <div className="product-metadata">
+                <GiDeliveryDrone />
+                <text>Drone Delivery</text>
+              </div>
             </div>
           </div>
           <div className="product-details-action">
             <div className="button-container">
-              <button
+              <div
                 className="btn-plus"
                 onClick={() => {
                   setQty(qty + 1);
                 }}
               >
-                +
-              </button>
+                <GoPlus />
+              </div>
               <div className="qty-container">
                 <span>{qty}</span>
               </div>
-              <button
+              <div
                 className="btn-min"
                 onClick={() => {
                   setQty(qty - 1);
                 }}
                 disabled={qty === 1}
               >
-                -
-              </button>
+                <HiMinus />
+              </div>
             </div>
             <div className="button-buy-container">
               <button
                 className="cart-btn"
+                onClick={() => {
+                  addToCartHandler();
+                  updateCartData(userGlobal.id);
+                }}
                 disabled={!userGlobal.username}
                 style={{ cursor: !userGlobal.username ? 'not-allowed' : 'pointer' }}
               >
