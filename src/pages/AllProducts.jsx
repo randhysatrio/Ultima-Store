@@ -14,6 +14,7 @@ import ProductCardAll from '../components/ProductCardAll';
 import Axios from 'axios';
 import { API_URL } from '../assets/constants';
 import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const AllProducts = () => {
   const { state } = useLocation();

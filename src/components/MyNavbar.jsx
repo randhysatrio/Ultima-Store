@@ -10,8 +10,6 @@ import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 
-import Axios from 'axios';
-import { API_URL } from '../assets/constants';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 
@@ -22,7 +20,11 @@ const MyNavbar = () => {
 
   const navigate = useNavigate();
   const navigateTo = (val) => {
-    navigate(`/${val}`);
+    if (val) {
+      navigate(`/${val}`);
+    } else {
+      navigate(`/`);
+    }
   };
 
   const navigate_search = (val) => {
@@ -36,6 +38,7 @@ const MyNavbar = () => {
     dispatch({
       type: 'USER_LOGOUT',
     });
+    navigateTo();
   };
 
   return (
@@ -68,7 +71,13 @@ const MyNavbar = () => {
           </Form>
           <Nav>
             <NavDropdown title={`Hello, ${userGlobal.username}!`} id="basic-nav-dropdown" variant="dark">
-              <NavDropdown.Item href="#action/3.1">Cart ({cartGlobal.cartList.length})</NavDropdown.Item>
+              <NavDropdown.Item
+                onClick={() => {
+                  navigateTo('Cart');
+                }}
+              >
+                Cart ({cartGlobal.cartList.length})
+              </NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">History</NavDropdown.Item>
               {userGlobal.role === 'admin' ? <NavDropdown.Item href="#action/3.3">Admin Page</NavDropdown.Item> : null}
               <NavDropdown.Item href="#action/3.3">My Profile</NavDropdown.Item>

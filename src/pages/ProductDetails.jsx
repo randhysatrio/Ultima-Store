@@ -7,8 +7,9 @@ import { GiDeliveryDrone } from 'react-icons/gi';
 import { MdOutlineRecommend } from 'react-icons/md';
 import { GoPlus } from 'react-icons/go';
 import { HiMinus } from 'react-icons/hi';
+import { RiArrowGoBackLine } from 'react-icons/ri';
 
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 import { API_URL } from '../assets/constants';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,6 +17,7 @@ import { toast } from 'react-toastify';
 
 const ProductDetails = () => {
   const params = useParams();
+  const navigate = useNavigate();
   const userGlobal = useSelector((state) => state.user);
   const [productData, setProductData] = useState({});
   const [qty, setQty] = useState(1);
@@ -162,33 +164,33 @@ const ProductDetails = () => {
           </div>
           <div className="product-details-action">
             <div className="button-container">
-              <div
+              <button
                 className="btn-plus"
                 onClick={() => {
                   setQty(qty + 1);
                 }}
               >
                 <GoPlus />
-              </div>
-              <div className="qty-container">
+              </button>
+              <div className="qty--container">
                 <span>{qty}</span>
               </div>
-              <div
+              <button
                 className="btn-min"
                 onClick={() => {
-                  setQty(qty - 1);
+                  if (qty > 1) {
+                    setQty(qty - 1);
+                  }
                 }}
-                disabled={qty === 1}
               >
                 <HiMinus />
-              </div>
+              </button>
             </div>
             <div className="button-buy-container">
               <button
                 className="cart-btn"
                 onClick={() => {
                   addToCartHandler();
-                  updateCartData(userGlobal.id);
                 }}
                 disabled={!userGlobal.username}
                 style={{ cursor: !userGlobal.username ? 'not-allowed' : 'pointer' }}
@@ -198,6 +200,15 @@ const ProductDetails = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="previous-links-container">
+        <span
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
+          <RiArrowGoBackLine /> Previous Page
+        </span>
       </div>
     </div>
   );

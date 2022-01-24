@@ -64,47 +64,50 @@ const ProductCardAll = ({ product }) => {
   };
 
   const addToCartHandler = () => {
-    Axios.get(`${API_URL}/carts`, {
-      params: {
-        userID: userGlobal.id,
-        productName: product.name,
-      },
-    })
-      .then((response) => {
-        console.log(response.data);
-        if (response.data.length) {
-          Axios.patch(`${API_URL}/carts/${response.data[0].id}`, {
-            productQty: response.data[0].productQty + 1,
-          })
-            .then(() => {
-              notify('ok', 'Added product to your cart!');
-              updateCartData(userGlobal.id);
-            })
-            .catch(() => {
-              notify('fail', 'Failed to add product to your cart!');
-            });
-        } else {
-          Axios.post(`${API_URL}/carts`, {
-            userID: userGlobal.id,
-            username: userGlobal.username,
-            productID: product.id,
-            productName: product.name,
-            productImage: product.image,
-            productPrice: product.price,
-            productQty: 1,
-          })
-            .then(() => {
-              notify('ok', 'Added product to your cart!');
-              updateCartData(userGlobal.id);
-            })
-            .catch(() => {
-              notify('fail', 'Failed to add product to your cart!');
-            });
-        }
+    if (userGlobal.username) {
+      Axios.get(`${API_URL}/carts`, {
+        params: {
+          userID: userGlobal.id,
+          productName: product.name,
+        },
       })
-      .catch(() => {
-        alert('fail', 'Unable to find user data!');
-      });
+        .then((response) => {
+          if (response.data.length) {
+            Axios.patch(`${API_URL}/carts/${response.data[0].id}`, {
+              productQty: response.data[0].productQty + 1,
+            })
+              .then(() => {
+                notify('ok', 'Added product to your cart!');
+                updateCartData(userGlobal.id);
+              })
+              .catch(() => {
+                notify('fail', 'Failed to add product to your cart!');
+              });
+          } else {
+            Axios.post(`${API_URL}/carts`, {
+              userID: userGlobal.id,
+              username: userGlobal.username,
+              productID: product.id,
+              productName: product.name,
+              productImage: product.image,
+              productPrice: product.price,
+              productQty: 1,
+            })
+              .then(() => {
+                notify('ok', 'Added product to your cart!');
+                updateCartData(userGlobal.id);
+              })
+              .catch(() => {
+                notify('fail', 'Failed to add product to your cart!');
+              });
+          }
+        })
+        .catch(() => {
+          alert('fail', 'Unable to find user data!');
+        });
+    } else {
+      notify('fail', 'Please sign-in to add this cart to your item');
+    }
   };
 
   return (

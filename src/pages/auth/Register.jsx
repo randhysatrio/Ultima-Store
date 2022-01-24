@@ -81,7 +81,7 @@ const Register = () => {
                         payload: response.data,
                       });
 
-                      navigate(`/`);
+                      navigate(`/`, { replace: true });
                     })
                     .catch(() => {
                       alert('Server Error 1');

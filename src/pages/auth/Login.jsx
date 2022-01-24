@@ -63,7 +63,7 @@ const Login = () => {
           });
           updateCartData(response.data[0].id);
 
-          navigate(`/`);
+          navigate(`/`, { replace: true });
         } else {
           setErrorMessage(true);
         }

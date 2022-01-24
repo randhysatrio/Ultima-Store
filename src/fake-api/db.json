@@ -15,42 +15,22 @@
     {
       "userID": 1,
       "username": "randhysatrio",
-      "productID": 2,
-      "productName": "Asus ROG STRIX Z690-A GAMING WIFI D4",
-      "productImage": "https://dlcdnwebimgs.asus.com/gain/CC82B2CA-3556-491B-936E-C46577251275/w717/h525",
-      "productPrice": 5550000,
-      "productQty": 5,
+      "productID": 22,
+      "productName": "ZOTAC GAMING GeForce RTX 3080 Ti Trinity OC",
+      "productImage": "https://www.zotac.com/download/files/styles/w1024/public/product_gallery/graphics_cards/zt-a30810j-10p-image01.jpg?itok=Rdg7Iqmd",
+      "productPrice": 28400000,
+      "productQty": 1,
       "id": 1
     },
     {
       "userID": 1,
       "username": "randhysatrio",
-      "productID": 28,
-      "productName": "INNO3D GEFORCE RTX 3080 TI X3 OC",
-      "productImage": "https://www.inno3d.com/assets/files/product_image/image/3080Ti_X3OC_set.png",
-      "productPrice": 26900000,
+      "productID": 55,
+      "productName": "Corsair VENGEANCE® 32GB (2x16GB) DDR5 DRAM 5600MHz C36",
+      "productImage": "https://www.corsair.com/ww/en/medias/sys_master/images/images/h8e/he5/9944523210782/CMK32GX5M2B5600C36/Gallery/VENGEANCE_DDR5_BLK_01/-CMK32GX5M2B5600C36-Gallery-VENGEANCE-DDR5-BLK-01.png_1200Wx1200H",
+      "productPrice": 6100000,
       "productQty": 1,
       "id": 2
-    },
-    {
-      "userID": 1,
-      "username": "randhysatrio",
-      "productID": 1,
-      "productName": "Asus ROG STRIX Z690-A GAMING WIFI",
-      "productImage": "https://dlcdnwebimgs.asus.com/gain/CC82B2CA-3556-491B-936E-C46577251275/w717/h525",
-      "productPrice": 5950000,
-      "productQty": 1,
-      "id": 3
-    },
-    {
-      "userID": 1,
-      "username": "randhysatrio",
-      "productID": 3,
-      "productName": "Asus ROG STRIX B660-G GAMING WIFI",
-      "productImage": "https://dlcdnwebimgs.asus.com/gain/532DFE20-82F0-43F5-82CE-7E40D7AD7D5A/w717/h525",
-      "productPrice": 4110000,
-      "productQty": 1,
-      "id": 4
     }
   ],
   "products": [
