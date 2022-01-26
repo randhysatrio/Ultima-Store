@@ -16,7 +16,7 @@ const Cart = () => {
   const userGlobal = useSelector((state) => state.user);
   const cartGlobal = useSelector((state) => state.cart);
   const [cartList, setCartList] = useState([]);
-  const [productCheckout, setProductCheckout] = useState([]);
+  const [checkoutID, setCheckoutID] = useState([]);
   const navigate = useNavigate();
 
   const notify = (val, msg) => {
@@ -46,18 +46,18 @@ const Cart = () => {
   };
 
   const isCheckAllHandler = (e) => {
-    setProductCheckout(cartList.map((cart) => cart.id));
+    setCheckoutID(cartList.map((cart) => cart.id));
     if (!e.target.checked) {
-      setProductCheckout([]);
+      setCheckoutID([]);
     }
   };
 
   const productCheckHandler = (e) => {
     const checked = e.target.checked;
     const id = parseInt(e.target.id);
-    setProductCheckout([...productCheckout, id]);
+    setCheckoutID([...checkoutID, id]);
     if (!checked) {
-      setProductCheckout(productCheckout.filter((productID) => productID !== id));
+      setCheckoutID(checkoutID.filter((productID) => productID !== id));
     }
   };
 
@@ -157,7 +157,7 @@ const Cart = () => {
               type="checkbox"
               id={cart.id}
               name={cart.productName}
-              checked={productCheckout.includes(cart.id)}
+              checked={checkoutID.includes(cart.id)}
               onChange={productCheckHandler}
             />
           </div>
@@ -169,7 +169,15 @@ const Cart = () => {
               </div>
             </div>
             <div className="items-content-details-container">
-              <text>{cart.productName}</text>
+              <text
+                className="items-content-name-header"
+                onClick={() => {
+                  navigate(`/ProductDetails/${cart.productID}`);
+                }}
+              >
+                {cart.productName}
+              </text>
+              <text>Rp. {cart.productPrice.toLocaleString()}</text>
             </div>
             <div className="items-content-qty-container">
               <button
@@ -196,7 +204,7 @@ const Cart = () => {
                 onClick={() => {
                   deleteBtnHandler(cart.id);
                 }}
-                disabled={productCheckout.includes(cart.id)}
+                disabled={checkoutID.includes(cart.id)}
               >
                 Remove Item
               </button>
@@ -208,9 +216,9 @@ const Cart = () => {
   };
 
   const renderTotal = () => {
-    let productToRender = [];
+    const productToRender = [];
 
-    productCheckout.forEach((id) => {
+    checkoutID.forEach((id) => {
       productToRender.push(cartList.find((item) => item.id === id));
     });
 
@@ -223,20 +231,14 @@ const Cart = () => {
     return total;
   };
 
-  const renderTax = () => {
-    return renderTotal() * 0.05;
-  };
-
   const renderCartDetails = () => {
-    let productToRender = [];
-
-    productCheckout.forEach((id) => {
-      productToRender.push(cartList.find((item) => item.id === id));
+    const productToRender = checkoutID.map((id) => {
+      return cartList.find((item) => item.id === id);
     });
 
     return productToRender.map((item, index) => {
       return (
-        <div className="cart-transaction-list">
+        <div className="cart-transaction-list" key={item.id}>
           <text>
             {index + 1}. {item.productName}
           </text>
@@ -248,7 +250,7 @@ const Cart = () => {
               <text>{item.productQty}</text>
             </div>
           </div>
-          <div className="cart-transaction-quantity-container lower">
+          <div className="cart-transaction-quantity-container">
             <div className="q1">
               <text>Price:</text>
             </div>
@@ -256,7 +258,7 @@ const Cart = () => {
               <text>Rp. {item.productPrice.toLocaleString()}</text>
             </div>
           </div>
-          <div className="cart-transaction-quantity-container ">
+          <div className="cart-transaction-quantity-container top-border">
             <div className="q1">
               <text>Subtotal:</text>
             </div>
@@ -287,7 +289,7 @@ const Cart = () => {
                 <label htmlFor="select-all" className="cart-text-header select-all">
                   Select All Item(s)
                 </label>
-                <input type="checkbox" onChange={isCheckAllHandler} checked={productCheckout.length === cartList.length} id="select-all" />
+                <input type="checkbox" onChange={isCheckAllHandler} checked={checkoutID.length === cartList.length} id="select-all" />
               </div>
               <div className="cart-items-container">{renderCart()}</div>
             </>
@@ -318,37 +320,28 @@ const Cart = () => {
               <div className="cart-transaction-content-header">
                 <text>Summary</text>
               </div>
-              <div className="cart-transaction-content-body">
-                {productCheckout.length ? renderCartDetails() : <text>Please select item(s) from your cart</text>}
+              <div className="cart-transaction-content-body py-2">
+                {checkoutID.length ? renderCartDetails() : <text className="mx-2">Please select item(s) from your cart</text>}
               </div>
-              <div className="cart-transaction-quantity-container mt-2">
-                <div className="q1">
+              <div className="cart-transaction-quantity-container bigger">
+                <div className="q2">
                   <text>Total:</text>
                 </div>
                 <div className="q2 total">
-                  <text>{productCheckout.length ? `Rp. ${renderTotal().toLocaleString()}` : `-`}</text>
-                </div>
-              </div>
-              <div className="cart-transaction-quantity-container lower">
-                <div className="q1">
-                  <text>Sales Tax (5%):</text>
-                </div>
-                <div className="q2 total">
-                  <text>{productCheckout.length ? `Rp. ${renderTax().toLocaleString()}` : `-`}</text>
-                </div>
-              </div>
-              <div className="cart-transaction-quantity-container">
-                <div className="q1">
-                  <text>Grand Total:</text>
-                </div>
-                <div className="q2 total-max">
-                  <text>{productCheckout.length ? `Rp. ${(renderTotal() + renderTax()).toLocaleString()}` : `-`}</text>
+                  <text>{checkoutID.length ? `Rp. ${renderTotal().toLocaleString()}` : `-`}</text>
                 </div>
               </div>
             </div>
           </div>
           <div className="proceed-checkout-container">
-            <button className="proceed-checkout-button" disabled={!productCheckout.length}>
+            <button
+              className="proceed-checkout-button"
+              disabled={!checkoutID.length}
+              onClick={() => {
+                navigate('/Checkout', { state: { checkout_data: checkoutID } });
+              }}
+              style={{ cursor: checkoutID.length ? 'pointer' : 'not-allowed' }}
+            >
               <div className="proceed-checkout-button-content">
                 <span>Proceed to Checkout</span>
                 <FaArrowRight />

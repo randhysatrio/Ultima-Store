@@ -55,11 +55,11 @@ const Register = () => {
               } else {
                 if (userRegister.username === '') {
                   setErrorMessage(`${errMsg} username!`);
-                } else if (userRegister.username.includes(' ')) {
-                  setErrorMessage(`Username cannot contain spaces!`);
+                } else if (!/^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$/.test(userRegister.username)) {
+                  setErrorMessage(`Please use a vaild username!`);
                 } else if (userRegister.email === '') {
                   setErrorMessage(`${errMsg} email address!`);
-                } else if (userRegister.email.includes(' ') || !userRegister.email.includes('@') || !userRegister.email.includes('.co')) {
+                } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(userRegister.email)) {
                   setErrorMessage('Please enter a valid email address!');
                 } else if (userRegister.firstname === '') {
                   setErrorMessage(`${errMsg} first name!`);

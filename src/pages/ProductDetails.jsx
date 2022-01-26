@@ -153,7 +153,7 @@ const ProductDetails = () => {
                 <div className="product-metadata">
                   <MdOutlineRecommend />
                   <AiFillStar />
-                  <text>Seller Recommendation</text>
+                  <text>Store Recommended</text>
                 </div>
               ) : null}
               <div className="product-metadata">
@@ -207,7 +207,7 @@ const ProductDetails = () => {
             navigate(-1);
           }}
         >
-          <RiArrowGoBackLine /> Previous Page
+          <RiArrowGoBackLine /> Back
         </span>
       </div>
     </div>

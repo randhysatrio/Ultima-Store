@@ -8,27 +8,65 @@
       "password": "123456",
       "role": "admin",
       "id": 1
+    },
+    {
+      "firstname": "Lewis",
+      "lastname": "Hamilton",
+      "username": "thegoat44",
+      "email": "lewis@amg.com",
+      "password": "123456",
+      "role": "user",
+      "id": 2
     }
   ],
-  "transactions": [],
-  "carts": [
+  "transactions": [
     {
       "userID": 1,
-      "username": "randhysatrio",
-      "productID": 22,
-      "productName": "ZOTAC GAMING GeForce RTX 3080 Ti Trinity OC",
-      "productImage": "https://www.zotac.com/download/files/styles/w1024/public/product_gallery/graphics_cards/zt-a30810j-10p-image01.jpg?itok=Rdg7Iqmd",
-      "productPrice": 28400000,
+      "transactionDate": "2022-1-4--11:9.52",
+      "transactionYear": 2022,
+      "transactionMonth": 1,
+      "firstName": "Randhy",
+      "lastName": "Satrio",
+      "email": "randhysatrio@gmail.com",
+      "address": "Jl. Deplu Raya No.18 Bintaro, Pesanggrahan, Jak-Sel",
+      "telephone": "081294203353",
+      "paymentMethod": "bank",
+      "deliveryOpt": "dhl",
+      "transactionItems": [
+        {
+          "userID": 1,
+          "username": "randhysatrio",
+          "productID": 24,
+          "productName": "ZOTAC GAMING GeForce RTX 3090 Trinity OC",
+          "productImage": "https://www.zotac.com/download/files/styles/w1024/public/product_gallery/graphics_cards/zt-a30900j-10p-image01.jpg?itok=6oHEY1qn",
+          "productPrice": 39700000,
+          "productQty": 1,
+          "id": 1
+        }
+      ],
+      "totalPrice": 41685000,
+      "totalPayment": 42000000,
+      "id": 1
+    }
+  ],
+  "carts": [
+    {
+      "userID": 2,
+      "username": "thegoat44",
+      "productID": 6,
+      "productName": "Asus ROG STRIX Z690-E GAMING WIFI",
+      "productImage": "https://dlcdnwebimgs.asus.com/gain/4A7DC4DD-E991-4006-9F59-9830BA0E22C1/w717/h525",
+      "productPrice": 6500000,
       "productQty": 1,
       "id": 1
     },
     {
-      "userID": 1,
-      "username": "randhysatrio",
-      "productID": 55,
-      "productName": "Corsair VENGEANCE® 32GB (2x16GB) DDR5 DRAM 5600MHz C36",
-      "productImage": "https://www.corsair.com/ww/en/medias/sys_master/images/images/h8e/he5/9944523210782/CMK32GX5M2B5600C36/Gallery/VENGEANCE_DDR5_BLK_01/-CMK32GX5M2B5600C36-Gallery-VENGEANCE-DDR5-BLK-01.png_1200Wx1200H",
-      "productPrice": 6100000,
+      "userID": 2,
+      "username": "thegoat44",
+      "productID": 8,
+      "productName": "Asus ROG MAXIMUS Z690 EXTREME GLACIAL",
+      "productImage": "https://dlcdnwebimgs.asus.com/gain/A62B3DD1-3884-45BE-A81A-8E13D9CF0E26/w717/h525",
+      "productPrice": 34000000,
       "productQty": 1,
       "id": 2
     }

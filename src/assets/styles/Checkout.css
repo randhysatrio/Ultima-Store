@@ -1,0 +1,352 @@
+.checkout-page-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2rem;
+}
+
+.checkout-page-container {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+}
+
+.checkout-page-header-container {
+  width: 100%;
+  padding: 0.5rem 0.5rem;
+}
+
+.checkout-page-header {
+  font-size: 35px;
+  line-height: 40px;
+  font-weight: bold;
+  background-color: #8ec5fc;
+  background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.checkout-page-content-container {
+  width: 100%;
+  height: max-content;
+  display: flex;
+  flex-direction: row;
+  border-radius: 2rem;
+  margin-bottom: 2rem;
+}
+
+.checkout-page-content-form-container {
+  width: 60%;
+}
+
+.checkout-billinginfo-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #acacac;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='0' x2='0' y1='0' y2='100%25' gradientTransform='rotate(294,683,328)'%3E%3Cstop offset='0' stop-color='%23ACACAC'/%3E%3Cstop offset='1' stop-color='%239D9D9D'/%3E%3C/linearGradient%3E%3Cpattern patternUnits='userSpaceOnUse' id='b' width='348' height='290' x='0' y='0' viewBox='0 0 1080 900'%3E%3Cg fill-opacity='0.09'%3E%3Cpolygon fill='%23444' points='90 150 0 300 180 300'/%3E%3Cpolygon points='90 150 180 0 0 0'/%3E%3Cpolygon fill='%23AAA' points='270 150 360 0 180 0'/%3E%3Cpolygon fill='%23DDD' points='450 150 360 300 540 300'/%3E%3Cpolygon fill='%23999' points='450 150 540 0 360 0'/%3E%3Cpolygon points='630 150 540 300 720 300'/%3E%3Cpolygon fill='%23DDD' points='630 150 720 0 540 0'/%3E%3Cpolygon fill='%23444' points='810 150 720 300 900 300'/%3E%3Cpolygon fill='%23FFF' points='810 150 900 0 720 0'/%3E%3Cpolygon fill='%23DDD' points='990 150 900 300 1080 300'/%3E%3Cpolygon fill='%23444' points='990 150 1080 0 900 0'/%3E%3Cpolygon fill='%23DDD' points='90 450 0 600 180 600'/%3E%3Cpolygon points='90 450 180 300 0 300'/%3E%3Cpolygon fill='%23666' points='270 450 180 600 360 600'/%3E%3Cpolygon fill='%23AAA' points='270 450 360 300 180 300'/%3E%3Cpolygon fill='%23DDD' points='450 450 360 600 540 600'/%3E%3Cpolygon fill='%23999' points='450 450 540 300 360 300'/%3E%3Cpolygon fill='%23999' points='630 450 540 600 720 600'/%3E%3Cpolygon fill='%23FFF' points='630 450 720 300 540 300'/%3E%3Cpolygon points='810 450 720 600 900 600'/%3E%3Cpolygon fill='%23DDD' points='810 450 900 300 720 300'/%3E%3Cpolygon fill='%23AAA' points='990 450 900 600 1080 600'/%3E%3Cpolygon fill='%23444' points='990 450 1080 300 900 300'/%3E%3Cpolygon fill='%23222' points='90 750 0 900 180 900'/%3E%3Cpolygon points='270 750 180 900 360 900'/%3E%3Cpolygon fill='%23DDD' points='270 750 360 600 180 600'/%3E%3Cpolygon points='450 750 540 600 360 600'/%3E%3Cpolygon points='630 750 540 900 720 900'/%3E%3Cpolygon fill='%23444' points='630 750 720 600 540 600'/%3E%3Cpolygon fill='%23AAA' points='810 750 720 900 900 900'/%3E%3Cpolygon fill='%23666' points='810 750 900 600 720 600'/%3E%3Cpolygon fill='%23999' points='990 750 900 900 1080 900'/%3E%3Cpolygon fill='%23999' points='180 0 90 150 270 150'/%3E%3Cpolygon fill='%23444' points='360 0 270 150 450 150'/%3E%3Cpolygon fill='%23FFF' points='540 0 450 150 630 150'/%3E%3Cpolygon points='900 0 810 150 990 150'/%3E%3Cpolygon fill='%23222' points='0 300 -90 450 90 450'/%3E%3Cpolygon fill='%23FFF' points='0 300 90 150 -90 150'/%3E%3Cpolygon fill='%23FFF' points='180 300 90 450 270 450'/%3E%3Cpolygon fill='%23666' points='180 300 270 150 90 150'/%3E%3Cpolygon fill='%23222' points='360 300 270 450 450 450'/%3E%3Cpolygon fill='%23FFF' points='360 300 450 150 270 150'/%3E%3Cpolygon fill='%23444' points='540 300 450 450 630 450'/%3E%3Cpolygon fill='%23222' points='540 300 630 150 450 150'/%3E%3Cpolygon fill='%23AAA' points='720 300 630 450 810 450'/%3E%3Cpolygon fill='%23666' points='720 300 810 150 630 150'/%3E%3Cpolygon fill='%23FFF' points='900 300 810 450 990 450'/%3E%3Cpolygon fill='%23999' points='900 300 990 150 810 150'/%3E%3Cpolygon points='0 600 -90 750 90 750'/%3E%3Cpolygon fill='%23666' points='0 600 90 450 -90 450'/%3E%3Cpolygon fill='%23AAA' points='180 600 90 750 270 750'/%3E%3Cpolygon fill='%23444' points='180 600 270 450 90 450'/%3E%3Cpolygon fill='%23444' points='360 600 270 750 450 750'/%3E%3Cpolygon fill='%23999' points='360 600 450 450 270 450'/%3E%3Cpolygon fill='%23666' points='540 600 630 450 450 450'/%3E%3Cpolygon fill='%23222' points='720 600 630 750 810 750'/%3E%3Cpolygon fill='%23FFF' points='900 600 810 750 990 750'/%3E%3Cpolygon fill='%23222' points='900 600 990 450 810 450'/%3E%3Cpolygon fill='%23DDD' points='0 900 90 750 -90 750'/%3E%3Cpolygon fill='%23444' points='180 900 270 750 90 750'/%3E%3Cpolygon fill='%23FFF' points='360 900 450 750 270 750'/%3E%3Cpolygon fill='%23AAA' points='540 900 630 750 450 750'/%3E%3Cpolygon fill='%23FFF' points='720 900 810 750 630 750'/%3E%3Cpolygon fill='%23222' points='900 900 990 750 810 750'/%3E%3Cpolygon fill='%23222' points='1080 300 990 450 1170 450'/%3E%3Cpolygon fill='%23FFF' points='1080 300 1170 150 990 150'/%3E%3Cpolygon points='1080 600 990 750 1170 750'/%3E%3Cpolygon fill='%23666' points='1080 600 1170 450 990 450'/%3E%3Cpolygon fill='%23DDD' points='1080 900 1170 750 990 750'/%3E%3C/g%3E%3C/pattern%3E%3C/defs%3E%3Crect x='0' y='0' fill='url(%23a)' width='100%25' height='100%25'/%3E%3Crect x='0' y='0' fill='url(%23b)' width='100%25' height='100%25'/%3E%3C/svg%3E");
+  background-size: cover;
+  padding: 0.7rem 1.2rem;
+  border-radius: 1.5rem;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(173, 173, 173, 1);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(173, 173, 173, 1);
+  box-shadow: 0px 0px 10px 0px rgba(173, 173, 173, 1);
+}
+
+.checkout-page-content-details-container {
+  width: 40%;
+}
+
+.checkout-page-content-headers {
+  padding: 0.3rem 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.checkout-page-content-headers span {
+  background: rgb(237, 228, 100);
+  background: linear-gradient(77deg, rgba(237, 228, 100, 1) 0%, rgba(240, 178, 178, 1) 81%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.left {
+  padding-left: 1rem;
+}
+
+.right {
+  padding-left: 1rem;
+}
+
+.bill-info-input-container {
+  display: flex;
+  flex-direction: column;
+  padding: 0.2rem;
+  margin-bottom: 0.4rem;
+}
+
+.bill-info-input-container label {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.bill-info-input-container input {
+  border-radius: 0.8rem;
+  outline: none;
+  border: none;
+  height: 2.5rem;
+  padding-left: 0.8rem;
+  transition: all ease-in-out 150ms;
+}
+
+.bill-info-input-container input:focus {
+  -webkit-box-shadow: 0px 0px 15px 2px rgba(168, 106, 168, 1);
+  -moz-box-shadow: 0px 0px 15px 2px rgba(168, 106, 168, 1);
+  box-shadow: 0px 0px 15px 2px rgba(168, 106, 168, 1);
+}
+
+.input-error-container {
+  padding: 0.2rem;
+  font-size: 0.8rem;
+  color: indianred;
+}
+
+.content-details-container {
+  padding: 0.7rem;
+  background-color: white;
+  margin: 0 1rem;
+  border-radius: 1rem;
+}
+
+.content-detail-items-container {
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.content-details-text-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.item-details-subtext {
+  width: 56%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 0.3rem;
+  font-weight: bold;
+}
+
+.bottom-divider {
+  border-top: 1px solid black;
+  margin-top: 0.1rem;
+}
+
+.bill-info-bottom-select-container {
+  display: flex;
+}
+
+.bill-info-payment-container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding: 0.3rem;
+  margin: 0 0.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.bill-info-payment-container label {
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+
+.bill-info-payment-container select {
+  outline: none;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.2rem;
+  transition: all ease-in-out 150ms;
+  cursor: pointer;
+}
+
+.bill-info-payment-container select:focus {
+  -webkit-box-shadow: 0px 0px 15px 2px rgba(168, 106, 168, 1);
+  -moz-box-shadow: 0px 0px 15px 2px rgba(168, 106, 168, 1);
+  box-shadow: 0px 0px 15px 2px rgba(168, 106, 168, 1);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.logo-container-1 {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 1.5rem;
+  align-items: center;
+  padding: 0.2rem;
+}
+
+.logo-container-2 {
+  height: 100%;
+  width: 30%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 1.5rem;
+  align-items: center;
+  padding: 0.2rem;
+}
+
+.bill-info-bottom-divider {
+  width: 95%;
+  height: 2px;
+  border-radius: 0.5px;
+  background: linear-gradient(90deg, rgba(66, 66, 66, 1), rgba(160, 160, 160, 1));
+  margin: auto;
+}
+
+.payment-amount-container {
+  background-color: rgba(230, 230, 230, 0.707);
+  margin: 0 0.5rem;
+  margin-top: 0.5rem;
+  padding: 0.7rem;
+  border-radius: 1rem;
+}
+
+.payment-amount {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.amount-error-container {
+  padding: 0.2rem;
+  font-size: 0.9rem;
+  color: indianred;
+  text-align: end;
+}
+
+.upper {
+  margin-bottom: 0.5rem;
+}
+
+.payment-amount label {
+  cursor: pointer;
+}
+
+.payment-amount input {
+  width: 45%;
+}
+
+.subtext-amount {
+  margin-right: auto;
+  font-weight: bold;
+}
+
+.payment-amount input {
+  border: none;
+  outline: none;
+  border-radius: 0.5rem;
+  padding-left: 0.5rem;
+  height: 2rem;
+  font-weight: 300;
+  transition: all ease-in-out 150ms;
+}
+
+.payment-amount input:focus {
+  -webkit-box-shadow: 0px 0px 15px 2px rgba(168, 106, 168, 1);
+  -moz-box-shadow: 0px 0px 15px 2px rgba(168, 106, 168, 1);
+  box-shadow: 0px 0px 15px 2px rgba(168, 106, 168, 1);
+}
+
+.checkout-button-container {
+  height: 8vh;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkout-button-container button {
+  border: none;
+  outline: none;
+  width: 90%;
+  height: 90%;
+  border-radius: 1rem;
+  color: white;
+  font-weight: 600;
+  background: linear-gradient(30deg, rgba(125, 155, 180, 1), rgba(145, 72, 182, 1));
+  cursor: pointer;
+  transition: all ease-in-out 150ms;
+  -webkit-box-shadow: 0px 0px 20px -9px rgba(46, 45, 46, 1);
+  -moz-box-shadow: 0px 0px 20px -9px rgba(46, 45, 46, 1);
+  box-shadow: 0px 0px 20px -9px rgba(46, 45, 46, 1);
+}
+
+.checkout-button-container button:hover {
+  color: rgb(163, 163, 163);
+  -webkit-box-shadow: 0px 0px 22px -5px rgba(66, 77, 171, 1);
+  -moz-box-shadow: 0px 0px 22px -5px rgba(66, 77, 171, 1);
+  box-shadow: 0px 0px 22px -5px rgba(66, 77, 171, 1);
+}
+
+.checkout-button-container button:active {
+  transform: scale(0.95);
+}
+
+.content-details-total-container {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.content-details-total {
+  display: flex;
+  width: 100%;
+}
+
+.content-details-total-subtext {
+  width: 48%;
+  text-align: end;
+  font-weight: bold;
+}
+
+.thankyou-container {
+  height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.thankyou-message-container {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+}
+
+.thankyou {
+  font-size: 2.5rem;
+  font-weight: bold;
+  padding: 1.5rem 0;
+  background: linear-gradient(195deg, rgba(88, 131, 231, 1), rgba(201, 139, 222, 1));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0px 0px 10px rgba(176, 63, 80, 0.41);
+}
+
+.thankyou-subtext {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.741);
+  text-shadow: 0px 0px 8px rgba(197, 194, 206, 0.3);
+}
