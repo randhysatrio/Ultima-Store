@@ -246,7 +246,6 @@ const AllProducts = () => {
           </div>
         </div>
         <div className="col-10">
-          {/* <div className="items-container">{renderProduct()}</div> */}
           <div className="items-container">
             {errorMsg ? (
               <div className="error-message-container">

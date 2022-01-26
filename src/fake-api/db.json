@@ -47,6 +47,90 @@
       "totalPrice": 41685000,
       "totalPayment": 42000000,
       "id": 1
+    },
+    {
+      "userID": 1,
+      "transactionDate": "2022-1-4--11:43.40",
+      "transactionYear": 2022,
+      "transactionMonth": 1,
+      "firstName": "Randhy",
+      "lastName": "Satrio",
+      "email": "randhysatrio@gmail.com",
+      "address": "Jl. Deplu Raya No.18 Bintaro, Pesanggrahan, Jak-Sel",
+      "telephone": "081294203353",
+      "paymentMethod": "applepay",
+      "deliveryOpt": "dhl",
+      "transactionItems": [
+        {
+          "userID": 1,
+          "username": "randhysatrio",
+          "productID": 22,
+          "productName": "ZOTAC GAMING GeForce RTX 3080 Ti Trinity OC",
+          "productImage": "https://www.zotac.com/download/files/styles/w1024/public/product_gallery/graphics_cards/zt-a30810j-10p-image01.jpg?itok=Rdg7Iqmd",
+          "productPrice": 28400000,
+          "productQty": 1,
+          "id": 3
+        }
+      ],
+      "totalPrice": 29820000,
+      "totalPayment": 30000000,
+      "id": 2
+    },
+    {
+      "userID": 1,
+      "transactionDate": "2022-1-4--19:49.15",
+      "transactionYear": 2022,
+      "transactionMonth": 1,
+      "firstName": "Randhy",
+      "lastName": "Satrio",
+      "email": "randhysatrio@gmail.com",
+      "address": "Jl. Deplu Raya No.18 Bintaro, Pesanggrahan, Jak-Sel",
+      "telephone": "081294203353",
+      "paymentMethod": "bank",
+      "deliveryOpt": "dhl",
+      "transactionItems": [
+        {
+          "userID": 1,
+          "username": "randhysatrio",
+          "productID": 25,
+          "productName": "ZOTAC GAMING GeForce RTX 3090 AMP Core Holo",
+          "productImage": "https://www.zotac.com/download/files/styles/w1024/public/product_gallery/graphics_cards/zt-a30900c-10p-image01.jpg?itok=DDT2xsdT",
+          "productPrice": 40600000,
+          "productQty": 1,
+          "id": 3
+        }
+      ],
+      "totalPrice": 42630000,
+      "totalPayment": 42630000,
+      "id": 3
+    },
+    {
+      "userID": 1,
+      "transactionDate": "2022-1-4--19:52.16",
+      "transactionYear": 2022,
+      "transactionMonth": 1,
+      "firstName": "Randhy",
+      "lastName": "Satrio",
+      "email": "randhysatrio@gmail.com",
+      "address": "Jl. Deplu Raya No.18 Bintaro, Pesanggrahan, Jak-Sel",
+      "telephone": "081294203353",
+      "paymentMethod": "bank",
+      "deliveryOpt": "dhl",
+      "transactionItems": [
+        {
+          "userID": 1,
+          "username": "randhysatrio",
+          "productID": 22,
+          "productName": "ZOTAC GAMING GeForce RTX 3080 Ti Trinity OC",
+          "productImage": "https://www.zotac.com/download/files/styles/w1024/public/product_gallery/graphics_cards/zt-a30810j-10p-image01.jpg?itok=Rdg7Iqmd",
+          "productPrice": 28400000,
+          "productQty": 1,
+          "id": 3
+        }
+      ],
+      "totalPrice": 29820000,
+      "totalPayment": 29900000,
+      "id": 4
     }
   ],
   "carts": [
@@ -69,6 +153,16 @@
       "productPrice": 34000000,
       "productQty": 1,
       "id": 2
+    },
+    {
+      "userID": 1,
+      "username": "randhysatrio",
+      "productID": 50,
+      "productName": "Intel Core i9-12900KF",
+      "productImage": "https://c1.neweggimages.com/ProductImageCompressAll1280/19-118-341-06.jpg",
+      "productPrice": 9400000,
+      "productQty": 1,
+      "id": 4
     }
   ],
   "products": [

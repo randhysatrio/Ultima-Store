@@ -10,6 +10,9 @@ import Footer from './components/Footer';
 import ProductDetails from './pages/ProductDetails';
 import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
+import Admin from './pages/Admin';
+import AdminMain from './pages/AdminMain';
+import AdminProductsPage from './pages/AdminProductsPage';
 
 import Axios from 'axios';
 import { API_URL } from './assets/constants';
@@ -77,8 +80,12 @@ function App() {
         <Route path="Register" element={<Register />} />
         <Route path="AllProducts" element={<AllProducts />} />
         <Route path="ProductDetails/:productID" element={<ProductDetails />} />
-        <Route path="cart" element={<Cart />} />
-        <Route path="checkout" element={<Checkout />} />
+        <Route path="Cart" element={<Cart />} />
+        <Route path="Checkout" element={<Checkout />} />
+        <Route path="Admin" element={<Admin />}>
+          <Route index element={<AdminMain />} />
+          <Route path="AdminProductsPage" element={<AdminProductsPage />} />
+        </Route>
       </Routes>
       <ToastContainer />
       <Footer />

@@ -1,0 +1,56 @@
+.dashboard-main-body {
+  padding: 0 2rem;
+}
+
+.dashboard-main-header {
+  width: 100%;
+}
+
+.dashboard-main-header span {
+  font-weight: bold;
+  font-size: 2rem;
+  background: rgb(237, 228, 100);
+  background: linear-gradient(77deg, rgba(237, 228, 100, 1) 0%, rgba(240, 178, 178, 1) 81%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dashboard-summary-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem 0;
+}
+
+.figure-container {
+  height: 8rem;
+  width: 20rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  border-radius: 1.5rem;
+  padding: 1rem 2rem;
+  -webkit-box-shadow: 0px 0px 91px -42px rgba(227, 227, 227, 1);
+  -moz-box-shadow: 0px 0px 91px -42px rgba(227, 227, 227, 1);
+  box-shadow: 0px 0px 91px -42px rgba(227, 227, 227, 1);
+  font-size: 2rem;
+  font-weight: 400;
+  color: rgb(255, 255, 255);
+  text-shadow: 0px 0px 10px rgba(138, 138, 138, 0.84);
+}
+
+.monthly {
+  background: linear-gradient(45deg, rgba(220, 226, 123, 1), rgba(204, 69, 134, 1));
+}
+
+.daily {
+  background: linear-gradient(225deg, rgba(149, 189, 56, 1), rgba(206, 212, 114, 1));
+}
+
+.regusers {
+  background: linear-gradient(45deg, rgba(102, 145, 215, 1), rgba(201, 113, 211, 1));
+}
+
+.figure-subtext {
+  font-size: 1rem;
+}

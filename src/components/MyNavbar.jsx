@@ -79,7 +79,15 @@ const MyNavbar = () => {
                 Cart ({cartGlobal.cartList.length})
               </NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">History</NavDropdown.Item>
-              {userGlobal.role === 'admin' ? <NavDropdown.Item href="#action/3.3">Admin Page</NavDropdown.Item> : null}
+              {userGlobal.role === 'admin' ? (
+                <NavDropdown.Item
+                  onClick={() => {
+                    navigateTo('Admin');
+                  }}
+                >
+                  Admin Page
+                </NavDropdown.Item>
+              ) : null}
               <NavDropdown.Item href="#action/3.3">My Profile</NavDropdown.Item>
               <NavDropdown.Divider />
               <div className="d-grid gap-2 px-3">
