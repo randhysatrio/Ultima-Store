@@ -58,6 +58,9 @@ const MyNavbar = () => {
               onChange={(event) => {
                 setSearchkey(event.target.value);
               }}
+              onSubmit={() => {
+                navigate_search(searchkey);
+              }}
             />
             <Button
               variant="light"

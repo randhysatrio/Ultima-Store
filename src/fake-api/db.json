@@ -168,7 +168,7 @@
   "products": [
     {
       "id": 1,
-      "category": "Motherboard",
+      "category": "Processor",
       "name": "Asus ROG STRIX Z690-A GAMING WIFI",
       "image": "https://dlcdnwebimgs.asus.com/gain/CC82B2CA-3556-491B-936E-C46577251275/w717/h525",
       "description": "Intel® Z690, LGA 1700, ATX, PCIe® 5.0, 16+1 DrMos, DDR5, WiFi 6 (802.11ax)",
@@ -208,12 +208,12 @@
     },
     {
       "id": 5,
-      "category": "Motherboard",
-      "name": "Asus ROG MAXIMUS Z690 APEX",
+      "category": "Processor",
+      "name": "Asus R.O.G. Maximus Z690 APEX",
       "image": "https://dlcdnwebimgs.asus.com/gain/385EC9B8-4271-4E1C-BDF0-CC83039C9492/w717/h525",
       "description": "Intel® Z690 ATX motherboard with 24+0 power stages, DDR5, Five M.2, PCIe® 5.0, Onboard Wi-Fi 6E",
       "price": 11700000,
-      "new": false,
+      "new": true,
       "best": false
     },
     {
@@ -775,6 +775,16 @@
       "price": 6850000,
       "new": true,
       "best": false
+    },
+    {
+      "category": "Motherboard",
+      "name": "Asus ROG Crosshair VIII Hero",
+      "image": "https://dlcdnwebimgs.asus.com/gain/D2052B67-2491-4DA1-9E33-97B5326254EA/w717/h525",
+      "description": "AMD X570 ATX gaming motherboard with PCIe 4.0, 16 power stages , OptiMem III, 2.5 Gbps LAN, USB 3.2, SATA, M.2, and Aura Sync RGB lighting",
+      "price": 7400000,
+      "new": false,
+      "best": false,
+      "id": 62
     }
   ]
 }

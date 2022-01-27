@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
 import '../assets/styles/AdminProductsPage.css';
+import { RiEdit2Line, RiDeleteBin5Line } from 'react-icons/ri';
+import { toast } from 'react-toastify';
 
 import Axios from 'axios';
 import { API_URL } from '../assets/constants';
+import { useNavigate } from 'react-router-dom';
 
 const AdminProductsPage = () => {
   const [productList, setProductList] = useState([]);
@@ -13,23 +16,46 @@ const AdminProductsPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemPerPage, setItemPerPage] = useState(20);
   const [maxPage, setMaxPage] = useState(0);
+  const navigate = useNavigate();
 
   const fetchProductData = () => {
     Axios.get(`${API_URL}/products`)
       .then((response) => {
-        setProductList(response.data);
-        setMaxPage(Math.ceil(response.data.length / itemPerPage));
+        let filteredData;
+        if (!category) {
+          filteredData = response.data.filter((data) => {
+            return (
+              data.name.toLowerCase().includes(searchWord.toLowerCase()) || data.category.toLowerCase().includes(searchWord.toLowerCase())
+            );
+          });
+        } else {
+          filteredData = response.data.filter((data) => {
+            return (
+              data.name.toLowerCase().includes(searchWord.toLowerCase()) && data.category.toLowerCase().includes(category.toLowerCase())
+            );
+          });
+        }
+        setProductList(filteredData);
+        setMaxPage(Math.ceil(filteredData.length / itemPerPage));
+        setCurrentPage(1);
       })
       .catch(() => {
-        alert('Unable to get product data!');
+        toast.warn('Unable to get product data!', { position: 'bottom-left', theme: 'colored' });
+      });
+  };
+
+  const deleteBtnHandler = (val) => {
+    Axios.delete(`${API_URL}/products/${val}`)
+      .then(() => {
+        toast.warn('Deleted Product', { position: 'bottom-left', theme: 'colored' });
+        fetchProductData();
+      })
+      .catch(() => {
+        toast.error('Failed to delete product', { position: 'bottom-left', theme: 'colored' });
       });
   };
 
   const renderProductData = () => {
-    const dataToRender = productList.filter((data) => {
-      return data.name.toLowerCase().includes(searchWord.toLowerCase()) && data.category.toLowerCase().includes(category.toLowerCase());
-    });
-
     const sorter = (a, b) => {
       if (a < b) {
         return -1;
@@ -42,24 +68,25 @@ const AdminProductsPage = () => {
 
     switch (sortVal) {
       case 'asc':
-        dataToRender.sort((a, b) => sorter(a.name, b.name));
+        productList.sort((a, b) => sorter(a.name, b.name));
         break;
       case 'dsc':
-        dataToRender.sort((a, b) => sorter(b.name, a.name));
+        productList.sort((a, b) => sorter(b.name, a.name));
         break;
       default:
         break;
     }
 
     const beginningIndex = (currentPage - 1) * itemPerPage;
+    const finalIndex = beginningIndex + parseInt(itemPerPage);
 
-    const finalData = dataToRender.slice(beginningIndex, beginningIndex + itemPerPage);
+    const finalData = productList.slice(beginningIndex, finalIndex);
 
     return finalData.map((product, index) => {
       return (
-        <div className="admin-products-container">
+        <div className="admin-products-container" key={product.id}>
           <div className="admin-product-index">
-            <span>{index + 1}. </span>
+            <span>{beginningIndex ? index + 1 + beginningIndex : index + 1}. </span>
           </div>
           <div className="admin-product-category">
             <span className="admin-subtext">Category:</span>
@@ -75,7 +102,22 @@ const AdminProductsPage = () => {
             </div>
           </div>
           <div className="admin-product-button">
-            <button>Edit Product</button>
+            <button
+              onClick={() => {
+                navigate('/Admin/AdminProductEdit', { state: { passed_id: product.id } });
+              }}
+              className="edit-button"
+            >
+              <RiEdit2Line />
+            </button>
+            <button
+              onClick={() => {
+                deleteBtnHandler(product.id);
+              }}
+              className="delete-button"
+            >
+              <RiDeleteBin5Line />
+            </button>
           </div>
         </div>
       );
@@ -84,7 +126,7 @@ const AdminProductsPage = () => {
 
   useEffect(() => {
     fetchProductData();
-  }, []);
+  }, [searchWord, category]);
 
   return (
     <div className="admin-products-page-body">
@@ -111,15 +153,24 @@ const AdminProductsPage = () => {
             <select
               id="category"
               onChange={(e) => {
-                setCurrentPage(1);
                 setCategory(e.target.value);
               }}
             >
-              <option value="">All Category</option>
-              <option value="Processor">Processors</option>
-              <option value="Motherboard">Motherboard</option>
-              <option value="Graphic Card">Graphics Card</option>
-              <option value="Memory">Memory</option>
+              <option className="cat-options " value="">
+                All Category
+              </option>
+              <option className="cat-options " value="Processor">
+                Processors
+              </option>
+              <option className="cat-options " value="Motherboard">
+                Motherboard
+              </option>
+              <option className="cat-options " value="Graphic Card">
+                Graphics Card
+              </option>
+              <option className="cat-options " value="Memory">
+                Memory
+              </option>
             </select>
           </div>
           <div className="admin-filter-container">
@@ -132,8 +183,12 @@ const AdminProductsPage = () => {
                 setSortVal(e.target.value);
               }}
             >
-              <option value="asc">A to Z</option>
-              <option value="dsc">Z to A</option>
+              <option className="cat-options" value="asc">
+                A to Z
+              </option>
+              <option className="cat-options" value="dsc">
+                Z to A
+              </option>
             </select>
           </div>
           <div className="admin-filter-container">
@@ -148,13 +203,28 @@ const AdminProductsPage = () => {
                 setCurrentPage(1);
               }}
             >
-              <option value={20}>20</option>
-              <option value={40}>40</option>
-              <option value={60}>60</option>
-              <option value={productList.length}>All</option>
+              <option className="cat-options" value={20}>
+                20
+              </option>
+              <option className="cat-options" value={40}>
+                40
+              </option>
+              <option className="cat-options" value={60}>
+                60
+              </option>
+              <option className="cat-options" value={productList.length}>
+                All
+              </option>
             </select>
           </div>
-          <button className="admin-filter-container-button">Add Products</button>
+          <button
+            className="admin-filter-container-button"
+            onClick={() => {
+              navigate('/Admin/AdminProductEdit', { state: { passed_id: '' } });
+            }}
+          >
+            Add Products
+          </button>
         </div>
         <div className="admin-products-list-container">
           <div className="admin-products-list">{renderProductData()}</div>
@@ -162,7 +232,9 @@ const AdminProductsPage = () => {
         <div className="admin-products-nav-container">
           <button
             onClick={() => {
-              setCurrentPage(currentPage - 1);
+              if (currentPage > 1) {
+                setCurrentPage(currentPage - 1);
+              }
             }}
             disabled={currentPage === 1}
           >
@@ -173,7 +245,9 @@ const AdminProductsPage = () => {
           </span>
           <button
             onClick={() => {
-              setCurrentPage(currentPage + 1);
+              if (currentPage < maxPage) {
+                setCurrentPage(currentPage + 1);
+              }
             }}
             disabled={currentPage === maxPage}
           >

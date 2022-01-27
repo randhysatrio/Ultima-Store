@@ -116,8 +116,9 @@ const AllProducts = () => {
     }
 
     const beginningIndex = (page - 1) * itemPerPage;
+    const finalIndex = beginningIndex + parseInt(itemPerPage);
 
-    const finalData = dataToRender.slice(beginningIndex, beginningIndex + itemPerPage);
+    const finalData = dataToRender.slice(beginningIndex, finalIndex);
 
     return finalData.map((product) => {
       return <ProductCardAll key={product.id} product={product} />;

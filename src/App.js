@@ -13,6 +13,7 @@ import Checkout from './pages/Checkout';
 import Admin from './pages/Admin';
 import AdminMain from './pages/AdminMain';
 import AdminProductsPage from './pages/AdminProductsPage';
+import AdminProductEdit from './pages/AdminProductEdit';
 
 import Axios from 'axios';
 import { API_URL } from './assets/constants';
@@ -85,6 +86,7 @@ function App() {
         <Route path="Admin" element={<Admin />}>
           <Route index element={<AdminMain />} />
           <Route path="AdminProductsPage" element={<AdminProductsPage />} />
+          <Route path="AdminProductEdit" element={<AdminProductEdit />} />
         </Route>
       </Routes>
       <ToastContainer />
