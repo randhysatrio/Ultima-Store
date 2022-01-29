@@ -7,7 +7,10 @@
       "email": "randhysatrio@gmail.com",
       "password": "123456",
       "role": "admin",
-      "id": 1
+      "id": 1,
+      "checkoutItems": [
+        8
+      ]
     },
     {
       "firstname": "Lewis",
@@ -16,7 +19,8 @@
       "email": "lewis@amg.com",
       "password": "123456",
       "role": "user",
-      "id": 2
+      "id": 2,
+      "checkoutItems": []
     }
   ],
   "transactions": [
@@ -131,18 +135,56 @@
       "totalPrice": 29820000,
       "totalPayment": 29900000,
       "id": 4
+    },
+    {
+      "userID": 2,
+      "transactionDate": "2022-1-6--11:34.25",
+      "transactionYear": 2022,
+      "transactionMonth": 1,
+      "firstName": "Lewis",
+      "lastName": "Hamilton",
+      "email": "lewis@amg.com",
+      "address": "Monaco baby",
+      "telephone": "12312313123",
+      "paymentMethod": "bank",
+      "deliveryOpt": "dhl",
+      "transactionItems": [
+        {
+          "userID": 2,
+          "username": "thegoat44",
+          "productID": 6,
+          "productName": "Asus ROG STRIX Z690-E GAMING WIFI",
+          "productImage": "https://dlcdnwebimgs.asus.com/gain/4A7DC4DD-E991-4006-9F59-9830BA0E22C1/w717/h525",
+          "productPrice": 6500000,
+          "productQty": 1,
+          "id": 1
+        }
+      ],
+      "totalPrice": 7020000,
+      "totalPayment": 7020000,
+      "id": 5
     }
   ],
   "carts": [
     {
       "userID": 2,
       "username": "thegoat44",
-      "productID": 6,
-      "productName": "Asus ROG STRIX Z690-E GAMING WIFI",
-      "productImage": "https://dlcdnwebimgs.asus.com/gain/4A7DC4DD-E991-4006-9F59-9830BA0E22C1/w717/h525",
-      "productPrice": 6500000,
+      "productID": 5,
+      "productName": "Asus R.O.G. Maximus Z690 APEX",
+      "productImage": "https://dlcdnwebimgs.asus.com/gain/385EC9B8-4271-4E1C-BDF0-CC83039C9492/w717/h525",
+      "productPrice": 11700000,
       "productQty": 1,
-      "id": 1
+      "id": 6
+    },
+    {
+      "userID": 1,
+      "username": "randhysatrio",
+      "productID": 48,
+      "productName": "Intel Core i7-12700KF",
+      "productImage": "https://c1.neweggimages.com/ProductImageCompressAll1280/19-118-343-05.jpg",
+      "productPrice": 6450000,
+      "productQty": 1,
+      "id": 8
     },
     {
       "userID": 2,
@@ -152,17 +194,7 @@
       "productImage": "https://dlcdnwebimgs.asus.com/gain/A62B3DD1-3884-45BE-A81A-8E13D9CF0E26/w717/h525",
       "productPrice": 34000000,
       "productQty": 1,
-      "id": 2
-    },
-    {
-      "userID": 1,
-      "username": "randhysatrio",
-      "productID": 50,
-      "productName": "Intel Core i9-12900KF",
-      "productImage": "https://c1.neweggimages.com/ProductImageCompressAll1280/19-118-341-06.jpg",
-      "productPrice": 9400000,
-      "productQty": 1,
-      "id": 4
+      "id": 9
     }
   ],
   "products": [
@@ -208,7 +240,7 @@
     },
     {
       "id": 5,
-      "category": "Processor",
+      "category": "Motherboard",
       "name": "Asus R.O.G. Maximus Z690 APEX",
       "image": "https://dlcdnwebimgs.asus.com/gain/385EC9B8-4271-4E1C-BDF0-CC83039C9492/w717/h525",
       "description": "Intel® Z690 ATX motherboard with 24+0 power stages, DDR5, Five M.2, PCIe® 5.0, Onboard Wi-Fi 6E",

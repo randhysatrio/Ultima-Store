@@ -43,7 +43,7 @@ const AdminProductEdit = () => {
           setProductBest(response.data[0].best);
         })
         .catch(() => {
-          alert('Unable to get product data!');
+          toast.warn('Unable to get product data!', { position: 'bottom-left', theme: 'colored' });
         });
     } else {
       return;

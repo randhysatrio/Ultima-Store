@@ -123,6 +123,12 @@ const ProductDetails = () => {
       });
   };
 
+  // inputTypeHandler = (e) => {
+  //   if (!e.target.value.matches('^[0-9]*$')) {
+  //     toast.warn('Please put numbers instead of characters!');
+  //   }
+  // };
+
   useEffect(() => {
     fetchProductData();
   }, []);
@@ -173,7 +179,18 @@ const ProductDetails = () => {
                 <GoPlus />
               </button>
               <div className="qty--container">
-                <span>{qty}</span>
+                <input
+                  type="number"
+                  value={qty}
+                  onChange={(e) => {
+                    const amount = parseInt(e.target.value);
+                    if (amount < 1) {
+                      toast.warn('The minimum amount is 1!', { position: 'bottom-left', theme: 'colored' });
+                    } else {
+                      setQty(amount);
+                    }
+                  }}
+                />
               </div>
               <button
                 className="btn-min"
@@ -190,7 +207,12 @@ const ProductDetails = () => {
               <button
                 className="cart-btn"
                 onClick={() => {
-                  addToCartHandler();
+                  if (!qty) {
+                    toast.error('Item quantity cannot be empty!', { position: 'bottom-left', theme: 'colored' });
+                    setQty(1);
+                  } else {
+                    addToCartHandler();
+                  }
                 }}
                 disabled={!userGlobal.username}
                 style={{ cursor: !userGlobal.username ? 'not-allowed' : 'pointer' }}

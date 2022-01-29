@@ -1,22 +1,25 @@
 import React, { useState, useEffect } from 'react';
-
 import '../assets/styles/Cart.css';
 import { FaArrowRight } from 'react-icons/fa';
+import { FiAlertTriangle } from 'react-icons/fi';
 
 import Axios from 'axios';
 import { API_URL } from '../assets/constants';
-import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useNavigate, Link } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
+import { IoMdClose, IoMdCheckmark } from 'react-icons/io';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 //https://codesandbox.io/s/react-select-all-checkbox-jbub2?file=/src/index.js
 
 const Cart = () => {
-  const userGlobal = useSelector((state) => state.user);
-  const cartGlobal = useSelector((state) => state.cart);
+  const userData = JSON.parse(localStorage.getItem('emmerceData'));
   const [cartList, setCartList] = useState([]);
-  const [checkoutID, setCheckoutID] = useState([]);
+  const [initialCheckoutData, setInitialCheckoutData] = useState([]);
+  const [toCheckout, setToCheckout] = useState([]);
   const navigate = useNavigate();
 
   const notify = (val, msg) => {
@@ -45,42 +48,47 @@ const Cart = () => {
     }
   };
 
-  const isCheckAllHandler = (e) => {
-    setCheckoutID(cartList.map((cart) => cart.id));
+  const checkAllHandler = (e) => {
+    setToCheckout(cartList.map((cart) => cart.id));
     if (!e.target.checked) {
-      setCheckoutID([]);
+      setToCheckout([]);
     }
   };
 
   const productCheckHandler = (e) => {
     const checked = e.target.checked;
     const id = parseInt(e.target.id);
-    setCheckoutID([...checkoutID, id]);
+
+    setToCheckout([...toCheckout, id]);
     if (!checked) {
-      setCheckoutID(checkoutID.filter((productID) => productID !== id));
+      setToCheckout(toCheckout.filter((productID) => productID !== id));
     }
   };
 
   const fetchCartData = () => {
-    const data = localStorage.getItem('emmerceData');
+    Axios.get(`${API_URL}/carts`, {
+      params: {
+        userID: userData.id,
+      },
+    })
+      .then((response) => {
+        setCartList(response.data);
 
-    if (data) {
-      const userData = JSON.parse(data);
-
-      Axios.get(`${API_URL}/carts`, {
-        params: {
-          userID: userData.id,
-        },
-      })
-        .then((response) => {
-          setCartList(response.data);
+        Axios.get(`${API_URL}/users/`, {
+          params: {
+            id: userData.id,
+          },
         })
-        .catch(() => {
-          notify('fail', 'Unable to get cart data!');
-        });
-    } else {
-      notify('fail', 'Please sign in to see your cart!');
-    }
+          .then((response) => {
+            setInitialCheckoutData(response.data[0].checkoutItems);
+          })
+          .catch(() => {
+            toast.warn('Unable to get user checkout items data', { position: 'bottom-left', theme: 'colored' });
+          });
+      })
+      .catch(() => {
+        toast.warn('Unable to get user cart data!', { position: 'bottom-left', theme: 'colored' });
+      });
   };
 
   const qtyBtnHandler = (val, key) => {
@@ -117,13 +125,33 @@ const Cart = () => {
       });
   };
 
+  const inputTypeHandler = (e, val) => {
+    const amount = parseInt(e.target.value);
+    if (!amount) {
+      toast.warn('The minimun quantity you can put is 1', { position: 'bottom-left', theme: 'colored' });
+    } else {
+      Axios.patch(`${API_URL}/carts/${val}`, {
+        productQty: amount,
+      })
+        .then(() => {
+          fetchCartData();
+        })
+        .catch(() => {
+          toast.warn('Unable to update product quantity', { position: 'bottom-left', theme: 'colored' });
+        });
+    }
+  };
+
   const dispatch = useDispatch();
   const deleteBtnHandler = (cartID) => {
-    Axios.delete(`${API_URL}/carts/${cartID}`)
-      .then(() => {
-        const data = localStorage.getItem('emmerceData');
-        const userData = JSON.parse(data);
-        if (data) {
+    if (initialCheckoutData.includes(cartID)) {
+      toast.warn('This item is currently in checkout, please continue this item checkout process', {
+        position: 'bottom-left',
+        theme: 'colored',
+      });
+    } else {
+      Axios.delete(`${API_URL}/carts/${cartID}`)
+        .then(() => {
           Axios.get(`${API_URL}/carts`, {
             params: {
               userID: userData.id,
@@ -135,15 +163,54 @@ const Cart = () => {
                 payload: response.data,
               });
               notify('ok', 'Removed product from your cart!');
+              fetchCartData();
             })
             .catch(() => {
               notify('fail', 'Unable to update cart data!');
             });
-        }
+        })
+        .catch(() => {
+          notify('fail', 'Failed to delete product from your cart!');
+        });
+    }
+  };
+
+  const proceedCheckoutHandler = () => {
+    Axios.patch(`${API_URL}/users/${userData.id}`, {
+      checkoutItems: toCheckout,
+    })
+      .then(() => {
+        navigate('/Checkout');
       })
       .catch(() => {
-        notify('fail', 'Failed to delete product from your cart!');
+        toast.error('Unable to proceed to checkout items!', { position: 'bottom-left', theme: 'colored' });
       });
+  };
+
+  const continueHandler = () => {
+    confirmAlert({
+      customUI: ({ onClose }) => {
+        return (
+          <div className="alert-ui">
+            <span>Discard your previous transaction and continue with this one instead?</span>
+            <div className="close-button-container">
+              <button className="close-button" onClick={onClose}>
+                <IoMdClose />
+              </button>
+              <button
+                onClick={() => {
+                  proceedCheckoutHandler();
+                  onClose();
+                }}
+                className="check-button"
+              >
+                <IoMdCheckmark />
+              </button>
+            </div>
+          </div>
+        );
+      },
+    });
   };
 
   const renderCart = () => {
@@ -157,8 +224,10 @@ const Cart = () => {
               type="checkbox"
               id={cart.id}
               name={cart.productName}
-              checked={checkoutID.includes(cart.id)}
-              onChange={productCheckHandler}
+              checked={toCheckout.includes(cart.id)}
+              onChange={(e) => {
+                productCheckHandler(e);
+              }}
             />
           </div>
           <div className="items-container-content">
@@ -188,7 +257,13 @@ const Cart = () => {
                 +
               </button>
               <div className="qty-container">
-                <text>{cart.productQty}</text>
+                <input
+                  type="text"
+                  value={cart.productQty}
+                  onChange={(e) => {
+                    inputTypeHandler(e, cart.id);
+                  }}
+                />
               </div>
               <button
                 onClick={() => {
@@ -204,7 +279,8 @@ const Cart = () => {
                 onClick={() => {
                   deleteBtnHandler(cart.id);
                 }}
-                disabled={checkoutID.includes(cart.id)}
+                disabled={toCheckout.includes(cart.id)}
+                style={{ cursor: toCheckout.includes(cart.id) ? 'not-allowed' : 'pointer' }}
               >
                 Remove Item
               </button>
@@ -215,24 +291,8 @@ const Cart = () => {
     });
   };
 
-  const renderTotal = () => {
-    const productToRender = [];
-
-    checkoutID.forEach((id) => {
-      productToRender.push(cartList.find((item) => item.id === id));
-    });
-
-    let total = 0;
-
-    productToRender.forEach((item) => {
-      total += item.productPrice * item.productQty;
-    });
-
-    return total;
-  };
-
   const renderCartDetails = () => {
-    const productToRender = checkoutID.map((id) => {
+    const productToRender = toCheckout.map((id) => {
       return cartList.find((item) => item.id === id);
     });
 
@@ -271,14 +331,40 @@ const Cart = () => {
     });
   };
 
+  const renderTotal = () => {
+    const productToRender = toCheckout.map((id) => {
+      return cartList.find((item) => item.id === id);
+    });
+
+    let total = 0;
+
+    productToRender.forEach((item) => {
+      total += item.productPrice * item.productQty;
+    });
+
+    return total;
+  };
+
   useEffect(() => {
     fetchCartData();
-  }, [cartGlobal.cartList]);
+  }, []);
 
   return (
     <div className="container">
       <div className="cart-page-header">
         <text className="cart-header">Your Cart</text>
+        {initialCheckoutData.length ? (
+          <div className="cart-header-info-container">
+            <FiAlertTriangle />
+            <span>
+              You currently have {initialCheckoutData.length} item(s) in your checkout page. Click{' '}
+              <Link to="/Checkout" className="checkout-proceed-link">
+                here
+              </Link>{' '}
+              to continue transaction
+            </span>
+          </div>
+        ) : null}
       </div>
       <div className="row">
         <div className="col-9">
@@ -289,7 +375,7 @@ const Cart = () => {
                 <label htmlFor="select-all" className="cart-text-header select-all">
                   Select All Item(s)
                 </label>
-                <input type="checkbox" onChange={isCheckAllHandler} checked={checkoutID.length === cartList.length} id="select-all" />
+                <input type="checkbox" onChange={checkAllHandler} checked={toCheckout.length === cartList.length} id="select-all" />
               </div>
               <div className="cart-items-container">{renderCart()}</div>
             </>
@@ -321,26 +407,31 @@ const Cart = () => {
                 <text>Summary</text>
               </div>
               <div className="cart-transaction-content-body py-2">
-                {checkoutID.length ? renderCartDetails() : <text className="mx-2">Please select item(s) from your cart</text>}
+                {toCheckout.length ? renderCartDetails() : <text className="mx-2">Please select item(s) from your cart</text>}
               </div>
               <div className="cart-transaction-quantity-container bigger">
                 <div className="q2">
                   <text>Total:</text>
                 </div>
                 <div className="q2 total">
-                  <text>{checkoutID.length ? `Rp. ${renderTotal().toLocaleString()}` : `-`}</text>
+                  <text>{toCheckout.length ? `Rp. ${renderTotal().toLocaleString()}` : `-`}</text>
                 </div>
               </div>
             </div>
           </div>
           <div className="proceed-checkout-container">
+            {}
             <button
               className="proceed-checkout-button"
-              disabled={!checkoutID.length}
+              disabled={!toCheckout.length}
               onClick={() => {
-                navigate('/Checkout', { state: { checkout_data: checkoutID } });
+                if (initialCheckoutData.length) {
+                  continueHandler();
+                } else {
+                  proceedCheckoutHandler();
+                }
               }}
-              style={{ cursor: checkoutID.length ? 'pointer' : 'not-allowed' }}
+              style={{ cursor: toCheckout.length ? 'pointer' : 'not-allowed' }}
             >
               <div className="proceed-checkout-button-content">
                 <span>Proceed to Checkout</span>

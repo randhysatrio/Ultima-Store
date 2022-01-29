@@ -15,20 +15,23 @@ import {
 } from 'react-icons/fa';
 import { SiUps } from 'react-icons/si';
 import { GiDeliveryDrone } from 'react-icons/gi';
+import { IoMdClose, IoMdCheckmark } from 'react-icons/io';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 import { API_URL } from '../assets/constants';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 
 const Checkout = () => {
-  const { state } = useLocation();
+  const userData = JSON.parse(localStorage.getItem('emmerceData'));
   const d = new Date();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const cartGlobal = useSelector((state) => state.cart);
-  const userGlobal = useSelector((state) => state.user);
-  const [checkoutData, setCheckoutData] = useState([]);
+  const [checkoutItemID, setCheckoutItemID] = useState([]);
+  const [cartData, setCartData] = useState([]);
   const [thankyouMsg, setThankyouMsg] = useState(false);
   const [checkoutState, setCheckoutState] = useState({
     firstName: '',
@@ -40,14 +43,14 @@ const Checkout = () => {
     deliveryOpt: '',
     totalPayment: 0,
   });
-  const [errorFirstName, setErrorFirstName] = useState('');
-  const [errorLastName, setErrorLastName] = useState('');
-  const [errorEmail, setErrorEmail] = useState('');
-  const [errorAddress, setErrorAddress] = useState('');
-  const [errorTelephone, setErrorTelephone] = useState('');
-  const [errorDeliveryOpt, setErrorDeliveryOpt] = useState('');
-  const [errorPaymentMethod, setErrorPaymentMethod] = useState('');
-  const [errorTotalPayment, setErrorTotalPayment] = useState('');
+  const [errorFirstName, setErrorFirstName] = useState(false);
+  const [errorLastName, setErrorLastName] = useState(false);
+  const [errorEmail, setErrorEmail] = useState(false);
+  const [errorAddress, setErrorAddress] = useState(false);
+  const [errorTelephone, setErrorTelephone] = useState(false);
+  const [errorDeliveryOpt, setErrorDeliveryOpt] = useState(false);
+  const [errorPaymentMethod, setErrorPaymentMethod] = useState(false);
+  const [errorTotalPayment, setErrorTotalPayment] = useState(false);
 
   const eventHandler = (e) => {
     const name = e.target.name;
@@ -60,15 +63,36 @@ const Checkout = () => {
   };
 
   const fetchCheckoutData = () => {
-    const fetchedData = state.checkout_data.map((data) => {
-      return cartGlobal.cartList.find((item) => item.id === data);
-    });
-
-    setCheckoutData(fetchedData);
+    Axios.get(`${API_URL}/carts`, {
+      params: {
+        userID: userData.id,
+      },
+    })
+      .then((response) => {
+        setCartData(response.data);
+        Axios.get(`${API_URL}/users`, {
+          params: {
+            id: userData.id,
+          },
+        })
+          .then((response) => {
+            setCheckoutItemID(response.data[0].checkoutItems);
+          })
+          .catch(() => {
+            toast.error('Unable to get user data to fill checkout items', { position: 'bottom-left', theme: 'colored' });
+          });
+      })
+      .catch(() => {
+        toast.error('Unable to get user cart data!', { position: 'bottom-left', theme: 'colored' });
+      });
   };
 
   const renderCheckoutData = () => {
-    return checkoutData.map((data, index) => {
+    const dataToRender = checkoutItemID.map((id) => {
+      return cartData.find((cart) => cart.id === id);
+    });
+
+    return dataToRender.map((data, index) => {
       return (
         <div className="content-detail-items-container">
           <div>
@@ -102,7 +126,11 @@ const Checkout = () => {
   const renderTotal = () => {
     let sum = 0;
 
-    checkoutData.forEach((data) => {
+    const dataToRender = checkoutItemID.map((id) => {
+      return cartData.find((cart) => cart.id === id);
+    });
+
+    dataToRender.forEach((data) => {
       sum += data.productPrice * data.productQty;
     });
 
@@ -125,28 +153,77 @@ const Checkout = () => {
     }
   };
 
-  const checkoutBtnHandler = () => {
+  const errClear = () => {
+    setErrorFirstName(false);
+    setErrorLastName(false);
+    setErrorEmail(false);
+    setErrorAddress(false);
+    setErrorTelephone(false);
+    setErrorPaymentMethod(false);
+    setErrorDeliveryOpt(false);
+    setErrorTotalPayment(false);
+  };
+
+  const validator = () => {
     if (!checkoutState.firstName) {
-      setErrorFirstName('This field is required');
-    } else if (!checkoutState.lastName) {
-      setErrorLastName('This field is required');
-    } else if (!checkoutState.email) {
-      setErrorEmail('This field is required');
+      setErrorFirstName(true);
+    }
+
+    if (!checkoutState.lastName) {
+      setErrorLastName(true);
+    }
+
+    if (!checkoutState.email) {
+      setErrorEmail(true);
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(checkoutState.email)) {
-      setErrorEmail('Please use a vaild email address');
-    } else if (!checkoutState.address) {
-      setErrorAddress('This field is required');
-    } else if (!checkoutState.telephone) {
-      setErrorTelephone('This field is required');
-    } else if (!checkoutState.paymentMethod) {
-      setErrorPaymentMethod('This field is required');
-    } else if (!checkoutState.deliveryOpt) {
-      setErrorDeliveryOpt('This field is required');
-    } else if (checkoutState.totalPayment < renderGrandTotal()) {
-      setErrorTotalPayment('Please put a sufficient amount!');
+      setErrorEmail(true);
+    }
+
+    if (!checkoutState.address) {
+      setErrorAddress(true);
+    }
+
+    if (!checkoutState.telephone) {
+      setErrorTelephone(true);
+    }
+
+    if (!checkoutState.paymentMethod) {
+      setErrorPaymentMethod(true);
+    }
+
+    if (!checkoutState.deliveryOpt) {
+      setErrorDeliveryOpt(true);
+    }
+
+    if (checkoutState.totalPayment < renderGrandTotal()) {
+      setErrorTotalPayment(true);
+    }
+  };
+
+  const checkoutBtnHandler = () => {
+    const checkoutItemsList = checkoutItemID.map((id) => {
+      return cartData.find((cart) => cart.id === id);
+    });
+
+    if (!checkoutState.firstName || errorFirstName) {
+      return;
+    } else if (!checkoutState.lastName || errorLastName) {
+      return;
+    } else if (!checkoutState.email || errorEmail) {
+      return;
+    } else if (!checkoutState.address || errorAddress) {
+      return;
+    } else if (!checkoutState.telephone || errorTelephone) {
+      return;
+    } else if (!checkoutState.paymentMethod || errorPaymentMethod) {
+      return;
+    } else if (!checkoutState.deliveryOpt || errorDeliveryOpt) {
+      return;
+    } else if (checkoutState.totalPayment < renderGrandTotal() || errorTotalPayment) {
+      return;
     } else {
       Axios.post(`${API_URL}/transactions`, {
-        userID: userGlobal.id,
+        userID: userData.id,
         transactionDate: `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDay() + 1}--${d.getHours()}:${d.getMinutes()}.${d.getSeconds()}`,
         transactionYear: d.getFullYear(),
         transactionMonth: d.getMonth() + 1,
@@ -157,34 +234,48 @@ const Checkout = () => {
         telephone: checkoutState.telephone,
         paymentMethod: checkoutState.paymentMethod,
         deliveryOpt: checkoutState.deliveryOpt,
-        transactionItems: checkoutData,
+        transactionItems: checkoutItemsList,
         totalPrice: renderGrandTotal(),
         totalPayment: parseInt(checkoutState.totalPayment),
       })
         .then(() => {
-          const endpoints = state.checkout_data.map((data) => {
+          const endpoints = checkoutItemID.map((data) => {
             return Axios.delete(`${API_URL}/carts/${data}`);
           });
           Axios.all(endpoints)
             .then(() => {
-              Axios.get(`${API_URL}/carts`, {
+              Axios.get(`${API_URL}/users`, {
                 params: {
-                  userID: userGlobal.id,
+                  id: userData.id,
                 },
-              })
-                .then((response) => {
-                  dispatch({
-                    type: 'FILL_CART',
-                    payload: response.data,
-                  });
-                  setThankyouMsg(true);
-                  setTimeout(() => {
-                    navigate(`/`, { replace: true });
-                  }, 5000);
+              }).then((response) => {
+                Axios.patch(`${API_URL}/users/${response.data[0].id}`, {
+                  checkoutItems: [],
                 })
-                .catch(() => {
-                  alert('Unable to get update cart data!');
-                });
+                  .then(() => {
+                    Axios.get(`${API_URL}/carts`, {
+                      params: {
+                        userID: userData.id,
+                      },
+                    })
+                      .then((response) => {
+                        dispatch({
+                          type: 'FILL_CART',
+                          payload: response.data,
+                        });
+                        setThankyouMsg(true);
+                        setTimeout(() => {
+                          navigate(`/`, { replace: true });
+                        }, 5000);
+                      })
+                      .catch(() => {
+                        alert('Unable to get update cart data!');
+                      });
+                  })
+                  .catch(() => {
+                    alert('Unable to clear user checkout items!');
+                  });
+              });
             })
             .catch(() => {
               alert('Unable to clear cart');
@@ -194,6 +285,40 @@ const Checkout = () => {
           alert('Unable to process transaction');
         });
     }
+  };
+
+  const cancelHandler = () => {
+    confirmAlert({
+      customUI: ({ onClose }) => {
+        return (
+          <div className="custom-ui">
+            <span>Are you sure you want to cancel this transaction?</span>
+            <div className="close-button-container">
+              <button className="close-button" onClick={onClose}>
+                <IoMdClose />
+              </button>
+              <button
+                onClick={() => {
+                  Axios.patch(`${API_URL}/users/${userData.id}`, {
+                    checkoutItems: [],
+                  })
+                    .then(() => {
+                      navigate(-1, { replace: true });
+                      onClose();
+                    })
+                    .catch(() => {
+                      toast.error('Unable to cancel this transaction', { position: 'bottom-left', theme: 'colored' });
+                    });
+                }}
+                className="check-button"
+              >
+                <IoMdCheckmark />
+              </button>
+            </div>
+          </div>
+        );
+      },
+    });
   };
 
   useEffect(() => {
@@ -223,27 +348,27 @@ const Checkout = () => {
                 <div className="bill-info-input-container">
                   <label htmlFor="firstName">First Name:</label>
                   <input id="firstName" name="firstName" type="text" onChange={eventHandler} />
-                  {errorFirstName ? <div className="input-error-container">{errorFirstName}</div> : null}
+                  {errorFirstName ? <div className="input-error-container">This field is required</div> : null}
                 </div>
                 <div className="bill-info-input-container">
                   <label htmlFor="lastName">Last Name:</label>
                   <input id="lastName" name="lastName" type="text" onChange={eventHandler} />
-                  {errorLastName ? <div className="input-error-container">{errorLastName}</div> : null}
+                  {errorLastName ? <div className="input-error-container">This field is required</div> : null}
                 </div>
                 <div className="bill-info-input-container">
                   <label htmlFor="email">Email:</label>
                   <input id="email" name="email" type="text" onChange={eventHandler} />
-                  {errorEmail ? <div className="input-error-container">{errorEmail}</div> : null}
+                  {errorEmail ? <div className="input-error-container">This field is required</div> : null}
                 </div>
                 <div className="bill-info-input-container">
                   <label htmlFor="email">Address:</label>
                   <input id="address" name="address" type="text" onChange={eventHandler} />
-                  {errorAddress ? <div className="input-error-container">{errorAddress}</div> : null}
+                  {errorAddress ? <div className="input-error-container">This field is required</div> : null}
                 </div>
                 <div className="bill-info-input-container">
                   <label htmlFor="telephone">Telephone:</label>
                   <input id="telephone" name="telephone" type="tel" onChange={eventHandler} />
-                  {errorTelephone ? <div className="input-error-container">{errorTelephone}</div> : null}
+                  {errorTelephone ? <div className="input-error-container">This field is required</div> : null}
                 </div>
                 <div className="bill-info-bottom-select-container">
                   <div className="bill-info-payment-container">
@@ -260,7 +385,7 @@ const Checkout = () => {
                       <option value="btc">Bitcoin</option>
                       <option value="eth">Ethereum</option>
                     </select>
-                    {errorPaymentMethod ? <div className="input-error-container">{errorPaymentMethod}</div> : null}
+                    {errorPaymentMethod ? <div className="input-error-container">This field is required</div> : null}
                   </div>
                   <div className="bill-info-payment-container">
                     <label htmlFor="deliveryOpt">Delivery Options:</label>
@@ -272,7 +397,7 @@ const Checkout = () => {
                       <option value="usps">USPS</option>
                       <option value="drone">Drone (Experimental)</option>
                     </select>
-                    {errorDeliveryOpt ? <div className="input-error-container">{errorDeliveryOpt}</div> : null}
+                    {errorDeliveryOpt ? <div className="input-error-container">This field is required</div> : null}
                   </div>
                 </div>
                 <div className="logo-container">
@@ -306,11 +431,22 @@ const Checkout = () => {
                     </label>
                     <input id="totalPayment" name="totalPayment" type="number" onChange={eventHandler} />
                   </div>
-                  {errorTotalPayment ? <div className="amount-error-container">{errorTotalPayment}</div> : null}
+                  {errorTotalPayment ? <div className="amount-error-container">Please put a sufficient amount!</div> : null}
                 </div>
                 <div className="checkout-button-container">
-                  <button onClick={checkoutBtnHandler}>Checkout</button>
+                  <button
+                    onClick={() => {
+                      errClear();
+                      validator();
+                      checkoutBtnHandler();
+                    }}
+                  >
+                    Checkout
+                  </button>
                 </div>
+              </div>
+              <div className="cancel-checkout-container">
+                <span onClick={cancelHandler}>Cancel this Transaction</span>
               </div>
             </div>
             <div className="checkout-page-content-details-container">
