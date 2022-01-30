@@ -9,7 +9,7 @@
       "role": "admin",
       "id": 1,
       "checkoutItems": [
-        8
+        3
       ]
     },
     {
@@ -26,181 +26,115 @@
   "transactions": [
     {
       "userID": 1,
-      "transactionDate": "2022-1-4--11:9.52",
       "transactionYear": 2022,
       "transactionMonth": 1,
+      "transactionDate": 30,
+      "transactionTime": "20:33:34",
       "firstName": "Randhy",
       "lastName": "Satrio",
       "email": "randhysatrio@gmail.com",
       "address": "Jl. Deplu Raya No.18 Bintaro, Pesanggrahan, Jak-Sel",
       "telephone": "081294203353",
-      "paymentMethod": "bank",
-      "deliveryOpt": "dhl",
+      "paymentMethod": "visa",
+      "deliveryOpt": "ups",
       "transactionItems": [
         {
           "userID": 1,
           "username": "randhysatrio",
-          "productID": 24,
-          "productName": "ZOTAC GAMING GeForce RTX 3090 Trinity OC",
-          "productImage": "https://www.zotac.com/download/files/styles/w1024/public/product_gallery/graphics_cards/zt-a30900j-10p-image01.jpg?itok=6oHEY1qn",
-          "productPrice": 39700000,
+          "productID": 22,
+          "productName": "ZOTAC GAMING GeForce RTX 3080 Ti Trinity OC",
+          "productImage": "https://www.zotac.com/download/files/styles/w1024/public/product_gallery/graphics_cards/zt-a30810j-10p-image01.jpg?itok=Rdg7Iqmd",
+          "productPrice": 28400000,
           "productQty": 1,
           "id": 1
+        },
+        {
+          "userID": 1,
+          "username": "randhysatrio",
+          "productID": 8,
+          "productName": "Asus ROG MAXIMUS Z690 EXTREME GLACIAL",
+          "productImage": "https://dlcdnwebimgs.asus.com/gain/A62B3DD1-3884-45BE-A81A-8E13D9CF0E26/w717/h525",
+          "productPrice": 34000000,
+          "productQty": 1,
+          "id": 2
         }
       ],
-      "totalPrice": 41685000,
-      "totalPayment": 42000000,
+      "orderTotal": 62400000,
+      "orderTax": 3120000,
+      "orderShippingCost": "Free",
+      "totalPrice": 65520000,
+      "totalPayment": 65600000,
       "id": 1
     },
     {
-      "userID": 1,
-      "transactionDate": "2022-1-4--11:43.40",
-      "transactionYear": 2022,
-      "transactionMonth": 1,
-      "firstName": "Randhy",
-      "lastName": "Satrio",
-      "email": "randhysatrio@gmail.com",
-      "address": "Jl. Deplu Raya No.18 Bintaro, Pesanggrahan, Jak-Sel",
-      "telephone": "081294203353",
-      "paymentMethod": "applepay",
-      "deliveryOpt": "dhl",
-      "transactionItems": [
-        {
-          "userID": 1,
-          "username": "randhysatrio",
-          "productID": 22,
-          "productName": "ZOTAC GAMING GeForce RTX 3080 Ti Trinity OC",
-          "productImage": "https://www.zotac.com/download/files/styles/w1024/public/product_gallery/graphics_cards/zt-a30810j-10p-image01.jpg?itok=Rdg7Iqmd",
-          "productPrice": 28400000,
-          "productQty": 1,
-          "id": 3
-        }
-      ],
-      "totalPrice": 29820000,
-      "totalPayment": 30000000,
-      "id": 2
-    },
-    {
-      "userID": 1,
-      "transactionDate": "2022-1-4--19:49.15",
-      "transactionYear": 2022,
-      "transactionMonth": 1,
-      "firstName": "Randhy",
-      "lastName": "Satrio",
-      "email": "randhysatrio@gmail.com",
-      "address": "Jl. Deplu Raya No.18 Bintaro, Pesanggrahan, Jak-Sel",
-      "telephone": "081294203353",
-      "paymentMethod": "bank",
-      "deliveryOpt": "dhl",
-      "transactionItems": [
-        {
-          "userID": 1,
-          "username": "randhysatrio",
-          "productID": 25,
-          "productName": "ZOTAC GAMING GeForce RTX 3090 AMP Core Holo",
-          "productImage": "https://www.zotac.com/download/files/styles/w1024/public/product_gallery/graphics_cards/zt-a30900c-10p-image01.jpg?itok=DDT2xsdT",
-          "productPrice": 40600000,
-          "productQty": 1,
-          "id": 3
-        }
-      ],
-      "totalPrice": 42630000,
-      "totalPayment": 42630000,
-      "id": 3
-    },
-    {
-      "userID": 1,
-      "transactionDate": "2022-1-4--19:52.16",
-      "transactionYear": 2022,
-      "transactionMonth": 1,
-      "firstName": "Randhy",
-      "lastName": "Satrio",
-      "email": "randhysatrio@gmail.com",
-      "address": "Jl. Deplu Raya No.18 Bintaro, Pesanggrahan, Jak-Sel",
-      "telephone": "081294203353",
-      "paymentMethod": "bank",
-      "deliveryOpt": "dhl",
-      "transactionItems": [
-        {
-          "userID": 1,
-          "username": "randhysatrio",
-          "productID": 22,
-          "productName": "ZOTAC GAMING GeForce RTX 3080 Ti Trinity OC",
-          "productImage": "https://www.zotac.com/download/files/styles/w1024/public/product_gallery/graphics_cards/zt-a30810j-10p-image01.jpg?itok=Rdg7Iqmd",
-          "productPrice": 28400000,
-          "productQty": 1,
-          "id": 3
-        }
-      ],
-      "totalPrice": 29820000,
-      "totalPayment": 29900000,
-      "id": 4
-    },
-    {
       "userID": 2,
-      "transactionDate": "2022-1-6--11:34.25",
       "transactionYear": 2022,
       "transactionMonth": 1,
+      "transactionDate": 30,
+      "transactionTime": "20:43:42",
       "firstName": "Lewis",
       "lastName": "Hamilton",
       "email": "lewis@amg.com",
-      "address": "Monaco baby",
-      "telephone": "12312313123",
-      "paymentMethod": "bank",
+      "address": "Monaco",
+      "telephone": "123123123",
+      "paymentMethod": "visa",
       "deliveryOpt": "dhl",
       "transactionItems": [
         {
           "userID": 2,
           "username": "thegoat44",
-          "productID": 6,
-          "productName": "Asus ROG STRIX Z690-E GAMING WIFI",
-          "productImage": "https://dlcdnwebimgs.asus.com/gain/4A7DC4DD-E991-4006-9F59-9830BA0E22C1/w717/h525",
-          "productPrice": 6500000,
+          "productID": 22,
+          "productName": "ZOTAC GAMING GeForce RTX 3080 Ti Trinity OC",
+          "productImage": "https://www.zotac.com/download/files/styles/w1024/public/product_gallery/graphics_cards/zt-a30810j-10p-image01.jpg?itok=Rdg7Iqmd",
+          "productPrice": 28400000,
           "productQty": 1,
-          "id": 1
+          "id": 4
+        },
+        {
+          "userID": 2,
+          "username": "thegoat44",
+          "productID": 50,
+          "productName": "Intel Core i9-12900KF",
+          "productImage": "https://c1.neweggimages.com/ProductImageCompressAll1280/19-118-341-06.jpg",
+          "productPrice": 9400000,
+          "productQty": 1,
+          "id": 5
+        },
+        {
+          "userID": 2,
+          "username": "thegoat44",
+          "productID": 41,
+          "productName": "Sapphire NITRO+ AMD Radeon™ RX 6800 XT",
+          "productImage": "https://media.cdn.sapphiretech.com.cn/-/media/sites/sapphire/pim/product-images/11304_02_rx6800xt_nitro_16ggddr6/11304_02_rx6800xt_nitro_16gbgddr6_c01_800x500.ashx?v=a1e745aa01944b95b3d432eb6258ed8a",
+          "productPrice": 22300000,
+          "productQty": 1,
+          "id": 6
         }
       ],
-      "totalPrice": 7020000,
-      "totalPayment": 7020000,
-      "id": 5
+      "orderTotal": 60100000,
+      "orderTax": 3005000,
+      "orderShippingCost": "Free",
+      "totalPrice": 63105000,
+      "totalPayment": 63200000,
+      "id": 2
     }
   ],
   "carts": [
     {
-      "userID": 2,
-      "username": "thegoat44",
-      "productID": 5,
-      "productName": "Asus R.O.G. Maximus Z690 APEX",
-      "productImage": "https://dlcdnwebimgs.asus.com/gain/385EC9B8-4271-4E1C-BDF0-CC83039C9492/w717/h525",
-      "productPrice": 11700000,
-      "productQty": 1,
-      "id": 6
-    },
-    {
       "userID": 1,
       "username": "randhysatrio",
-      "productID": 48,
-      "productName": "Intel Core i7-12700KF",
-      "productImage": "https://c1.neweggimages.com/ProductImageCompressAll1280/19-118-343-05.jpg",
-      "productPrice": 6450000,
+      "productID": 61,
+      "productName": "GSKILL F5-6000U3636E16GX2-TZ5RK",
+      "productImage": "https://www.gskill.com/_upload/images/163600559710.png",
+      "productPrice": 6850000,
       "productQty": 1,
-      "id": 8
-    },
-    {
-      "userID": 2,
-      "username": "thegoat44",
-      "productID": 8,
-      "productName": "Asus ROG MAXIMUS Z690 EXTREME GLACIAL",
-      "productImage": "https://dlcdnwebimgs.asus.com/gain/A62B3DD1-3884-45BE-A81A-8E13D9CF0E26/w717/h525",
-      "productPrice": 34000000,
-      "productQty": 1,
-      "id": 9
+      "id": 3
     }
   ],
   "products": [
     {
       "id": 1,
-      "category": "Processor",
+      "category": "Motherboard",
       "name": "Asus ROG STRIX Z690-A GAMING WIFI",
       "image": "https://dlcdnwebimgs.asus.com/gain/CC82B2CA-3556-491B-936E-C46577251275/w717/h525",
       "description": "Intel® Z690, LGA 1700, ATX, PCIe® 5.0, 16+1 DrMos, DDR5, WiFi 6 (802.11ax)",

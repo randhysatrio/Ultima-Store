@@ -1,0 +1,14 @@
+.user-profile-page-header {
+  height: 3rem;
+  display: flex;
+  align-items: center;
+}
+
+.user-profile-page-header span {
+  font-weight: bold;
+  font-size: 1.8rem;
+  background: rgb(237, 228, 100);
+  background: linear-gradient(77deg, rgba(237, 228, 100, 1) 0%, rgba(240, 178, 178, 1) 81%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

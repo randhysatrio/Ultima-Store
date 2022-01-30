@@ -46,6 +46,7 @@ const Checkout = () => {
   const [errorFirstName, setErrorFirstName] = useState(false);
   const [errorLastName, setErrorLastName] = useState(false);
   const [errorEmail, setErrorEmail] = useState(false);
+  const [errorEmailInvalid, setErrorEmailInvalid] = useState(false);
   const [errorAddress, setErrorAddress] = useState(false);
   const [errorTelephone, setErrorTelephone] = useState(false);
   const [errorDeliveryOpt, setErrorDeliveryOpt] = useState(false);
@@ -142,7 +143,11 @@ const Checkout = () => {
   };
 
   const renderShippingCost = () => {
-    return renderTotal() * 0.03;
+    if (renderTotal() > 10000000) {
+      return 'Free';
+    } else {
+      return renderTotal() * 0.03;
+    }
   };
 
   const renderGrandTotal = () => {
@@ -157,6 +162,7 @@ const Checkout = () => {
     setErrorFirstName(false);
     setErrorLastName(false);
     setErrorEmail(false);
+    setErrorEmailInvalid(false);
     setErrorAddress(false);
     setErrorTelephone(false);
     setErrorPaymentMethod(false);
@@ -176,7 +182,7 @@ const Checkout = () => {
     if (!checkoutState.email) {
       setErrorEmail(true);
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(checkoutState.email)) {
-      setErrorEmail(true);
+      setErrorEmailInvalid(true);
     }
 
     if (!checkoutState.address) {
@@ -201,32 +207,38 @@ const Checkout = () => {
   };
 
   const checkoutBtnHandler = () => {
+    errClear();
+    validator();
+
     const checkoutItemsList = checkoutItemID.map((id) => {
       return cartData.find((cart) => cart.id === id);
     });
 
-    if (!checkoutState.firstName || errorFirstName) {
+    if (!checkoutState.firstName) {
       return;
-    } else if (!checkoutState.lastName || errorLastName) {
+    } else if (!checkoutState.lastName) {
       return;
-    } else if (!checkoutState.email || errorEmail) {
+    } else if (!checkoutState.email) {
       return;
-    } else if (!checkoutState.address || errorAddress) {
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(checkoutState.email)) {
       return;
-    } else if (!checkoutState.telephone || errorTelephone) {
+    } else if (!checkoutState.address) {
       return;
-    } else if (!checkoutState.paymentMethod || errorPaymentMethod) {
+    } else if (!checkoutState.telephone) {
       return;
-    } else if (!checkoutState.deliveryOpt || errorDeliveryOpt) {
+    } else if (!checkoutState.paymentMethod) {
       return;
-    } else if (checkoutState.totalPayment < renderGrandTotal() || errorTotalPayment) {
+    } else if (!checkoutState.deliveryOpt) {
+      return;
+    } else if (checkoutState.totalPayment < renderGrandTotal()) {
       return;
     } else {
       Axios.post(`${API_URL}/transactions`, {
         userID: userData.id,
-        transactionDate: `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDay() + 1}--${d.getHours()}:${d.getMinutes()}.${d.getSeconds()}`,
         transactionYear: d.getFullYear(),
         transactionMonth: d.getMonth() + 1,
+        transactionDate: d.getDate(),
+        transactionTime: `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`,
         firstName: checkoutState.firstName,
         lastName: checkoutState.lastName,
         email: checkoutState.email,
@@ -235,6 +247,9 @@ const Checkout = () => {
         paymentMethod: checkoutState.paymentMethod,
         deliveryOpt: checkoutState.deliveryOpt,
         transactionItems: checkoutItemsList,
+        orderTotal: renderTotal(),
+        orderTax: renderTax(),
+        orderShippingCost: renderShippingCost(),
         totalPrice: renderGrandTotal(),
         totalPayment: parseInt(checkoutState.totalPayment),
       })
@@ -266,23 +281,23 @@ const Checkout = () => {
                         setThankyouMsg(true);
                         setTimeout(() => {
                           navigate(`/`, { replace: true });
-                        }, 5000);
+                        }, 4000);
                       })
                       .catch(() => {
-                        alert('Unable to get update cart data!');
+                        toast.error('Unable to update cart data!', { position: 'bottom-left', theme: 'colored' });
                       });
                   })
                   .catch(() => {
-                    alert('Unable to clear user checkout items!');
+                    toast.warn('Unable to clear user checkout items!', { position: 'bottom-left', theme: 'colored' });
                   });
               });
             })
             .catch(() => {
-              alert('Unable to clear cart');
+              toast.warn('Unable to clear cart', { position: 'bottom-left', theme: 'colored' });
             });
         })
         .catch(() => {
-          alert('Unable to process transaction');
+          toast.error('Unable to process transaction', { position: 'bottom-left', theme: 'colored' });
         });
     }
   };
@@ -359,6 +374,7 @@ const Checkout = () => {
                   <label htmlFor="email">Email:</label>
                   <input id="email" name="email" type="text" onChange={eventHandler} />
                   {errorEmail ? <div className="input-error-container">This field is required</div> : null}
+                  {errorEmailInvalid ? <div className="input-error-container">Please use a valid email address</div> : null}
                 </div>
                 <div className="bill-info-input-container">
                   <label htmlFor="email">Address:</label>
@@ -436,8 +452,6 @@ const Checkout = () => {
                 <div className="checkout-button-container">
                   <button
                     onClick={() => {
-                      errClear();
-                      validator();
                       checkoutBtnHandler();
                     }}
                   >

@@ -15,6 +15,8 @@ import AdminMain from './pages/AdminMain';
 import AdminProductsPage from './pages/AdminProductsPage';
 import AdminProductEdit from './pages/AdminProductEdit';
 import UserProfile from './pages/UserProfile';
+import UserProfileMain from './pages/UserProfileMain';
+import History from './pages/History';
 
 import Axios from 'axios';
 import { API_URL } from './assets/constants';
@@ -89,7 +91,10 @@ function App() {
           <Route path="AdminProductsPage" element={<AdminProductsPage />} />
           <Route path="AdminProductEdit" element={<AdminProductEdit />} />
         </Route>
-        <Route path="UserProfile" element={<UserProfile />} />
+        <Route path="UserProfile" element={<UserProfile />}>
+          <Route index element={<UserProfileMain />} />
+          <Route path="History" element={<History />} />
+        </Route>
       </Routes>
       <ToastContainer />
       <Footer />

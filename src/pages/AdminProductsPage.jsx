@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 
 const AdminProductsPage = () => {
   const [productList, setProductList] = useState([]);
+  const [filteredList, setFilteredList] = useState([]);
   const [searchWord, setSeachword] = useState('');
   const [sortVal, setSortVal] = useState('asc');
   const [category, setCategory] = useState('');
@@ -21,22 +22,9 @@ const AdminProductsPage = () => {
   const fetchProductData = () => {
     Axios.get(`${API_URL}/products`)
       .then((response) => {
-        let filteredData;
-        if (!category) {
-          filteredData = response.data.filter((data) => {
-            return (
-              data.name.toLowerCase().includes(searchWord.toLowerCase()) || data.category.toLowerCase().includes(searchWord.toLowerCase())
-            );
-          });
-        } else {
-          filteredData = response.data.filter((data) => {
-            return (
-              data.name.toLowerCase().includes(searchWord.toLowerCase()) && data.category.toLowerCase().includes(category.toLowerCase())
-            );
-          });
-        }
-        setProductList(filteredData);
-        setMaxPage(Math.ceil(filteredData.length / itemPerPage));
+        setProductList(response.data);
+        setFilteredList(response.data);
+        setMaxPage(Math.ceil(response.data.length / itemPerPage));
         setCurrentPage(1);
       })
       .catch(() => {
@@ -55,6 +43,18 @@ const AdminProductsPage = () => {
       });
   };
 
+  const filterHandler = () => {
+    const dataToRender = productList.filter((product) => {
+      return (
+        product.name.toLowerCase().includes(searchWord.toLowerCase()) && product.category.toLowerCase().includes(category.toLowerCase())
+      );
+    });
+
+    setFilteredList(dataToRender);
+    setMaxPage(Math.ceil(dataToRender.length / itemPerPage));
+    setCurrentPage(1);
+  };
+
   const renderProductData = () => {
     const sorter = (a, b) => {
       if (a < b) {
@@ -68,10 +68,10 @@ const AdminProductsPage = () => {
 
     switch (sortVal) {
       case 'asc':
-        productList.sort((a, b) => sorter(a.name, b.name));
+        filteredList.sort((a, b) => sorter(a.name, b.name));
         break;
       case 'dsc':
-        productList.sort((a, b) => sorter(b.name, a.name));
+        filteredList.sort((a, b) => sorter(b.name, a.name));
         break;
       default:
         break;
@@ -80,7 +80,7 @@ const AdminProductsPage = () => {
     const beginningIndex = (currentPage - 1) * itemPerPage;
     const finalIndex = beginningIndex + parseInt(itemPerPage);
 
-    const finalData = productList.slice(beginningIndex, finalIndex);
+    const finalData = filteredList.slice(beginningIndex, finalIndex);
 
     return finalData.map((product, index) => {
       return (
@@ -126,7 +126,11 @@ const AdminProductsPage = () => {
 
   useEffect(() => {
     fetchProductData();
-  }, [searchWord, category]);
+  }, []);
+
+  useEffect(() => {
+    filterHandler();
+  }, [category, searchWord]);
 
   return (
     <div className="admin-products-page-body">
@@ -139,7 +143,7 @@ const AdminProductsPage = () => {
             <input
               id="search-input"
               type="text"
-              placeholder="Search Products..."
+              placeholder="Search Product Name..."
               name="searchWord"
               onChange={(e) => {
                 setSeachword(e.target.value);
@@ -152,30 +156,30 @@ const AdminProductsPage = () => {
             </label>
             <select
               id="category"
-              onChange={(e) => {
+              onClick={(e) => {
                 setCategory(e.target.value);
               }}
             >
-              <option className="cat-options " value="">
+              <option className="cat-options" value="">
                 All Category
               </option>
-              <option className="cat-options " value="Processor">
+              <option className="cat-options" value="Processor">
                 Processors
               </option>
-              <option className="cat-options " value="Motherboard">
+              <option className="cat-options" value="Motherboard">
                 Motherboard
               </option>
-              <option className="cat-options " value="Graphic Card">
+              <option className="cat-options" value="Graphic Card">
                 Graphics Card
               </option>
-              <option className="cat-options " value="Memory">
+              <option className="cat-options" value="Memory">
                 Memory
               </option>
             </select>
           </div>
           <div className="admin-filter-container">
             <label htmlFor="sort" className="filter-label-text">
-              Sort by:
+              Sort:
             </label>
             <select
               id="sort"
@@ -199,7 +203,7 @@ const AdminProductsPage = () => {
               id="sort"
               onChange={(e) => {
                 setItemPerPage(e.target.value);
-                setMaxPage(Math.ceil(productList.length / e.target.value));
+                setMaxPage(Math.ceil(filteredList.length / e.target.value));
                 setCurrentPage(1);
               }}
             >
@@ -212,7 +216,7 @@ const AdminProductsPage = () => {
               <option className="cat-options" value={60}>
                 60
               </option>
-              <option className="cat-options" value={productList.length}>
+              <option className="cat-options" value={filteredList.length}>
                 All
               </option>
             </select>

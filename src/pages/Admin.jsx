@@ -29,7 +29,7 @@ const Admin = () => {
         >
           Manage Products
         </NavLink>
-        <NavLink to="/" className="sidebarLink mt-auto mb-2">
+        <NavLink to="/" className="back-to-home-button">
           Back to Home
         </NavLink>
       </div>
