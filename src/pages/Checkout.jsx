@@ -24,6 +24,7 @@ import Axios from 'axios';
 import { API_URL } from '../assets/constants';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
+import Switch from 'react-switch';
 
 const Checkout = () => {
   const userData = JSON.parse(localStorage.getItem('emmerceData'));
@@ -43,6 +44,7 @@ const Checkout = () => {
     deliveryOpt: '',
     totalPayment: 0,
   });
+  const [checkoutPreference, setCheckoutPreference] = useState(false);
   const [errorFirstName, setErrorFirstName] = useState(false);
   const [errorLastName, setErrorLastName] = useState(false);
   const [errorEmail, setErrorEmail] = useState(false);
@@ -77,6 +79,16 @@ const Checkout = () => {
           },
         })
           .then((response) => {
+            if (response.data[0].checkoutDataPref) {
+              setCheckoutState({
+                ...checkoutState,
+                firstName: response.data[0].firstname,
+                lastName: response.data[0].lastname,
+                email: response.data[0].email,
+                address: response.data[0].address,
+                telephone: response.data[0].telephone,
+              });
+            }
             setCheckoutItemID(response.data[0].checkoutItems);
           })
           .catch(() => {
@@ -117,7 +129,7 @@ const Checkout = () => {
             <div className="item-details-subtext mb-2">
               <span>Subtotal:</span>
             </div>
-            <span className="ms-auto">Rp. {(data.productQty * data.productPrice).toLocaleString()}</span>
+            <span className="ms-auto mb-2">Rp. {(data.productQty * data.productPrice).toLocaleString()}</span>
           </div>
         </div>
       );
@@ -257,44 +269,66 @@ const Checkout = () => {
           const endpoints = checkoutItemID.map((data) => {
             return Axios.delete(`${API_URL}/carts/${data}`);
           });
-          Axios.all(endpoints)
-            .then(() => {
-              Axios.get(`${API_URL}/users`, {
-                params: {
-                  id: userData.id,
-                },
+          Axios.all(endpoints).then(() => {
+            if (checkoutPreference) {
+              Axios.patch(`${API_URL}/users/${userData.id}`, {
+                telephone: checkoutState.telephone,
+                address: checkoutState.address,
+                checkoutDataPref: checkoutPreference,
+                checkoutItems: [],
               }).then((response) => {
-                Axios.patch(`${API_URL}/users/${response.data[0].id}`, {
-                  checkoutItems: [],
+                localStorage.setItem('emmerceData', JSON.stringify(response.data));
+
+                Axios.get(`${API_URL}/carts`, {
+                  params: {
+                    userID: userData.id,
+                  },
                 })
-                  .then(() => {
-                    Axios.get(`${API_URL}/carts`, {
-                      params: {
-                        userID: userData.id,
-                      },
-                    })
-                      .then((response) => {
-                        dispatch({
-                          type: 'FILL_CART',
-                          payload: response.data,
-                        });
-                        setThankyouMsg(true);
-                        setTimeout(() => {
-                          navigate(`/`, { replace: true });
-                        }, 4000);
-                      })
-                      .catch(() => {
-                        toast.error('Unable to update cart data!', { position: 'bottom-left', theme: 'colored' });
-                      });
+                  .then((response) => {
+                    dispatch({
+                      type: 'FILL_CART',
+                      payload: response.data,
+                    });
+                    setThankyouMsg(true);
+                    document.body.scrollIntoView();
+                    setTimeout(() => {
+                      navigate(`/`, { replace: true });
+                    }, 4000);
                   })
                   .catch(() => {
-                    toast.warn('Unable to clear user checkout items!', { position: 'bottom-left', theme: 'colored' });
+                    toast.error('Unable to update cart data!', { position: 'bottom-left', theme: 'colored' });
                   });
               });
-            })
-            .catch(() => {
-              toast.warn('Unable to clear cart', { position: 'bottom-left', theme: 'colored' });
-            });
+            } else {
+              Axios.patch(`${API_URL}/users/${userData.id}`, {
+                checkoutItems: [],
+              })
+                .then(() => {
+                  Axios.get(`${API_URL}/carts`, {
+                    params: {
+                      userID: userData.id,
+                    },
+                  })
+                    .then((response) => {
+                      dispatch({
+                        type: 'FILL_CART',
+                        payload: response.data,
+                      });
+                      setThankyouMsg(true);
+                      document.body.scrollIntoView();
+                      setTimeout(() => {
+                        navigate(`/`, { replace: true });
+                      }, 4000);
+                    })
+                    .catch(() => {
+                      toast.error('Unable to update cart data!', { position: 'bottom-left', theme: 'colored' });
+                    });
+                })
+                .catch(() => {
+                  toast.warn('Unable to clear user checkout items!', { position: 'bottom-left', theme: 'colored' });
+                });
+            }
+          });
         })
         .catch(() => {
           toast.error('Unable to process transaction', { position: 'bottom-left', theme: 'colored' });
@@ -360,30 +394,45 @@ const Checkout = () => {
                 <span>Shipping Info</span>
               </div>
               <div className="checkout-billinginfo-container">
+                {userData.checkoutDataPref ? null : (
+                  <div className="checkout-info-prompt-container">
+                    <span>Use this form as your default checkout info?</span>
+                    <Switch
+                      handleDiameter={18}
+                      height={20}
+                      width={40}
+                      checked={checkoutPreference}
+                      onChange={() => {
+                        setCheckoutPreference(!checkoutPreference);
+                      }}
+                    />
+                  </div>
+                )}
+
                 <div className="bill-info-input-container">
                   <label htmlFor="firstName">First Name:</label>
-                  <input id="firstName" name="firstName" type="text" onChange={eventHandler} />
+                  <input id="firstName" name="firstName" type="text" value={checkoutState.firstName} onChange={eventHandler} />
                   {errorFirstName ? <div className="input-error-container">This field is required</div> : null}
                 </div>
                 <div className="bill-info-input-container">
                   <label htmlFor="lastName">Last Name:</label>
-                  <input id="lastName" name="lastName" type="text" onChange={eventHandler} />
+                  <input id="lastName" name="lastName" type="text" value={checkoutState.lastName} onChange={eventHandler} />
                   {errorLastName ? <div className="input-error-container">This field is required</div> : null}
                 </div>
                 <div className="bill-info-input-container">
                   <label htmlFor="email">Email:</label>
-                  <input id="email" name="email" type="text" onChange={eventHandler} />
+                  <input id="email" name="email" type="text" value={checkoutState.email} onChange={eventHandler} />
                   {errorEmail ? <div className="input-error-container">This field is required</div> : null}
                   {errorEmailInvalid ? <div className="input-error-container">Please use a valid email address</div> : null}
                 </div>
                 <div className="bill-info-input-container">
                   <label htmlFor="email">Address:</label>
-                  <input id="address" name="address" type="text" onChange={eventHandler} />
+                  <input id="address" name="address" type="text" value={checkoutState.address} onChange={eventHandler} />
                   {errorAddress ? <div className="input-error-container">This field is required</div> : null}
                 </div>
                 <div className="bill-info-input-container">
                   <label htmlFor="telephone">Telephone:</label>
-                  <input id="telephone" name="telephone" type="tel" onChange={eventHandler} />
+                  <input id="telephone" name="telephone" type="tel" value={checkoutState.telephone} onChange={eventHandler} />
                   {errorTelephone ? <div className="input-error-container">This field is required</div> : null}
                 </div>
                 <div className="bill-info-bottom-select-container">

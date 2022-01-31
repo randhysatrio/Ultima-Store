@@ -16,6 +16,12 @@ const Register = () => {
     username: '',
     email: '',
     password: '',
+    telephone: '',
+    address: '',
+    profilePic: 'https://www.nicepng.com/png/full/128-1280406_view-user-icon-png-user-circle-icon-png.png',
+    fullnamePref: false,
+    checkoutDataPref: false,
+    checkoutItems: [],
     role: 'user',
   });
 

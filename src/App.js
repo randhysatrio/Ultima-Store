@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ScrollToTop from './components/ScrollToTop';
 import MyNavbar from './components/MyNavbar';
 import Home from './pages/Home';
 import Login from './pages/auth/Login';
@@ -77,6 +78,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <MyNavbar />
       <Routes>
         <Route path="/" element={<Home />} />

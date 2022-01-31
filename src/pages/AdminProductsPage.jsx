@@ -239,6 +239,7 @@ const AdminProductsPage = () => {
               if (currentPage > 1) {
                 setCurrentPage(currentPage - 1);
               }
+              document.body.scrollIntoView();
             }}
             disabled={currentPage === 1}
           >
@@ -252,6 +253,7 @@ const AdminProductsPage = () => {
               if (currentPage < maxPage) {
                 setCurrentPage(currentPage + 1);
               }
+              document.body.scrollIntoView();
             }}
             disabled={currentPage === maxPage}
           >

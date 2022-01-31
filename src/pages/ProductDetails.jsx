@@ -123,12 +123,6 @@ const ProductDetails = () => {
       });
   };
 
-  // inputTypeHandler = (e) => {
-  //   if (!e.target.value.matches('^[0-9]*$')) {
-  //     toast.warn('Please put numbers instead of characters!');
-  //   }
-  // };
-
   useEffect(() => {
     fetchProductData();
   }, []);
@@ -159,7 +153,7 @@ const ProductDetails = () => {
                 <div className="product-metadata">
                   <MdOutlineRecommend />
                   <AiFillStar />
-                  <text>Store Recommended</text>
+                  <text>ULTIMA Recommend</text>
                 </div>
               ) : null}
               <div className="product-metadata">
@@ -169,7 +163,7 @@ const ProductDetails = () => {
             </div>
           </div>
           <div className="product-details-action">
-            <div className="button-container">
+            <div className="product-details-button-container">
               <button
                 className="btn-plus"
                 onClick={() => {

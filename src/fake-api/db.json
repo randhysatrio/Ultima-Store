@@ -6,21 +6,46 @@
       "username": "randhysatrio",
       "email": "randhysatrio@gmail.com",
       "password": "123456",
+      "telephone": "081294203353",
+      "address": "Jl. Deplu Raya No.18 Bintaro, Pesanggrahan, Jak-Sel",
+      "profilePic": "https://www.sportscasting.com/wp-content/uploads/2021/11/thumbs-up-1024x683.jpg",
+      "fullnamePref": true,
+      "checkoutDataPref": false,
       "role": "admin",
       "id": 1,
-      "checkoutItems": [
-        3
-      ]
+      "checkoutItems": []
     },
     {
       "firstname": "Lewis",
       "lastname": "Hamilton",
-      "username": "thegoat44",
+      "username": "Ham44",
       "email": "lewis@amg.com",
       "password": "123456",
+      "telephone": "99944999",
+      "address": "Monaco",
+      "profilePic": "https://www4.pictures.zimbio.com/gi/Lewis+Hamilton+F1+Grand+Prix+Brazil+7yfnOepv7YRx.jpg",
+      "fullnamePref": false,
+      "checkoutDataPref": true,
       "role": "user",
       "id": 2,
-      "checkoutItems": []
+      "checkoutItems": [
+        4
+      ]
+    },
+    {
+      "firstname": "Steve",
+      "lastname": "Jobs",
+      "username": "appleguy",
+      "email": "steve@apple.com",
+      "password": "123456",
+      "telephone": "1231231",
+      "address": "Cupertino, CA. USA",
+      "profilePic": "https://www.nicepng.com/png/full/128-1280406_view-user-icon-png-user-circle-icon-png.png",
+      "fullnamePref": false,
+      "checkoutDataPref": false,
+      "checkoutItems": [],
+      "role": "user",
+      "id": 3
     }
   ],
   "transactions": [
@@ -117,6 +142,250 @@
       "totalPrice": 63105000,
       "totalPayment": 63200000,
       "id": 2
+    },
+    {
+      "userID": 3,
+      "transactionYear": 2022,
+      "transactionMonth": 1,
+      "transactionDate": 31,
+      "transactionTime": "18:3:15",
+      "firstName": "Steve",
+      "lastName": "Jobs",
+      "email": "steve@apple.com",
+      "address": "Cupertino, CA. USA",
+      "telephone": "12312321",
+      "paymentMethod": "applepay",
+      "deliveryOpt": "usps",
+      "transactionItems": [
+        {
+          "userID": 3,
+          "username": "appleguy",
+          "productID": 8,
+          "productName": "Asus ROG MAXIMUS Z690 EXTREME GLACIAL",
+          "productImage": "https://dlcdnwebimgs.asus.com/gain/A62B3DD1-3884-45BE-A81A-8E13D9CF0E26/w717/h525",
+          "productPrice": 34000000,
+          "productQty": 1,
+          "id": 4
+        },
+        {
+          "userID": 3,
+          "username": "appleguy",
+          "productID": 24,
+          "productName": "ZOTAC GAMING GeForce RTX 3090 Trinity OC",
+          "productImage": "https://www.zotac.com/download/files/styles/w1024/public/product_gallery/graphics_cards/zt-a30900j-10p-image01.jpg?itok=6oHEY1qn",
+          "productPrice": 39700000,
+          "productQty": 1,
+          "id": 5
+        }
+      ],
+      "orderTotal": 73700000,
+      "orderTax": 3685000,
+      "orderShippingCost": "Free",
+      "totalPrice": 77385000,
+      "totalPayment": 77400000,
+      "id": 3
+    },
+    {
+      "userID": 2,
+      "transactionYear": 2022,
+      "transactionMonth": 1,
+      "transactionDate": 31,
+      "transactionTime": "19:3:5",
+      "firstName": "Lewis",
+      "lastName": "Hamilton",
+      "email": "lewis@amg.com",
+      "address": "Monaco baby",
+      "telephone": "1234123",
+      "paymentMethod": "bank",
+      "deliveryOpt": "dhl",
+      "transactionItems": [
+        {
+          "userID": 2,
+          "username": "Ham44",
+          "productID": 45,
+          "productName": "PowerColor Red Devil AMD Radeon™ RX 6900 XT",
+          "productImage": "https://www.powercolor.com/_upload/images//2012071505360.png",
+          "productPrice": 27270000,
+          "productQty": 1,
+          "id": 6
+        }
+      ],
+      "orderTotal": 27270000,
+      "orderTax": 1363500,
+      "orderShippingCost": "Free",
+      "totalPrice": 28633500,
+      "totalPayment": 28650000,
+      "id": 4
+    },
+    {
+      "userID": 2,
+      "transactionYear": 2022,
+      "transactionMonth": 1,
+      "transactionDate": 31,
+      "transactionTime": "19:31:31",
+      "firstName": "Lewis",
+      "lastName": "Hamilton",
+      "email": "lewis@amg.com",
+      "address": "Monaco",
+      "telephone": "123123123",
+      "paymentMethod": "applepay",
+      "deliveryOpt": "dhl",
+      "transactionItems": [
+        {
+          "userID": 2,
+          "username": "Ham44",
+          "productID": 5,
+          "productName": "Asus R.O.G. Maximus Z690 APEX",
+          "productImage": "https://dlcdnwebimgs.asus.com/gain/385EC9B8-4271-4E1C-BDF0-CC83039C9492/w717/h525",
+          "productPrice": 11700000,
+          "productQty": 1,
+          "id": 4
+        },
+        {
+          "userID": 2,
+          "username": "Ham44",
+          "productID": 24,
+          "productName": "ZOTAC GAMING GeForce RTX 3090 Trinity OC",
+          "productImage": "https://www.zotac.com/download/files/styles/w1024/public/product_gallery/graphics_cards/zt-a30900j-10p-image01.jpg?itok=6oHEY1qn",
+          "productPrice": 39700000,
+          "productQty": 2,
+          "id": 5
+        }
+      ],
+      "orderTotal": 91100000,
+      "orderTax": 4555000,
+      "orderShippingCost": "Free",
+      "totalPrice": 95655000,
+      "totalPayment": 95660000,
+      "id": 5
+    },
+    {
+      "userID": 2,
+      "transactionYear": 2022,
+      "transactionMonth": 1,
+      "transactionDate": 31,
+      "transactionTime": "20:7:42",
+      "firstName": "Lewis",
+      "lastName": "Hamilton",
+      "email": "lewis@amg.com",
+      "address": "United Kingdom",
+      "telephone": "99944999",
+      "paymentMethod": "visa",
+      "deliveryOpt": "ups",
+      "transactionItems": [
+        {
+          "userID": 2,
+          "username": "Ham44",
+          "productID": 48,
+          "productName": "Intel Core i7-12700KF",
+          "productImage": "https://c1.neweggimages.com/ProductImageCompressAll1280/19-118-343-05.jpg",
+          "productPrice": 6450000,
+          "productQty": 1,
+          "id": 4
+        }
+      ],
+      "orderTotal": 6450000,
+      "orderTax": 322500,
+      "orderShippingCost": 193500,
+      "totalPrice": 6966000,
+      "totalPayment": 7000000,
+      "id": 6
+    },
+    {
+      "userID": 3,
+      "transactionYear": 2022,
+      "transactionMonth": 1,
+      "transactionDate": 31,
+      "transactionTime": "20:48:58",
+      "firstName": "Steve",
+      "lastName": "Jobs",
+      "email": "steve@apple.com",
+      "address": "Cupertino, CA. USA",
+      "telephone": "1231231",
+      "paymentMethod": "visa",
+      "deliveryOpt": "dhl",
+      "transactionItems": [
+        {
+          "userID": 3,
+          "username": "appleguy",
+          "productID": 1,
+          "productName": "Asus ROG STRIX Z690-A GAMING WIFI",
+          "productImage": "https://dlcdnwebimgs.asus.com/gain/CC82B2CA-3556-491B-936E-C46577251275/w717/h525",
+          "productPrice": 5950000,
+          "productQty": 1,
+          "id": 5
+        }
+      ],
+      "orderTotal": 5950000,
+      "orderTax": 297500,
+      "orderShippingCost": 178500,
+      "totalPrice": 6426000,
+      "totalPayment": 6430002,
+      "id": 7
+    },
+    {
+      "userID": 3,
+      "transactionYear": 2022,
+      "transactionMonth": 1,
+      "transactionDate": 31,
+      "transactionTime": "20:56:56",
+      "firstName": "Steve",
+      "lastName": "Jobs",
+      "email": "steve@apple.com",
+      "address": "Cupertino, CA. USA",
+      "telephone": "1231231",
+      "paymentMethod": "visa",
+      "deliveryOpt": "ups",
+      "transactionItems": [
+        {
+          "userID": 3,
+          "username": "appleguy",
+          "productID": 2,
+          "productName": "Asus ROG STRIX Z690-A GAMING WIFI D4",
+          "productImage": "https://dlcdnwebimgs.asus.com/gain/CC82B2CA-3556-491B-936E-C46577251275/w717/h525",
+          "productPrice": 5550000,
+          "productQty": 1,
+          "id": 5
+        }
+      ],
+      "orderTotal": 5550000,
+      "orderTax": 277500,
+      "orderShippingCost": 166500,
+      "totalPrice": 5994000,
+      "totalPayment": 6000000,
+      "id": 8
+    },
+    {
+      "userID": 3,
+      "transactionYear": 2022,
+      "transactionMonth": 1,
+      "transactionDate": 31,
+      "transactionTime": "20:59:1",
+      "firstName": "Steve",
+      "lastName": "Jobs",
+      "email": "steve@apple.com",
+      "address": "Cupertino, CA. USA",
+      "telephone": "1231231",
+      "paymentMethod": "applepay",
+      "deliveryOpt": "ups",
+      "transactionItems": [
+        {
+          "userID": 3,
+          "username": "appleguy",
+          "productID": 3,
+          "productName": "Asus ROG STRIX B660-G GAMING WIFI",
+          "productImage": "https://dlcdnwebimgs.asus.com/gain/532DFE20-82F0-43F5-82CE-7E40D7AD7D5A/w717/h525",
+          "productPrice": 4110000,
+          "productQty": 1,
+          "id": 5
+        }
+      ],
+      "orderTotal": 4110000,
+      "orderTax": 205500,
+      "orderShippingCost": 123300,
+      "totalPrice": 4438800,
+      "totalPayment": 4440000,
+      "id": 9
     }
   ],
   "carts": [
@@ -129,6 +398,16 @@
       "productPrice": 6850000,
       "productQty": 1,
       "id": 3
+    },
+    {
+      "userID": 2,
+      "username": "Ham44",
+      "productID": 8,
+      "productName": "Asus ROG MAXIMUS Z690 EXTREME GLACIAL",
+      "productImage": "https://dlcdnwebimgs.asus.com/gain/A62B3DD1-3884-45BE-A81A-8E13D9CF0E26/w717/h525",
+      "productPrice": 34000000,
+      "productQty": 1,
+      "id": 4
     }
   ],
   "products": [

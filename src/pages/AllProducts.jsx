@@ -129,12 +129,14 @@ const AllProducts = () => {
     if (page > 1) {
       setPage(page - 1);
     }
+    document.body.scrollIntoView();
   };
 
   const nextPageHandler = () => {
     if (page < maxPage) {
       setPage(page + 1);
     }
+    document.body.scrollIntoView();
   };
 
   const categoryBtnHandler = (val) => {

@@ -73,7 +73,11 @@ const MyNavbar = () => {
             </Button>
           </Form>
           <Nav>
-            <NavDropdown title={`Hello, ${userGlobal.username}!`} id="basic-nav-dropdown" variant="dark">
+            <NavDropdown
+              title={userGlobal.fullnamePref ? `Hello, ${userGlobal.firstname} ${userGlobal.lastname}!` : `Hello, ${userGlobal.username}!`}
+              id="basic-nav-dropdown"
+              variant="dark"
+            >
               <NavDropdown.Item
                 onClick={() => {
                   navigateTo('Cart');

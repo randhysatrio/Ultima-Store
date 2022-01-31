@@ -84,9 +84,9 @@
   padding: 0.1rem 0.5rem;
   border-radius: 5px;
   color: rgb(255, 255, 255);
-  box-shadow: 2px 3px 119px 14px rgba(148, 147, 147, 0.34);
-  -webkit-box-shadow: 2px 3px 119px 14px rgba(148, 147, 147, 0.34);
-  -moz-box-shadow: 2px 3px 119px 14px rgba(148, 147, 147, 0.34);
+  -webkit-box-shadow: inset 0px 0px 40px 1px rgba(0, 0, 0, 0.22);
+  box-shadow: inset 0px 0px 40px 1px rgba(0, 0, 0, 0.22);
+  filter: drop-shadow(0px 0px 3px #686868);
 }
 
 .items-card-header .shipping {
@@ -98,7 +98,8 @@
 }
 
 .items-card-header .new {
-  background: linear-gradient(15deg, rgba(193, 190, 115, 1), rgba(99, 110, 164, 1));
+  background: rgb(110, 232, 98);
+  background: linear-gradient(56deg, rgba(110, 232, 98, 1) 0%, rgba(201, 111, 103, 1) 81%);
 }
 
 .items-card-image {

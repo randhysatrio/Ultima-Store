@@ -1,8 +1,16 @@
 const init_state = {
   id: 0,
-  username: '',
   firstname: '',
   lastname: '',
+  username: '',
+  email: '',
+  password: '',
+  telephone: '',
+  address: '',
+  profilePic: '',
+  fullnamePref: false,
+  checkoutDataPref: false,
+  checkoutItems: [],
   role: '',
 };
 

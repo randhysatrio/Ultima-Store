@@ -149,7 +149,7 @@
   border-bottom-right-radius: 1rem;
 }
 
-.button-container {
+.product-details-button-container {
   height: 45%;
   display: flex;
   justify-content: center;
@@ -163,10 +163,10 @@
   align-items: center;
   height: 2rem;
   width: 2rem;
+  border-radius: 1rem;
   border: none;
   outline: none;
   text-align: center;
-  border-radius: 1rem;
   color: white;
   background: linear-gradient(30deg, rgba(144, 144, 144, 1), rgba(91, 91, 91, 1));
   transition: all ease 150ms;
