@@ -10,6 +10,7 @@ import { useNavigate, Link } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
 import { IoMdClose, IoMdCheckmark } from 'react-icons/io';
+import { FcCheckmark } from 'react-icons/fc';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
@@ -17,10 +18,15 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 
 const Cart = () => {
   const userData = JSON.parse(localStorage.getItem('emmerceData'));
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [cartList, setCartList] = useState([]);
   const [initialCheckoutData, setInitialCheckoutData] = useState([]);
   const [toCheckout, setToCheckout] = useState([]);
-  const navigate = useNavigate();
+  const [cartItemProductData, setCartItemProductData] = useState([]);
+  const [cartItemAvailableStock, setCartItemAvailableStock] = useState([]);
+  const [cartItemAvailability, setCartItemAvailability] = useState([]);
+  const [checkoutErrorInfo, setCheckoutErrorInfo] = useState(false);
 
   const notify = (val, msg) => {
     if (val === 'ok') {
@@ -72,18 +78,104 @@ const Cart = () => {
       },
     })
       .then((response) => {
-        setCartList(response.data);
+        const currentCart = response.data;
 
-        Axios.get(`${API_URL}/users/`, {
-          params: {
-            id: userData.id,
-          },
-        })
+        setCartList(currentCart);
+
+        const cartProductID = currentCart.map((data) => {
+          return data.productID;
+        });
+
+        const endpoints = cartProductID.map((id) => {
+          return Axios.get(`${API_URL}/products/${id}`);
+        });
+
+        Axios.all(endpoints)
           .then((response) => {
-            setInitialCheckoutData(response.data[0].checkoutItems);
+            const cartListProductData = response;
+
+            setCartItemProductData(cartListProductData);
+
+            const currentCartItemStock = cartListProductData.map((item) => {
+              return item.data.stock;
+            });
+
+            setCartItemAvailableStock(currentCartItemStock);
+
+            const currentCartItemAvailability = cartListProductData.map((item) => {
+              return item.data.available;
+            });
+
+            setCartItemAvailability(currentCartItemAvailability);
+
+            Axios.get(`${API_URL}/users/`, {
+              params: {
+                id: userData.id,
+              },
+            })
+              .then((response) => {
+                const checkoutItemsID = response.data[0].checkoutItems;
+
+                console.log(checkoutItemsID);
+
+                setInitialCheckoutData(checkoutItemsID);
+
+                if (checkoutItemsID.length) {
+                  const checkoutItemsData = cartProductID.map((itemID) => {
+                    return currentCart.find((cartItem) => cartItem.productID == itemID);
+                  });
+
+                  const checkoutItemsQty = checkoutItemsData.map((item) => {
+                    return item.productQty;
+                  });
+
+                  const stockComparator = checkoutItemsQty.filter((itemQty, index) => {
+                    return itemQty > currentCartItemStock[index];
+                  });
+
+                  const checkoutItemsProductData = checkoutItemsID.map((id) => {
+                    return currentCart.find((cartItem) => cartItem.id === id);
+                  });
+
+                  const checkoutItemsProductID = checkoutItemsData.map((data) => {
+                    return data.productID;
+                  });
+
+                  const checkoutItemsProductIDData = checkoutItemsProductID.map((id) => {
+                    return cartListProductData.find((cartItem) => cartItem.data.id === id);
+                  });
+
+                  const checkoutItemsIDAvailability = checkoutItemsProductIDData.filter((itemData) => {
+                    return !itemData.data.available;
+                  });
+
+                  console.log(checkoutItemsIDAvailability);
+
+                  if (stockComparator.length || checkoutItemsIDAvailability.length) {
+                    Axios.patch(`${API_URL}/users/${userData.id}`, {
+                      checkoutItems: [],
+                    })
+                      .then(() => {
+                        setInitialCheckoutData([]);
+                        setCheckoutErrorInfo(true);
+                      })
+                      .catch(() => {
+                        toast.error('Unable to clear checkout items due to item(s) unavailability', {
+                          position: 'bottom-left',
+                          theme: 'colored',
+                        });
+                      });
+                  } else {
+                    return;
+                  }
+                }
+              })
+              .catch(() => {
+                toast.warn('Unable to get user checkout items data', { position: 'bottom-left', theme: 'colored' });
+              });
           })
           .catch(() => {
-            toast.warn('Unable to get user checkout items data', { position: 'bottom-left', theme: 'colored' });
+            toast.warn('Unable to get cart product data!', { position: 'bottom-left', theme: 'colored' });
           });
       })
       .catch(() => {
@@ -91,100 +183,199 @@ const Cart = () => {
       });
   };
 
-  const qtyBtnHandler = (val, key) => {
-    Axios.get(`${API_URL}/carts`, {
+  const qtyBtnHandler = (val, cartID, productID, productQty) => {
+    Axios.get(`${API_URL}/products`, {
       params: {
-        id: key,
+        id: productID,
       },
-    })
-      .then((response) => {
-        if (val === 'plus') {
-          Axios.patch(`${API_URL}/carts/${response.data[0].id}`, {
-            productQty: response.data[0].productQty + 1,
-          })
-            .then(() => {
-              fetchCartData();
-            })
-            .catch(() => {
-              notify('fail', 'Unable to add product quantity');
-            });
-        } else {
-          Axios.patch(`${API_URL}/carts/${response.data[0].id}`, {
-            productQty: response.data[0].productQty - 1,
-          })
-            .then(() => {
-              fetchCartData();
-            })
-            .catch(() => {
-              notify('fail', 'Unable to add product quantity');
-            });
-        }
+    }).then((response) => {
+      const currentStock = response.data[0].stock;
+      Axios.get(`${API_URL}/carts`, {
+        params: {
+          id: cartID,
+        },
       })
-      .catch(() => {
-        notify('fail', 'Unable to get product data');
-      });
-  };
+        .then((response) => {
+          if (val === 'plus') {
+            const newVal = parseInt(productQty + 1);
+            if (newVal <= currentStock) {
+              Axios.patch(`${API_URL}/carts/${response.data[0].id}`, {
+                productQty: response.data[0].productQty + 1,
+              })
+                .then(() => {
+                  fetchCartData();
+                })
+                .catch(() => {
+                  toast.error('Unable to update this product database quantity!', { position: 'bottom-left', theme: 'colored' });
+                });
+            } else {
+              toast.warn(`Maximum quantity reached!`, {
+                position: 'bottom-left',
+                theme: 'colored',
+              });
+            }
+          } else {
+            const newVal = parseInt(productQty - 1);
 
-  const inputTypeHandler = (e, val) => {
-    const amount = parseInt(e.target.value);
-    if (!amount) {
-      toast.warn('The minimun quantity you can put is 1', { position: 'bottom-left', theme: 'colored' });
-    } else {
-      Axios.patch(`${API_URL}/carts/${val}`, {
-        productQty: amount,
-      })
-        .then(() => {
-          fetchCartData();
+            if (newVal < currentStock) {
+              setCheckoutErrorInfo(false);
+            }
+            Axios.patch(`${API_URL}/carts/${response.data[0].id}`, {
+              productQty: response.data[0].productQty - 1,
+            })
+              .then(() => {
+                fetchCartData();
+              })
+              .catch(() => {
+                toast.error('Unable to update this product database quantity!', { position: 'bottom-left', theme: 'colored' });
+              });
+          }
         })
         .catch(() => {
-          toast.warn('Unable to update product quantity', { position: 'bottom-left', theme: 'colored' });
+          notify('fail', 'Unable to get product data');
+        });
+    });
+  };
+
+  const inputTypeHandler = (e, cartID, productID) => {
+    const amount = parseInt(e.target.value);
+    if (amount < 1) {
+      toast.warn('The minimun quantity you can put is 1', { position: 'bottom-left', theme: 'colored' });
+    } else {
+      Axios.get(`${API_URL}/products`, {
+        params: {
+          id: productID,
+        },
+      })
+        .then((response) => {
+          const currentStock = response.data[0].stock;
+          if (response.data[0].stock > amount) {
+            Axios.patch(`${API_URL}/carts/${cartID}`, {
+              productQty: amount,
+            })
+              .then(() => {
+                Axios.patch(`${API_URL}/products/${productID}`, {
+                  stock: currentStock - amount,
+                });
+                fetchCartData();
+              })
+              .catch(() => {
+                toast.warn('Unable to update product quantity', { position: 'bottom-left', theme: 'colored' });
+              });
+          } else {
+            toast.warn(`Cannot go more than the available stock quantity, which is ${response.data[0].stock}`, {
+              position: 'bottom-left',
+              theme: 'colored',
+            });
+          }
+        })
+        .catch(() => {
+          toast.error('Unable to get product data to update');
         });
     }
   };
 
-  const dispatch = useDispatch();
-  const deleteBtnHandler = (cartID) => {
+  const deleteBtnHandler = (cartID, productID, productQty) => {
     if (initialCheckoutData.includes(cartID)) {
       toast.warn('This item is currently in checkout, please continue this item checkout process', {
         position: 'bottom-left',
         theme: 'colored',
       });
     } else {
-      Axios.delete(`${API_URL}/carts/${cartID}`)
-        .then(() => {
-          Axios.get(`${API_URL}/carts`, {
-            params: {
-              userID: userData.id,
-            },
-          })
-            .then((response) => {
-              dispatch({
-                type: 'REMOVE_CART',
-                payload: response.data,
+      Axios.get(`${API_URL}/products`, {
+        params: {
+          id: productID,
+        },
+      })
+        .then((response) => {
+          Axios.patch(`${API_URL}/products/${response.data[0].id}`, {
+            stock: response.data[0].stock + productQty,
+          }).then(() => {
+            Axios.delete(`${API_URL}/carts/${cartID}`)
+              .then(() => {
+                Axios.get(`${API_URL}/carts`, {
+                  params: {
+                    userID: userData.id,
+                  },
+                })
+                  .then((response) => {
+                    dispatch({
+                      type: 'REMOVE_CART',
+                      payload: response.data,
+                    });
+                    notify('ok', 'Removed product from your cart!');
+                    fetchCartData();
+                  })
+                  .catch(() => {
+                    notify('fail', 'Unable to update cart data!');
+                  });
+              })
+              .catch(() => {
+                notify('fail', 'Failed to delete product from your cart!');
               });
-              notify('ok', 'Removed product from your cart!');
-              fetchCartData();
-            })
-            .catch(() => {
-              notify('fail', 'Unable to update cart data!');
-            });
+          });
         })
         .catch(() => {
-          notify('fail', 'Failed to delete product from your cart!');
+          toast.error('Unable to get product data!', { position: 'bottom-left', theme: 'colored' });
         });
     }
   };
 
   const proceedCheckoutHandler = () => {
-    Axios.patch(`${API_URL}/users/${userData.id}`, {
-      checkoutItems: toCheckout,
-    })
-      .then(() => {
-        navigate('/Checkout');
-      })
-      .catch(() => {
-        toast.error('Unable to proceed to checkout items!', { position: 'bottom-left', theme: 'colored' });
+    const toCheckoutItemData = toCheckout.map((id) => {
+      return cartList.find((cartItem) => {
+        return cartItem.id === id;
       });
+    });
+
+    console.log(toCheckoutItemData);
+
+    const toCheckoutItemQty = toCheckoutItemData.map((data) => {
+      return data.productQty;
+    });
+
+    console.log(toCheckoutItemQty);
+
+    const stockComparator = toCheckoutItemQty.filter((qty, index) => {
+      return qty > cartItemAvailableStock[index];
+    });
+
+    console.log(stockComparator);
+
+    const toCheckoutProductID = toCheckoutItemData.map((data) => {
+      return data.productID;
+    });
+
+    console.log(toCheckoutProductID);
+
+    const toCheckoutProductData = toCheckoutProductID.map((id, index) => {
+      return cartItemProductData.find((item) => {
+        return item.data.id === id;
+      });
+    });
+
+    console.log(toCheckoutProductData);
+
+    const toCheckoutProductAvailability = toCheckoutProductData.filter((item) => {
+      return !item.data.available;
+    });
+
+    if (stockComparator.length || toCheckoutProductAvailability.length) {
+      toast.warn('Please check one or more status of your checkout item(s)!', {
+        position: 'bottom-left',
+        theme: 'colored',
+      });
+    } else {
+      Axios.patch(`${API_URL}/users/${userData.id}`, {
+        checkoutItems: toCheckout,
+      })
+        .then(() => {
+          navigate('/Checkout');
+        })
+        .catch(() => {
+          toast.error('Unable to proceed to checkout page!', { position: 'bottom-left', theme: 'colored' });
+        });
+    }
   };
 
   const continueHandler = () => {
@@ -218,7 +409,13 @@ const Cart = () => {
       return (
         <div className="items-cart-container" key={cart.id}>
           <div className="items-container-header">
-            <text>Item Details:</text>
+            <span>Item Details:</span>
+            {!cartItemAvailability[index] ? <span className="quantity-error-message">(This item is currently unavailable)</span> : null}
+            {cart.productQty > cartItemAvailableStock[index] ? (
+              <span className="quantity-error-message">
+                (This item quantity exceeded the currently available stock: {cartItemAvailableStock[index]})
+              </span>
+            ) : null}
             <label htmlFor={cart.id}>Select Item</label>
             <input
               type="checkbox"
@@ -232,42 +429,50 @@ const Cart = () => {
           </div>
           <div className="items-container-content">
             <div className="items-content-image-container">
-              <text>{index + 1}.</text>
+              <span>{index + 1}.</span>
               <div className="image-container">
                 <img src={cart.productImage} />
               </div>
             </div>
             <div className="items-content-details-container">
-              <text
+              <span
                 className="items-content-name-header"
                 onClick={() => {
                   navigate(`/ProductDetails/${cart.productID}`);
                 }}
               >
                 {cart.productName}
-              </text>
-              <text>Rp. {cart.productPrice.toLocaleString()}</text>
+              </span>
+              <span>Rp. {cart.productPrice.toLocaleString()}</span>
             </div>
             <div className="items-content-qty-container">
               <button
                 onClick={() => {
-                  qtyBtnHandler('plus', cart.id);
+                  qtyBtnHandler('plus', cart.id, cart.productID, cart.productQty);
                 }}
               >
                 +
               </button>
               <div className="qty-container">
                 <input
-                  type="text"
+                  type="number"
                   value={cart.productQty}
+                  // onKeyDown={(e) => {
+                  //   const key = e.key;
+                  //   const val = e.target.value;
+
+                  //   if (key === 'Backspace') {
+                  //     console.log(`Jam${e.target.value}bu`);
+                  //   }
+                  // }}
                   onChange={(e) => {
-                    inputTypeHandler(e, cart.id);
+                    inputTypeHandler(e, cart.id, cart.productID);
                   }}
                 />
               </div>
               <button
                 onClick={() => {
-                  qtyBtnHandler('min', cart.id);
+                  qtyBtnHandler('min', cart.id, cart.productID);
                 }}
                 disabled={cart.productQty < 2}
               >
@@ -277,7 +482,7 @@ const Cart = () => {
             <div className="items-content-delete-container">
               <button
                 onClick={() => {
-                  deleteBtnHandler(cart.id);
+                  deleteBtnHandler(cart.id, cart.productID, cart.productQty);
                 }}
                 disabled={toCheckout.includes(cart.id)}
                 style={{ cursor: toCheckout.includes(cart.id) ? 'not-allowed' : 'pointer' }}
@@ -299,31 +504,31 @@ const Cart = () => {
     return productToRender.map((item, index) => {
       return (
         <div className="cart-transaction-list" key={item.id}>
-          <text>
+          <span>
             {index + 1}. {item.productName}
-          </text>
+          </span>
           <div className="cart-transaction-quantity-container">
             <div className="q1">
-              <text>Qty:</text>
+              <span>Qty:</span>
             </div>
             <div className="q2">
-              <text>{item.productQty}</text>
+              <span>{item.productQty}</span>
             </div>
           </div>
           <div className="cart-transaction-quantity-container">
             <div className="q1">
-              <text>Price:</text>
+              <span>Price:</span>
             </div>
             <div className="q2">
-              <text>Rp. {item.productPrice.toLocaleString()}</text>
+              <span>Rp. {item.productPrice.toLocaleString()}</span>
             </div>
           </div>
           <div className="cart-transaction-quantity-container top-border">
             <div className="q1">
-              <text>Subtotal:</text>
+              <span>Subtotal:</span>
             </div>
             <div className="q2">
-              <text>Rp. {(item.productQty * item.productPrice).toLocaleString()}</text>
+              <span>Rp. {(item.productQty * item.productPrice).toLocaleString()}</span>
             </div>
           </div>
         </div>
@@ -349,6 +554,8 @@ const Cart = () => {
     fetchCartData();
   }, []);
 
+  console.log(cartItemProductData);
+
   return (
     <div className="container">
       <div className="cart-page-header">
@@ -365,13 +572,29 @@ const Cart = () => {
             </span>
           </div>
         ) : null}
+        {checkoutErrorInfo ? (
+          <div className="cart-header-info-container-error">
+            <FiAlertTriangle />
+            <span className="error-subtext">
+              We couldn't continue your previous checkout process due to one or more item(s) unavailability
+            </span>
+            <span
+              className="error-ok"
+              onClick={() => {
+                setCheckoutErrorInfo(false);
+              }}
+            >
+              <FcCheckmark />
+            </span>
+          </div>
+        ) : null}
       </div>
       <div className="row">
         <div className="col-9">
           {cartList.length ? (
             <>
               <div className="cart-header-container">
-                <text className="cart-text-header">Item List(s)</text>
+                <span className="cart-text-header">Item List(s)</span>
                 <label htmlFor="select-all" className="cart-text-header select-all">
                   Select All Item(s)
                 </label>
@@ -382,39 +605,39 @@ const Cart = () => {
           ) : (
             <div className="empty-cart-content">
               <div className="empty-cart-container">
-                <text className="empty-cart-header">Your cart is still empty</text>
+                <span className="empty-cart-header">Your cart is still empty</span>
               </div>
               <div className="empty-cart-container">
-                <text
+                <span
                   className="empty-cart-link"
                   onClick={() => {
                     navigate('/AllProducts', { state: { passed_key: '' } });
                   }}
                 >
                   Browse All Products
-                </text>
+                </span>
               </div>
             </div>
           )}
         </div>
         <div className="col-3">
           <div className="cart-header-container-transaction">
-            <text className="cart-text-header">Transaction Details</text>
+            <span className="cart-text-header">Transaction Details</span>
           </div>
           <div className="cart-transaction-details-container">
             <div className="cart-transaction-content-container">
               <div className="cart-transaction-content-header">
-                <text>Summary</text>
+                <span>Summary</span>
               </div>
               <div className="cart-transaction-content-body py-2">
-                {toCheckout.length ? renderCartDetails() : <text className="mx-2">Please select item(s) from your cart</text>}
+                {toCheckout.length ? renderCartDetails() : <span className="mx-2">Please select item(s) from your cart</span>}
               </div>
               <div className="cart-transaction-quantity-container bigger">
                 <div className="q2">
-                  <text>Total:</text>
+                  <span>Total:</span>
                 </div>
                 <div className="q2 total">
-                  <text>{toCheckout.length ? `Rp. ${renderTotal().toLocaleString()}` : `-`}</text>
+                  <span>{toCheckout.length ? `Rp. ${renderTotal().toLocaleString()}` : `-`}</span>
                 </div>
               </div>
             </div>

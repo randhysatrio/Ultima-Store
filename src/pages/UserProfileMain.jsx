@@ -283,7 +283,7 @@ const UserProfileMain = () => {
           ) : null}
         </div>
         <div className="user-profile-detail-container">
-          <label htmlFor="firstName">First Name:</label>
+          {editMode ? <label htmlFor="firstName">First Name:*</label> : <label htmlFor="firstName">First Name:</label>}
           {editMode ? (
             <input
               id="firstName"
@@ -300,7 +300,7 @@ const UserProfileMain = () => {
           )}
         </div>
         <div className="user-profile-detail-container">
-          <label htmlFor="lastName">Last Name:</label>
+          {editMode ? <label htmlFor="lastName">Last Name:*</label> : <label htmlFor="lastName">Last Name:</label>}
           {editMode ? (
             <input
               id="lastName"
@@ -317,7 +317,7 @@ const UserProfileMain = () => {
           )}
         </div>
         <div className="user-profile-detail-container">
-          <label htmlFor="username">Username:</label>
+          {editMode ? <label htmlFor="username">Username:*</label> : <label htmlFor="username">Username:</label>}
           {editMode ? (
             <input
               id="username"
@@ -334,7 +334,7 @@ const UserProfileMain = () => {
           )}
         </div>
         <div className="user-profile-detail-container">
-          <label htmlFor="email">Email:</label>
+          {editMode ? <label htmlFor="email">Email:*</label> : <label htmlFor="email">Email:</label>}
           {editMode ? (
             <input
               id="email"
@@ -361,7 +361,7 @@ const UserProfileMain = () => {
               placeholder="Your telephone number here.."
             />
           ) : (
-            <span className="small-subtext">{telephone ? telephone : 'Please fill out your phone number'}</span>
+            <span className="small-subtext">{telephone ? telephone : 'Please fill out your phone number..'}</span>
           )}
         </div>
         <div className="user-profile-detail-container">
@@ -377,7 +377,7 @@ const UserProfileMain = () => {
               placeholder="Your address here.."
             />
           ) : (
-            <span className="small-subtext">{address ? address : 'Please fill out your address'}</span>
+            <span className="small-subtext">{address ? address : 'Please fill out your address..'}</span>
           )}
         </div>
         <span className="preference-header">Preference:</span>
@@ -402,9 +402,12 @@ const UserProfileMain = () => {
                 <Switch
                   checked={checkoutDataPref}
                   onChange={() => {
+                    setCheckoutDataPref(false);
+                    setCheckoutPrefError(false);
                     if (!firstname || !lastname || !username || !email || !telephone || !address) {
-                      setCheckoutPrefError(!checkoutPrefError);
-                    } else {
+                      setCheckoutPrefError(true);
+                    } else if (firstname && lastname && username && email && telephone && address) {
+                      setCheckoutPrefError(false);
                       setCheckoutDataPref(!checkoutDataPref);
                     }
                   }}
@@ -425,6 +428,7 @@ const UserProfileMain = () => {
                 className="edit-cancel-button"
                 onClick={() => {
                   setEditMode(!editMode);
+                  setCheckoutPrefError(false);
                   document.body.scrollIntoView();
                 }}
               >
@@ -433,6 +437,13 @@ const UserProfileMain = () => {
               <button
                 className="edit-save-button"
                 onClick={() => {
+                  if (!firstname || !lastname || !username || !email || !telephone || !address) {
+                    setCheckoutDataPref(false);
+                    Axios.patch(`${API_URL}/users/${userData.id}`, {
+                      checkoutDataPref: false,
+                    });
+                  }
+                  setCheckoutPrefError(false);
                   saveBtnHandler();
                 }}
               >

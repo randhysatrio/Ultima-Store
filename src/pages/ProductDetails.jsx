@@ -4,16 +4,17 @@ import '../assets/styles/ProductDetails.css';
 import { FaShippingFast } from 'react-icons/fa';
 import { AiFillStar } from 'react-icons/ai';
 import { GiDeliveryDrone } from 'react-icons/gi';
-import { MdOutlineRecommend } from 'react-icons/md';
+import { MdOutlineRecommend, MdOutlineSell } from 'react-icons/md';
 import { GoPlus } from 'react-icons/go';
 import { HiMinus } from 'react-icons/hi';
 import { RiArrowGoBackLine } from 'react-icons/ri';
+import { BsCartCheck } from 'react-icons/bs';
+import { toast } from 'react-toastify';
 
 import { useParams, useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 import { API_URL } from '../assets/constants';
 import { useDispatch, useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
 
 const ProductDetails = () => {
   const params = useParams();
@@ -32,7 +33,7 @@ const ProductDetails = () => {
         setProductData(response.data[0]);
       })
       .catch(() => {
-        alert('Unable to load product data');
+        toast.error('Unable to load product data', { position: 'bottom-left', theme: 'colored' });
       });
   };
 
@@ -76,7 +77,7 @@ const ProductDetails = () => {
         });
       })
       .catch(() => {
-        alert('Unable to update cart data');
+        toast.error('Unable to update cart data', { position: 'bottom-left', theme: 'colored' });
       });
   };
 
@@ -136,29 +137,35 @@ const ProductDetails = () => {
         <div className="product-details-content-container">
           <div className="product-details-info">
             <div className="product-title-container">
-              <text className="product-title">{productData.name}</text>
-              <text className="product-price">{productData.price ? `Rp. ${productData.price.toLocaleString('id')}` : null}</text>
+              <span className="product-title">{productData.name}</span>
+              <span className="product-price">{productData.price ? `Rp. ${productData.price.toLocaleString('id')}` : null}</span>
+              <div className="product-title-subtext-container">
+                <BsCartCheck style={{ marginRight: '0.2rem' }} />
+                <span className="product-stock me-3">{productData.stock} in stock</span>
+                <MdOutlineSell style={{ marginRight: '0.2rem' }} />
+                <span className="product-stock">{productData.sold} sold</span>
+              </div>
             </div>
             <div className="product-info-container">
-              <text className="product-info">{productData.description}</text>
+              <span className="product-info">{productData.description}</span>
             </div>
             <div className="product-metadata-container">
               {productData.price > 10000000 ? (
                 <div className="product-metadata free">
                   <FaShippingFast />
-                  <text>Free Shipping</text>
+                  <span>Free Shipping</span>
                 </div>
               ) : null}
               {productData.best ? (
                 <div className="product-metadata">
                   <MdOutlineRecommend />
                   <AiFillStar />
-                  <text>ULTIMA Recommend</text>
+                  <span>ULTIMA Recommend</span>
                 </div>
               ) : null}
               <div className="product-metadata">
                 <GiDeliveryDrone />
-                <text>Drone Delivery</text>
+                <span>Drone Delivery</span>
               </div>
             </div>
           </div>
@@ -167,7 +174,11 @@ const ProductDetails = () => {
               <button
                 className="btn-plus"
                 onClick={() => {
-                  setQty(qty + 1);
+                  if (qty < productData.stock) {
+                    setQty(qty + 1);
+                  } else {
+                    toast.warn('Maximum quantity reached!', { position: 'bottom-left', theme: 'colored' });
+                  }
                 }}
               >
                 <GoPlus />
@@ -180,6 +191,8 @@ const ProductDetails = () => {
                     const amount = parseInt(e.target.value);
                     if (amount < 1) {
                       toast.warn('The minimum amount is 1!', { position: 'bottom-left', theme: 'colored' });
+                    } else if (amount > productData.stock) {
+                      toast.warn('Cannot go above maximum stock quantity!', { position: 'bottom-left', theme: 'colored' });
                     } else {
                       setQty(amount);
                     }
@@ -225,6 +238,49 @@ const ProductDetails = () => {
         >
           <RiArrowGoBackLine /> Back
         </span>
+      </div>
+      <div className="product-details-review-section-container">
+        <div className="product-details-post-header">
+          <span>User Reviews</span>
+        </div>
+        <div className="product-details-review-container">
+          <div className="product-details-review-header">
+            <span className="product-details-review-header-text">Works great.. if you manage to get one</span>
+            <span className="product-details-review-header-subtext">by</span>
+            <span>randhysatrio</span>
+          </div>
+          <div className="product-details-review-content-container">
+            <div className="product-details-review-content">
+              <span>
+                After visciouly fighting all those scalper bots, I finally managed to snubbed one! Never ever have I imagined my pc could
+                run Crysis at 4k120. Its a shame my previous 750w gold power supply also needs an upgrade because this card is one hungry
+                beast!
+              </span>
+            </div>
+          </div>
+          <div className="product-details-review-footer-container">
+            <span>2022/2/2 19:31:01</span>
+            <button>Delete Review</button>
+          </div>
+        </div>
+      </div>
+      <div className="product-details-post-section">
+        <div className="product-details-post-header">
+          <span>Write your reviews</span>
+        </div>
+        <div className="product-details-post-input-container">
+          <div className="product-details-post-header-input-container">
+            <label htmlFor="review-title-input">Title:</label>
+            <input type="text" id="review-title-input" />
+          </div>
+          <div className="product-details-post-header-textarea-container">
+            <label htmlFor="product-details-review-input">Review:</label>
+            <textarea id="product-details-review-input"></textarea>
+          </div>
+          <div className="product-details-post-header-button-container">
+            <button>Post</button>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -10,7 +10,7 @@
       "address": "Jl. Deplu Raya No.18 Bintaro, Pesanggrahan, Jak-Sel",
       "profilePic": "https://www.sportscasting.com/wp-content/uploads/2021/11/thumbs-up-1024x683.jpg",
       "fullnamePref": true,
-      "checkoutDataPref": false,
+      "checkoutDataPref": true,
       "role": "admin",
       "id": 1,
       "checkoutItems": []
@@ -38,11 +38,11 @@
       "username": "appleguy",
       "email": "steve@apple.com",
       "password": "123456",
-      "telephone": "1231231",
+      "telephone": "12345678",
       "address": "Cupertino, CA. USA",
       "profilePic": "https://www.nicepng.com/png/full/128-1280406_view-user-icon-png-user-circle-icon-png.png",
       "fullnamePref": false,
-      "checkoutDataPref": false,
+      "checkoutDataPref": true,
       "checkoutItems": [],
       "role": "user",
       "id": 3
@@ -386,19 +386,637 @@
       "totalPrice": 4438800,
       "totalPayment": 4440000,
       "id": 9
+    },
+    {
+      "userID": 3,
+      "transactionYear": 2022,
+      "transactionMonth": 2,
+      "transactionDate": 1,
+      "transactionTime": "19:37:9",
+      "firstName": "Steve",
+      "lastName": "Jobs",
+      "email": "steve@apple.com",
+      "address": "Cupertino, CA. USA",
+      "telephone": "123123123",
+      "paymentMethod": "visa",
+      "deliveryOpt": "ups",
+      "transactionItems": [
+        {
+          "userID": 3,
+          "username": "appleguy",
+          "productID": 1,
+          "productName": "Asus ROG STRIX Z690-A GAMING WIFI",
+          "productImage": "https://dlcdnwebimgs.asus.com/gain/CC82B2CA-3556-491B-936E-C46577251275/w717/h525",
+          "productPrice": 5950000,
+          "productQty": 2,
+          "id": 5
+        }
+      ],
+      "orderTotal": 11900000,
+      "orderTax": 595000,
+      "orderShippingCost": "Free",
+      "totalPrice": 12495000,
+      "totalPayment": 12500000,
+      "id": 10
+    },
+    {
+      "userID": 3,
+      "transactionYear": 2022,
+      "transactionMonth": 2,
+      "transactionDate": 1,
+      "transactionTime": "19:37:9",
+      "firstName": "Steve",
+      "lastName": "Jobs",
+      "email": "steve@apple.com",
+      "address": "Cupertino, CA. USA",
+      "telephone": "123123123",
+      "paymentMethod": "visa",
+      "deliveryOpt": "ups",
+      "transactionItems": [
+        {
+          "userID": 3,
+          "username": "appleguy",
+          "productID": 1,
+          "productName": "Asus ROG STRIX Z690-A GAMING WIFI",
+          "productImage": "https://dlcdnwebimgs.asus.com/gain/CC82B2CA-3556-491B-936E-C46577251275/w717/h525",
+          "productPrice": 5950000,
+          "productQty": 2,
+          "id": 5
+        }
+      ],
+      "orderTotal": 11900000,
+      "orderTax": 595000,
+      "orderShippingCost": "Free",
+      "totalPrice": 12495000,
+      "totalPayment": 12500000,
+      "id": 11
+    },
+    {
+      "userID": 3,
+      "transactionYear": 2022,
+      "transactionMonth": 2,
+      "transactionDate": 1,
+      "transactionTime": "20:25:28",
+      "firstName": "Steve",
+      "lastName": "Jobs",
+      "email": "steve@apple.com",
+      "address": "Cupertino, CA. USA",
+      "telephone": "123123123",
+      "paymentMethod": "mastercard",
+      "deliveryOpt": "dhl",
+      "transactionItems": [
+        {
+          "userID": 3,
+          "username": "appleguy",
+          "productID": 1,
+          "productName": "Asus ROG STRIX Z690-A GAMING WIFI",
+          "productImage": "https://dlcdnwebimgs.asus.com/gain/CC82B2CA-3556-491B-936E-C46577251275/w717/h525",
+          "productPrice": 5950000,
+          "productQty": 1,
+          "id": 5
+        }
+      ],
+      "orderTotal": 5950000,
+      "orderTax": 297500,
+      "orderShippingCost": 178500,
+      "totalPrice": 6426000,
+      "totalPayment": 6500000,
+      "id": 12
+    },
+    {
+      "userID": 3,
+      "transactionYear": 2022,
+      "transactionMonth": 2,
+      "transactionDate": 1,
+      "transactionTime": "20:40:16",
+      "firstName": "Steve",
+      "lastName": "Jobs",
+      "email": "steve@apple.com",
+      "address": "Cupertino, CA. USA",
+      "telephone": "123123123",
+      "paymentMethod": "visa",
+      "deliveryOpt": "ups",
+      "transactionItems": [
+        {
+          "userID": 3,
+          "username": "appleguy",
+          "productID": 5,
+          "productName": "Asus R.O.G. Maximus Z690 APEX",
+          "productImage": "https://dlcdnwebimgs.asus.com/gain/385EC9B8-4271-4E1C-BDF0-CC83039C9492/w717/h525",
+          "productPrice": 11700000,
+          "productQty": 1,
+          "id": 5
+        },
+        {
+          "userID": 3,
+          "username": "appleguy",
+          "productID": 1,
+          "productName": "Asus ROG STRIX Z690-A GAMING WIFI",
+          "productImage": "https://dlcdnwebimgs.asus.com/gain/CC82B2CA-3556-491B-936E-C46577251275/w717/h525",
+          "productPrice": 5950000,
+          "productQty": 1,
+          "id": 6
+        }
+      ],
+      "orderTotal": 17650000,
+      "orderTax": 882500,
+      "orderShippingCost": "Free",
+      "totalPrice": 18532500,
+      "totalPayment": 18600000,
+      "id": 13
+    },
+    {
+      "userID": 3,
+      "transactionYear": 2022,
+      "transactionMonth": 2,
+      "transactionDate": 1,
+      "transactionTime": "20:44:29",
+      "firstName": "Steve",
+      "lastName": "Jobs",
+      "email": "steve@apple.com",
+      "address": "Cupertino, CA. USA",
+      "telephone": "123123123",
+      "paymentMethod": "visa",
+      "deliveryOpt": "dhl",
+      "transactionItems": [
+        {
+          "userID": 3,
+          "username": "appleguy",
+          "productID": 1,
+          "productName": "Asus ROG STRIX Z690-A GAMING WIFI",
+          "productImage": "https://dlcdnwebimgs.asus.com/gain/CC82B2CA-3556-491B-936E-C46577251275/w717/h525",
+          "productPrice": 5950000,
+          "productQty": 1,
+          "id": 5
+        },
+        {
+          "userID": 3,
+          "username": "appleguy",
+          "productID": 2,
+          "productName": "Asus ROG STRIX Z690-A GAMING WIFI D4",
+          "productImage": "https://dlcdnwebimgs.asus.com/gain/CC82B2CA-3556-491B-936E-C46577251275/w717/h525",
+          "productPrice": 5550000,
+          "productQty": 2,
+          "id": 6
+        }
+      ],
+      "orderTotal": 17050000,
+      "orderTax": 852500,
+      "orderShippingCost": "Free",
+      "totalPrice": 17902500,
+      "totalPayment": 18000000,
+      "id": 14
+    },
+    {
+      "userID": 3,
+      "transactionYear": 2022,
+      "transactionMonth": 2,
+      "transactionDate": 1,
+      "transactionTime": "20:45:26",
+      "firstName": "Steve",
+      "lastName": "Jobs",
+      "email": "steve@apple.com",
+      "address": "Cupertino, CA. USA",
+      "telephone": "123123123",
+      "paymentMethod": "visa",
+      "deliveryOpt": "ups",
+      "transactionItems": [
+        {
+          "userID": 3,
+          "username": "appleguy",
+          "productID": 1,
+          "productName": "Asus ROG STRIX Z690-A GAMING WIFI",
+          "productImage": "https://dlcdnwebimgs.asus.com/gain/CC82B2CA-3556-491B-936E-C46577251275/w717/h525",
+          "productPrice": 5950000,
+          "productQty": 1,
+          "id": 5
+        }
+      ],
+      "orderTotal": 5950000,
+      "orderTax": 297500,
+      "orderShippingCost": 178500,
+      "totalPrice": 6426000,
+      "totalPayment": 6500000,
+      "id": 15
+    },
+    {
+      "userID": 3,
+      "transactionYear": 2022,
+      "transactionMonth": 2,
+      "transactionDate": 1,
+      "transactionTime": "20:54:52",
+      "firstName": "Steve",
+      "lastName": "Jobs",
+      "email": "steve@apple.com",
+      "address": "Cupertino, CA. USA",
+      "telephone": "123123123",
+      "paymentMethod": "visa",
+      "deliveryOpt": "ups",
+      "transactionItems": [
+        {
+          "userID": 3,
+          "username": "appleguy",
+          "productID": 1,
+          "productName": "Asus ROG STRIX Z690-A GAMING WIFI",
+          "productImage": "https://dlcdnwebimgs.asus.com/gain/CC82B2CA-3556-491B-936E-C46577251275/w717/h525",
+          "productPrice": 5950000,
+          "productQty": 1,
+          "id": 5
+        }
+      ],
+      "orderTotal": 5950000,
+      "orderTax": 297500,
+      "orderShippingCost": 178500,
+      "totalPrice": 6426000,
+      "totalPayment": 6500000,
+      "id": 16
+    },
+    {
+      "userID": 3,
+      "transactionYear": 2022,
+      "transactionMonth": 2,
+      "transactionDate": 1,
+      "transactionTime": "20:56:30",
+      "firstName": "Steve",
+      "lastName": "Jobs",
+      "email": "steve@apple.com",
+      "address": "Cupertino, CA. USA",
+      "telephone": "123123123",
+      "paymentMethod": "visa",
+      "deliveryOpt": "ups",
+      "transactionItems": [
+        {
+          "userID": 3,
+          "username": "appleguy",
+          "productID": 2,
+          "productName": "Asus ROG STRIX Z690-A GAMING WIFI D4",
+          "productImage": "https://dlcdnwebimgs.asus.com/gain/CC82B2CA-3556-491B-936E-C46577251275/w717/h525",
+          "productPrice": 5550000,
+          "productQty": 1,
+          "id": 5
+        }
+      ],
+      "orderTotal": 5550000,
+      "orderTax": 277500,
+      "orderShippingCost": 166500,
+      "totalPrice": 5994000,
+      "totalPayment": 6000000,
+      "id": 17
+    },
+    {
+      "userID": 3,
+      "transactionYear": 2022,
+      "transactionMonth": 2,
+      "transactionDate": 1,
+      "transactionTime": "20:58:3",
+      "firstName": "Steve",
+      "lastName": "Jobs",
+      "email": "steve@apple.com",
+      "address": "Cupertino, CA. USA",
+      "telephone": "123123123",
+      "paymentMethod": "visa",
+      "deliveryOpt": "ups",
+      "transactionItems": [
+        {
+          "userID": 3,
+          "username": "appleguy",
+          "productID": 2,
+          "productName": "Asus ROG STRIX Z690-A GAMING WIFI D4",
+          "productImage": "https://dlcdnwebimgs.asus.com/gain/CC82B2CA-3556-491B-936E-C46577251275/w717/h525",
+          "productPrice": 5550000,
+          "productQty": 1,
+          "id": 5
+        }
+      ],
+      "orderTotal": 5550000,
+      "orderTax": 277500,
+      "orderShippingCost": 166500,
+      "totalPrice": 5994000,
+      "totalPayment": 6000000,
+      "id": 18
+    },
+    {
+      "userID": 3,
+      "transactionYear": 2022,
+      "transactionMonth": 2,
+      "transactionDate": 1,
+      "transactionTime": "21:5:50",
+      "firstName": "Steve",
+      "lastName": "Jobs",
+      "email": "steve@apple.com",
+      "address": "Cupertino, CA. USA",
+      "telephone": "123123123",
+      "paymentMethod": "visa",
+      "deliveryOpt": "ups",
+      "transactionItems": [
+        {
+          "userID": 3,
+          "username": "appleguy",
+          "productID": 1,
+          "productName": "Asus ROG STRIX Z690-A GAMING WIFI",
+          "productImage": "https://dlcdnwebimgs.asus.com/gain/CC82B2CA-3556-491B-936E-C46577251275/w717/h525",
+          "productPrice": 5950000,
+          "productQty": 1,
+          "id": 5
+        }
+      ],
+      "orderTotal": 5950000,
+      "orderTax": 297500,
+      "orderShippingCost": 178500,
+      "totalPrice": 6426000,
+      "totalPayment": 6500000,
+      "id": 19
+    },
+    {
+      "userID": 3,
+      "transactionYear": 2022,
+      "transactionMonth": 2,
+      "transactionDate": 1,
+      "transactionTime": "21:8:51",
+      "firstName": "Steve",
+      "lastName": "Jobs",
+      "email": "steve@apple.com",
+      "address": "Cupertino, CA. USA",
+      "telephone": "123123123",
+      "paymentMethod": "visa",
+      "deliveryOpt": "ups",
+      "transactionItems": [
+        {
+          "userID": 3,
+          "username": "appleguy",
+          "productID": 2,
+          "productName": "Asus ROG STRIX Z690-A GAMING WIFI D4",
+          "productImage": "https://dlcdnwebimgs.asus.com/gain/CC82B2CA-3556-491B-936E-C46577251275/w717/h525",
+          "productPrice": 5550000,
+          "productQty": 1,
+          "id": 5
+        }
+      ],
+      "orderTotal": 5550000,
+      "orderTax": 277500,
+      "orderShippingCost": 166500,
+      "totalPrice": 5994000,
+      "totalPayment": 6000000,
+      "id": 20
+    },
+    {
+      "userID": 3,
+      "transactionYear": 2022,
+      "transactionMonth": 2,
+      "transactionDate": 1,
+      "transactionTime": "21:20:21",
+      "firstName": "Steve",
+      "lastName": "Jobs",
+      "email": "steve@apple.com",
+      "address": "Cupertino, CA. USA",
+      "telephone": "123123123",
+      "paymentMethod": "visa",
+      "deliveryOpt": "dhl",
+      "transactionItems": [
+        {
+          "userID": 3,
+          "username": "appleguy",
+          "productID": 2,
+          "productName": "Asus ROG STRIX Z690-A GAMING WIFI D4",
+          "productImage": "https://dlcdnwebimgs.asus.com/gain/CC82B2CA-3556-491B-936E-C46577251275/w717/h525",
+          "productPrice": 5550000,
+          "productQty": 1,
+          "id": 5
+        }
+      ],
+      "orderTotal": 5550000,
+      "orderTax": 277500,
+      "orderShippingCost": 166500,
+      "totalPrice": 5994000,
+      "totalPayment": 6000000,
+      "id": 21
+    },
+    {
+      "userID": 3,
+      "transactionYear": 2022,
+      "transactionMonth": 2,
+      "transactionDate": 2,
+      "transactionTime": "12:32:56",
+      "firstName": "Steve",
+      "lastName": "Jobs",
+      "email": "steve@apple.com",
+      "address": "Cupertino, CA. USA",
+      "telephone": "123123123",
+      "paymentMethod": "visa",
+      "deliveryOpt": "dhl",
+      "transactionItems": [
+        {
+          "userID": 3,
+          "username": "appleguy",
+          "productID": 1,
+          "productName": "Asus ROG STRIX Z690-A GAMING WIFI",
+          "productImage": "https://dlcdnwebimgs.asus.com/gain/CC82B2CA-3556-491B-936E-C46577251275/w717/h525",
+          "productPrice": 5950000,
+          "productQty": 1,
+          "id": 5
+        }
+      ],
+      "orderTotal": 5950000,
+      "orderTax": 297500,
+      "orderShippingCost": 178500,
+      "totalPrice": 6426000,
+      "totalPayment": 6500000,
+      "id": 22
+    },
+    {
+      "userID": 3,
+      "transactionYear": 2022,
+      "transactionMonth": 2,
+      "transactionDate": 2,
+      "transactionTime": "12:35:9",
+      "firstName": "Steve",
+      "lastName": "Jobs",
+      "email": "steve@apple.com",
+      "address": "Cupertino, CA. USA",
+      "telephone": "123123123",
+      "paymentMethod": "visa",
+      "deliveryOpt": "ups",
+      "transactionItems": [
+        {
+          "userID": 3,
+          "username": "appleguy",
+          "productID": 1,
+          "productName": "Asus ROG STRIX Z690-A GAMING WIFI",
+          "productImage": "https://dlcdnwebimgs.asus.com/gain/CC82B2CA-3556-491B-936E-C46577251275/w717/h525",
+          "productPrice": 5950000,
+          "productQty": 9,
+          "id": 5
+        }
+      ],
+      "orderTotal": 53550000,
+      "orderTax": 2677500,
+      "orderShippingCost": "Free",
+      "totalPrice": 56227500,
+      "totalPayment": 56300000,
+      "id": 23
+    },
+    {
+      "userID": 3,
+      "transactionYear": 2022,
+      "transactionMonth": 2,
+      "transactionDate": 2,
+      "transactionTime": "15:22:6",
+      "firstName": "Steve",
+      "lastName": "Jobs",
+      "email": "steve@apple.com",
+      "address": "Cupertino, CA. USA",
+      "telephone": "12345678",
+      "paymentMethod": "visa",
+      "deliveryOpt": "ups",
+      "transactionItems": [
+        {
+          "userID": 3,
+          "username": "appleguy",
+          "productID": 18,
+          "productName": "Gigabyte GeForce RTX™ 3080 Ti EAGLE 12G",
+          "productImage": "https://www.gigabyte.com/FileUpload/Global/WebPage/826/img/1.png",
+          "productPrice": 25900000,
+          "productQty": 3,
+          "id": 7
+        }
+      ],
+      "orderTotal": 77700000,
+      "orderTax": 3885000,
+      "orderShippingCost": "Free",
+      "totalPrice": 81585000,
+      "totalPayment": 81600000,
+      "id": 24
+    },
+    {
+      "userID": 1,
+      "transactionYear": 2022,
+      "transactionMonth": 2,
+      "transactionDate": 2,
+      "transactionTime": "15:27:29",
+      "firstName": "Randhy",
+      "lastName": "Satrio",
+      "email": "randhysatrio@gmail.com",
+      "address": "Jl. Deplu Raya No.18 Bintaro, Pesanggrahan, Jak-Sel",
+      "telephone": "081294203353",
+      "paymentMethod": "bank",
+      "deliveryOpt": "ups",
+      "transactionItems": [
+        {
+          "userID": 1,
+          "username": "randhysatrio",
+          "productID": 61,
+          "productName": "GSKILL F5-6000U3636E16GX2-TZ5RK",
+          "productImage": "https://www.gskill.com/_upload/images/163600559710.png",
+          "productPrice": 6850000,
+          "productQty": 1,
+          "id": 3
+        }
+      ],
+      "orderTotal": 6850000,
+      "orderTax": 342500,
+      "orderShippingCost": 205500,
+      "totalPrice": 7398000,
+      "totalPayment": 7400000,
+      "id": 25
+    },
+    {
+      "userID": 1,
+      "transactionYear": 2022,
+      "transactionMonth": 2,
+      "transactionDate": 2,
+      "transactionTime": "15:28:7",
+      "firstName": "Randhy",
+      "lastName": "Satrio",
+      "email": "randhysatrio@gmail.com",
+      "address": "Jl. Deplu Raya No.18 Bintaro, Pesanggrahan, Jak-Sel",
+      "telephone": "081294203353",
+      "paymentMethod": "bank",
+      "deliveryOpt": "ups",
+      "transactionItems": [
+        {
+          "userID": 1,
+          "username": "randhysatrio",
+          "productID": 5,
+          "productName": "Asus R.O.G. Maximus Z690 APEX",
+          "productImage": "https://dlcdnwebimgs.asus.com/gain/385EC9B8-4271-4E1C-BDF0-CC83039C9492/w717/h525",
+          "productPrice": 11700000,
+          "productQty": 1,
+          "id": 5
+        }
+      ],
+      "orderTotal": 11700000,
+      "orderTax": 585000,
+      "orderShippingCost": "Free",
+      "totalPrice": 12285000,
+      "totalPayment": 12300000,
+      "id": 26
+    },
+    {
+      "userID": 1,
+      "transactionYear": 2022,
+      "transactionMonth": 2,
+      "transactionDate": 2,
+      "transactionTime": "15:35:52",
+      "firstName": "Randhy",
+      "lastName": "Satrio",
+      "email": "randhysatrio@gmail.com",
+      "address": "Jl. Deplu Raya No.18 Bintaro, Pesanggrahan, Jak-Sel",
+      "telephone": "081294203353",
+      "paymentMethod": "bank",
+      "deliveryOpt": "dhl",
+      "transactionItems": [
+        {
+          "userID": 1,
+          "username": "randhysatrio",
+          "productID": 5,
+          "productName": "Asus R.O.G. Maximus Z690 APEX",
+          "productImage": "https://dlcdnwebimgs.asus.com/gain/385EC9B8-4271-4E1C-BDF0-CC83039C9492/w717/h525",
+          "productPrice": 11700000,
+          "productQty": 9,
+          "id": 5
+        }
+      ],
+      "orderTotal": 105300000,
+      "orderTax": 5265000,
+      "orderShippingCost": "Free",
+      "totalPrice": 110565000,
+      "totalPayment": 110600000,
+      "id": 27
+    },
+    {
+      "userID": 1,
+      "transactionYear": 2022,
+      "transactionMonth": 2,
+      "transactionDate": 2,
+      "transactionTime": "19:16:15",
+      "firstName": "Randhy",
+      "lastName": "Satrio",
+      "email": "randhysatrio@gmail.com",
+      "address": "Jl. Deplu Raya No.18 Bintaro, Pesanggrahan, Jak-Sel",
+      "telephone": "081294203353",
+      "paymentMethod": "visa",
+      "deliveryOpt": "dhl",
+      "transactionItems": [
+        {
+          "userID": 1,
+          "username": "randhysatrio",
+          "productID": 5,
+          "productName": "Asus R.O.G. Maximus Z690 APEX",
+          "productImage": "https://dlcdnwebimgs.asus.com/gain/385EC9B8-4271-4E1C-BDF0-CC83039C9492/w717/h525",
+          "productPrice": 11700000,
+          "productQty": 1,
+          "id": 6
+        }
+      ],
+      "orderTotal": 11700000,
+      "orderTax": 585000,
+      "orderShippingCost": "Free",
+      "totalPrice": 12285000,
+      "totalPayment": 12300000,
+      "id": 28
     }
   ],
   "carts": [
-    {
-      "userID": 1,
-      "username": "randhysatrio",
-      "productID": 61,
-      "productName": "GSKILL F5-6000U3636E16GX2-TZ5RK",
-      "productImage": "https://www.gskill.com/_upload/images/163600559710.png",
-      "productPrice": 6850000,
-      "productQty": 1,
-      "id": 3
-    },
     {
       "userID": 2,
       "username": "Ham44",
@@ -408,6 +1026,26 @@
       "productPrice": 34000000,
       "productQty": 1,
       "id": 4
+    },
+    {
+      "userID": 3,
+      "username": "appleguy",
+      "productID": 8,
+      "productName": "Asus ROG MAXIMUS Z690 EXTREME GLACIAL",
+      "productImage": "https://dlcdnwebimgs.asus.com/gain/A62B3DD1-3884-45BE-A81A-8E13D9CF0E26/w717/h525",
+      "productPrice": 34000000,
+      "productQty": 1,
+      "id": 5
+    },
+    {
+      "userID": 1,
+      "username": "randhysatrio",
+      "productID": 5,
+      "productName": "Asus R.O.G. Maximus Z690 APEX",
+      "productImage": "https://dlcdnwebimgs.asus.com/gain/385EC9B8-4271-4E1C-BDF0-CC83039C9492/w717/h525",
+      "productPrice": 11700000,
+      "productQty": 2,
+      "id": 6
     }
   ],
   "products": [
@@ -419,7 +1057,10 @@
       "description": "Intel® Z690, LGA 1700, ATX, PCIe® 5.0, 16+1 DrMos, DDR5, WiFi 6 (802.11ax)",
       "price": 5950000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 11,
+      "available": true,
+      "sold": 11
     },
     {
       "id": 2,
@@ -429,7 +1070,10 @@
       "description": "Intel® Z690, LGA 1700, ATX, PCIe® 5.0, 16+1 DrMos, DDR4, WiFi 6 (802.11ax)",
       "price": 5550000,
       "new": false,
-      "best": true
+      "best": true,
+      "stock": 11,
+      "available": true,
+      "sold": 2
     },
     {
       "id": 3,
@@ -439,7 +1083,10 @@
       "description": "Intel® B660, LGA 1700, mATX, PCIe® 5.0, 12+1 power stages, DDR5, WiFi 6 (802.11ax)",
       "price": 4110000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 4,
@@ -449,7 +1096,10 @@
       "description": "Intel® B660, LGA 1700, ATX, PCIe® 5.0, 12+1 power stages, DDR5, WiFi 6 (802.11ax)",
       "price": 3990000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 5,
@@ -459,7 +1109,10 @@
       "description": "Intel® Z690 ATX motherboard with 24+0 power stages, DDR5, Five M.2, PCIe® 5.0, Onboard Wi-Fi 6E",
       "price": 11700000,
       "new": true,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 11
     },
     {
       "id": 6,
@@ -469,7 +1122,10 @@
       "description": "Intel® Z690, LGA 1700, ATX, PCIe® 5.0, 18+1 power stages, DDR5, Two-Way AI Noise Cancelation, WiFi 6E",
       "price": 6500000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 7,
@@ -479,7 +1135,10 @@
       "description": "Intel® Z690, LGA 1700, ITX ,PCIe® 5.0, 10+1 power stages, AI Overclocking, AI Cooling, WiFi 6E (802.11ax)",
       "price": 7050000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 8,
@@ -489,7 +1148,10 @@
       "description": "Intel® Z690, EATX, 24+1 power stages, Integrated EK® Ultrablock DDR5 with OptiMem III, Five M.2, Dual Thunderbolt™ 4, PCIe® 5.0, Onboard Wi-Fi 6E",
       "price": 34000000,
       "new": true,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 9,
@@ -499,7 +1161,10 @@
       "description": "Intel® Z690, EATX, 24+1 power stages, DDR5 with OptiMem III, Five M.2, Dual Thunderbolt™ 4, PCIe® 5.0, Onboard Wi-Fi 6E",
       "price": 17330000,
       "new": false,
-      "best": true
+      "best": true,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 10,
@@ -509,7 +1174,10 @@
       "description": "Intel® Z690, ATX, 20+1 power stages, DDR5, Five M.2, Dual Thunderbolt™ 4, PCIe® 5.0, Onboard WiFi 6E",
       "price": 10500000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 11,
@@ -519,7 +1187,10 @@
       "description": "Intel® Z690, ATX, DDR5, Five M.2, PCIe® 5.0, Onboard WiFi 6E, AMD® CrossFire™ Support",
       "price": 7300000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 12,
@@ -529,7 +1200,10 @@
       "description": "Intel® Z690, ATX, DDR4, Five M.2, PCIe® 5.0, Intel WiFi 6, AMD® CrossFire™ Support",
       "price": 6250000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 13,
@@ -539,7 +1213,10 @@
       "description": "Intel® Z690, ATX, DDR5, Five M.2, PCIe® 5.0, Onboard WiFi 6E, AMD® CrossFire™ Support",
       "price": 6950000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 14,
@@ -549,7 +1226,10 @@
       "description": "Intel® Z690, ATX, DDR5, Five M.2, PCIe® 5.0, Onboard WiFi 6E, AMD® CrossFire™ Support",
       "price": 7350000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 15,
@@ -559,7 +1239,10 @@
       "description": "Intel® Z690, ATX, DDR5, Four M.2, PCIe® 5.0, WiFi 6 (802.11ax), AMD® CrossFire™ Support",
       "price": 5950000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 16,
@@ -569,7 +1252,10 @@
       "description": "Intel® Z690, ITX, DDR4, Two M.2, PCIe® 5.0, Intel® Wi-Fi 6 AX201, AMD® CrossFire™ Support",
       "price": 5550000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 17,
@@ -579,7 +1265,10 @@
       "description": "Intel® Z690, mATX, DDR4, Four M.2, PCIe® 5.0, Intel® Wi-Fi 6 AX201, AMD® CrossFire™ Support",
       "price": 4950000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 18,
@@ -589,7 +1278,10 @@
       "description": "GeForce RTX™ 3080 Ti, 12Gb GDDR6X, 10240 CUDA Cores, PCI-E 4.0 16x",
       "price": 25900000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 7,
+      "available": true,
+      "sold": 3
     },
     {
       "id": 19,
@@ -599,7 +1291,10 @@
       "description": "GeForce RTX™ 3090, 1785 MHz, 24Gb GDDR6X, 10496 CUDA Cores, PCI-E 4.0 16x",
       "price": 40750000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 20,
@@ -609,7 +1304,10 @@
       "description": "GeForce RTX™ 3090, WATERFORCE water-cooling, 24Gb GDDR6X, 10496 CUDA Cores, PCI-E 4.0 16x",
       "price": 44550000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 21,
@@ -619,7 +1317,10 @@
       "description": "GeForce RTX™ 3070 Ti, 1830 MHz, 8Gb GDDR6X, 6144 CUDA Cores, PCI-E 4.0 16x",
       "price": 17600000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 22,
@@ -629,7 +1330,10 @@
       "description": "GeForce RTX™ 3080 Ti, 1695 MHz, 12Gb GDDR6X, IceStorm 2.0, PCI-E 4.0 16x",
       "price": 28400000,
       "new": true,
-      "best": false
+      "best": false,
+      "stock": 11,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 23,
@@ -639,7 +1343,10 @@
       "description": "GeForce RTX™ 3080 Ti, 1710 MHz, 12Gb GDDR6X, IceStorm 2.0, PCI-E 4.0 16x",
       "price": 29800000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 24,
@@ -649,7 +1356,10 @@
       "description": "GeForce RTX™ 3090, 1710 MHz, 24Gb GDDR6X, IceStorm 2.0, PCI-E 4.0 16x",
       "price": 39700000,
       "new": true,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 25,
@@ -659,7 +1369,10 @@
       "description": "GeForce RTX™ 3090, 1755 MHz, 24Gb GDDR6X, IceStorm 2.0, PCI-E 4.0 16x",
       "price": 40600000,
       "new": true,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 26,
@@ -669,7 +1382,10 @@
       "description": "GeForce RTX™ 3070 Ti, 1770 MHz, 8Gb GDDR6X, IceStorm 2.0, PCI-E 4.0 16x",
       "price": 16900000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 27,
@@ -679,7 +1395,10 @@
       "description": "GeForce RTX™ 3060 Ti, 1695 MHz, 8Gb GDDR6, IceStorm 2.0, PCI-E 4.0 16x",
       "price": 13600000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 28,
@@ -689,7 +1408,10 @@
       "description": "GeForce RTX™ 3080 Ti, 1680 MHz, 12Gb GDDR6X, 10240 CUDA Cores, PCI-E 4.0 16x",
       "price": 26900000,
       "new": false,
-      "best": true
+      "best": true,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 29,
@@ -699,7 +1421,10 @@
       "description": "GeForce RTX™ 3080 Ti, 1710 MHz, 12Gb GDDR6X, 10240 CUDA Cores, PCI-E 4.0 16x",
       "price": 28800000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 30,
@@ -709,7 +1434,10 @@
       "description": "GeForce RTX™ 3090, 1755 MHz, 12Gb GDDR6X, 10496 CUDA Cores, PCI-E 4.0 16x",
       "price": 38200000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 31,
@@ -719,7 +1447,10 @@
       "description": "GeForce RTX™ 3080 Ti, 1665 MHz, 12Gb GDDR6X, 10240 CUDA Cores, PCI-E 4.0 16x",
       "price": 26800000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 32,
@@ -729,7 +1460,10 @@
       "description": "GeForce RTX™ 3080, 1440 MHz, 10Gb GDDR6X, 8704 CUDA Cores, PCI-E 4.0 16x",
       "price": 24300000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 33,
@@ -739,7 +1473,10 @@
       "description": "GeForce RTX™ 3070, 1500 MHz, 8Gb GDDR6, 5888 CUDA Cores, PCI-E 4.0 16x",
       "price": 18700000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 34,
@@ -749,7 +1486,10 @@
       "description": "GeForce RTX™ 3090, 1500 MHz, 24Gb GDDR6X, 10496 CUDA Cores, PCI-E 4.0 16x",
       "price": 41600000,
       "new": false,
-      "best": true
+      "best": true,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 35,
@@ -759,7 +1499,10 @@
       "description": "AMD Radeon™ RX 6800 XT, 2250 MHz, 16Gb GDDR6, AMD RDNA™ 2, PCI-E 4.0 16x",
       "price": 20300000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 36,
@@ -769,7 +1512,10 @@
       "description": "AMD Radeon™ RX 6800 XT, 2250 MHz, 16Gb GDDR6, AMD RDNA™ 2, PCI-E 4.0 16x",
       "price": 22800000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 37,
@@ -779,7 +1525,10 @@
       "description": "AMD Radeon™ RX 6900 XT, 2325 MHz, 16Gb GDDR6, AMD RDNA™ 2, 5120 SP, PCI-E 4.0 16x",
       "price": 26300000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 38,
@@ -789,7 +1538,10 @@
       "description": "AMD Radeon™ RX 6900 XT, 2250 MHz, 16Gb GDDR6, AMD RDNA™ 2, 5120 SP, PCI-E 4.0 16x",
       "price": 27800000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 39,
@@ -799,7 +1551,10 @@
       "description": "AMD Radeon™ RX 6900 XT, 2525 MHz, 16Gb GDDR6, EKWB Waterblock, 5120 SP, PCI-E 4.0 16x",
       "price": 33300000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 40,
@@ -809,7 +1564,10 @@
       "description": "AMD Radeon™ RX 6800 XT, 2310 MHz, 16Gb GDDR6, 4608 SP, PCI-E 4.0 16x",
       "price": 21800000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 41,
@@ -819,7 +1577,10 @@
       "description": "AMD Radeon™ RX 6800 XT, 2360 MHz, 16Gb GDDR6, 4608 SP, PCI-E 4.0 16x",
       "price": 22300000,
       "new": false,
-      "best": true
+      "best": true,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 42,
@@ -829,7 +1590,10 @@
       "description": "AMD Radeon™ RX 6900 XT, 2360 MHz, 16Gb GDDR6, 5120 SP, PCI-E 4.0 16x",
       "price": 28800000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 43,
@@ -839,7 +1603,10 @@
       "description": "AMD Radeon™ RX 6800 XT, 2310 MHz, 16Gb GDDR6, 4608  SP, PCI-E 4.0 16x",
       "price": 18860000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 44,
@@ -849,7 +1616,10 @@
       "description": "AMD Radeon™ RX 6800 XT, 2340 MHz, 16Gb GDDR6, 4608  SP, PCI-E 4.0 16x",
       "price": 20300000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 45,
@@ -859,7 +1629,10 @@
       "description": "AMD Radeon™ RX 6900 XT, 2340 MHz, 16Gb GDDR6, 5120  SP, PCI-E 4.0 16x",
       "price": 27270000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 46,
@@ -869,7 +1642,10 @@
       "description": "AMD Radeon™ RX 6900 XT, 2365 MHz, 16Gb GDDR6, 5120  SP, PCI-E 4.0 16x",
       "price": 29500000,
       "new": false,
-      "best": true
+      "best": true,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 47,
@@ -879,7 +1655,10 @@
       "description": "12-Core (8P+4E), 3.6 GHz, LGA 1700, 125W, Intel UHD Graphics 770",
       "price": 6850000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 48,
@@ -889,7 +1668,10 @@
       "description": "12-Core (8P+4E), 3.6 GHz, 125W, LGA 1700",
       "price": 6450000,
       "new": false,
-      "best": true
+      "best": true,
+      "stock": 11,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 49,
@@ -899,7 +1681,10 @@
       "description": "16-Core (8P+8E), 3.2 GHz, 125W, LGA 1700, Intel UHD Graphics 770",
       "price": 9900000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 50,
@@ -909,7 +1694,10 @@
       "description": "16-Core (8P+8E), 3.2 GHz, 125W, LGA 1700",
       "price": 9400000,
       "new": true,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 51,
@@ -919,7 +1707,10 @@
       "description": "10-Core (6P+4E), 3.2 GHz, 125W, LGA 1700, Intel UHD Graphics 770",
       "price": 4650000,
       "new": true,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 52,
@@ -929,7 +1720,10 @@
       "description": "10-Core (6P+4E), 3.2 GHz, 125W, LGA 1700",
       "price": 4250000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 53,
@@ -939,7 +1733,10 @@
       "description": "32Gb (16 x 2) DDR5 Memory, 5200MHz, C36, RGB",
       "price": 5600000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 54,
@@ -949,7 +1746,10 @@
       "description": "32Gb (16 x 2) DDR5 Memory, 6200MHz, C36, RGB",
       "price": 6800000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 55,
@@ -959,7 +1759,10 @@
       "description": "32Gb (16 x 2) DDR5 Memory, 5600MHz, C36",
       "price": 6100000,
       "new": true,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 56,
@@ -969,7 +1772,10 @@
       "description": "16Gb (8 x 2) DDR4 Memory, 3200MHz, C16, RGB",
       "price": 1360000,
       "new": false,
-      "best": true
+      "best": true,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 57,
@@ -979,7 +1785,10 @@
       "description": "16Gb (8 x 2) DDR4 Memory, 3200MHz, C18, RGB",
       "price": 1360000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 58,
@@ -989,7 +1798,10 @@
       "description": "32Gb (16 x 2) DDR4 Memory, 3200MHz, C16, RGB",
       "price": 2470000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 59,
@@ -999,7 +1811,10 @@
       "description": "32Gb (16 x 2) DDR5 Memory, 5600MHz, Intel XMP 3.0, RGB",
       "price": 6080000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 60,
@@ -1009,7 +1824,10 @@
       "description": "32Gb (16 x 2) DDR5 Memory, 5600MHz, Intel XMP 3.0, RGB",
       "price": 6250000,
       "new": false,
-      "best": false
+      "best": false,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     },
     {
       "id": 61,
@@ -1019,7 +1837,10 @@
       "description": "32Gb (16 x 2) DDR5 Memory, 6000MHz, Intel XMP 3.0, RGB",
       "price": 6850000,
       "new": true,
-      "best": false
+      "best": false,
+      "stock": 9,
+      "available": true,
+      "sold": 1
     },
     {
       "category": "Motherboard",
@@ -1029,7 +1850,10 @@
       "price": 7400000,
       "new": false,
       "best": false,
-      "id": 62
+      "id": 62,
+      "stock": 10,
+      "available": true,
+      "sold": 0
     }
   ]
 }

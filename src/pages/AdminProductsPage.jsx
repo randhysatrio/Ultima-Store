@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 
 import '../assets/styles/AdminProductsPage.css';
 import { RiEdit2Line, RiDeleteBin5Line } from 'react-icons/ri';
+import { IoMdClose, IoMdCheckmark } from 'react-icons/io';
 import { toast } from 'react-toastify';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 import Axios from 'axios';
 import { API_URL } from '../assets/constants';
@@ -32,15 +35,48 @@ const AdminProductsPage = () => {
       });
   };
 
+  // const deleteBtnHandler = (val) => {
+  //   Axios.delete(`${API_URL}/products/${val}`)
+  //     .then(() => {
+  //       toast.warn('Deleted Product', { position: 'bottom-left', theme: 'colored' });
+  //       fetchProductData();
+  //     })
+  //     .catch(() => {
+  //       toast.error('Failed to delete product', { position: 'bottom-left', theme: 'colored' });
+  //     });
+  // };
+
   const deleteBtnHandler = (val) => {
-    Axios.delete(`${API_URL}/products/${val}`)
-      .then(() => {
-        toast.warn('Deleted Product', { position: 'bottom-left', theme: 'colored' });
-        fetchProductData();
-      })
-      .catch(() => {
-        toast.error('Failed to delete product', { position: 'bottom-left', theme: 'colored' });
-      });
+    confirmAlert({
+      customUI: ({ onClose }) => {
+        return (
+          <div className="custom-ui">
+            <span>Are you sure you want to delete this item?</span>
+            <div className="close-button-container">
+              <button className="close-button" onClick={onClose}>
+                <IoMdClose />
+              </button>
+              <button
+                onClick={() => {
+                  Axios.delete(`${API_URL}/products/${val}`)
+                    .then(() => {
+                      toast.warn('Deleted Product', { position: 'bottom-left', theme: 'colored' });
+                      fetchProductData();
+                      onClose();
+                    })
+                    .catch(() => {
+                      toast.error('Failed to delete product', { position: 'bottom-left', theme: 'colored' });
+                    });
+                }}
+                className="check-button"
+              >
+                <IoMdCheckmark />
+              </button>
+            </div>
+          </div>
+        );
+      },
+    });
   };
 
   const filterHandler = () => {

@@ -59,7 +59,7 @@ const ProductCardAll = ({ product }) => {
         });
       })
       .catch(() => {
-        alert('Unable to get cart data!');
+        toast.error('Unable to get cart data!', { position: 'bottom-left', theme: 'colored' });
       });
   };
 
@@ -103,7 +103,7 @@ const ProductCardAll = ({ product }) => {
           }
         })
         .catch(() => {
-          alert('fail', 'Unable to find user data!');
+          notify('fail', 'Unable to find user data!');
         });
     } else {
       notify('fail', 'Please sign-in to add this cart to your item');

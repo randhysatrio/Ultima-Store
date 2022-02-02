@@ -33,6 +33,7 @@ const Checkout = () => {
   const dispatch = useDispatch();
   const [checkoutItemID, setCheckoutItemID] = useState([]);
   const [cartData, setCartData] = useState([]);
+  const [productCheckoutData, setProductCheckoutData] = useState([]);
   const [thankyouMsg, setThankyouMsg] = useState(false);
   const [checkoutState, setCheckoutState] = useState({
     firstName: '',
@@ -45,6 +46,7 @@ const Checkout = () => {
     totalPayment: 0,
   });
   const [checkoutPreference, setCheckoutPreference] = useState(false);
+
   const [errorFirstName, setErrorFirstName] = useState(false);
   const [errorLastName, setErrorLastName] = useState(false);
   const [errorEmail, setErrorEmail] = useState(false);
@@ -90,9 +92,31 @@ const Checkout = () => {
               });
             }
             setCheckoutItemID(response.data[0].checkoutItems);
+
+            const endpoints = response.data[0].checkoutItems.map((item) => {
+              return Axios.get(`${API_URL}/carts/${item}`);
+            });
+
+            Axios.all(endpoints)
+              .then((response) => {
+                const endpoints = response.map((item) => {
+                  return Axios.get(`${API_URL}/products/${item.data.productID}`);
+                });
+
+                Axios.all(endpoints)
+                  .then((response) => {
+                    setProductCheckoutData(response);
+                  })
+                  .catch(() => {
+                    toast.error('Unable to get product checkout data!', { position: 'bottom-left', theme: 'colored' });
+                  });
+              })
+              .catch(() => {
+                toast.error('Unable to get product checkout ID data!', { position: 'bottom-left', theme: 'colored' });
+              });
           })
           .catch(() => {
-            toast.error('Unable to get user data to fill checkout items', { position: 'bottom-left', theme: 'colored' });
+            toast.error('Unable to get user checkout items data!', { position: 'bottom-left', theme: 'colored' });
           });
       })
       .catch(() => {
@@ -226,6 +250,14 @@ const Checkout = () => {
       return cartData.find((cart) => cart.id === id);
     });
 
+    const checkoutItemProductIDList = checkoutItemsList.map((item) => {
+      return item.productID;
+    });
+
+    const checkoutItemQtyList = checkoutItemsList.map((item) => {
+      return item.productQty;
+    });
+
     if (!checkoutState.firstName) {
       return;
     } else if (!checkoutState.lastName) {
@@ -269,66 +301,100 @@ const Checkout = () => {
           const endpoints = checkoutItemID.map((data) => {
             return Axios.delete(`${API_URL}/carts/${data}`);
           });
-          Axios.all(endpoints).then(() => {
-            if (checkoutPreference) {
-              Axios.patch(`${API_URL}/users/${userData.id}`, {
-                telephone: checkoutState.telephone,
-                address: checkoutState.address,
-                checkoutDataPref: checkoutPreference,
-                checkoutItems: [],
-              }).then((response) => {
-                localStorage.setItem('emmerceData', JSON.stringify(response.data));
-
-                Axios.get(`${API_URL}/carts`, {
-                  params: {
-                    userID: userData.id,
-                  },
-                })
-                  .then((response) => {
-                    dispatch({
-                      type: 'FILL_CART',
-                      payload: response.data,
-                    });
-                    setThankyouMsg(true);
-                    document.body.scrollIntoView();
-                    setTimeout(() => {
-                      navigate(`/`, { replace: true });
-                    }, 4000);
-                  })
-                  .catch(() => {
-                    toast.error('Unable to update cart data!', { position: 'bottom-left', theme: 'colored' });
+          Axios.all(endpoints)
+            .then(() => {
+              const endpoints = checkoutItemProductIDList.map((id, index) => {
+                const currentStockAmount = productCheckoutData[index].data.stock - checkoutItemQtyList[index];
+                if (!currentStockAmount) {
+                  return Axios.patch(`${API_URL}/products/${id}`, {
+                    stock: currentStockAmount,
+                    available: false,
                   });
+                } else {
+                  return Axios.patch(`${API_URL}/products/${id}`, {
+                    stock: currentStockAmount,
+                  });
+                }
               });
-            } else {
-              Axios.patch(`${API_URL}/users/${userData.id}`, {
-                checkoutItems: [],
-              })
+              Axios.all(endpoints)
                 .then(() => {
-                  Axios.get(`${API_URL}/carts`, {
-                    params: {
-                      userID: userData.id,
-                    },
-                  })
-                    .then((response) => {
-                      dispatch({
-                        type: 'FILL_CART',
-                        payload: response.data,
-                      });
-                      setThankyouMsg(true);
-                      document.body.scrollIntoView();
-                      setTimeout(() => {
-                        navigate(`/`, { replace: true });
-                      }, 4000);
+                  const endpoints = checkoutItemProductIDList.map((id, index) => {
+                    return Axios.patch(`${API_URL}/products/${id}`, {
+                      sold: productCheckoutData[index].data.sold + checkoutItemQtyList[index],
+                    });
+                  });
+                  Axios.all(endpoints)
+                    .then(() => {
+                      if (checkoutPreference) {
+                        Axios.patch(`${API_URL}/users/${userData.id}`, {
+                          telephone: checkoutState.telephone,
+                          address: checkoutState.address,
+                          checkoutDataPref: checkoutPreference,
+                          checkoutItems: [],
+                        }).then((response) => {
+                          localStorage.setItem('emmerceData', JSON.stringify(response.data));
+
+                          Axios.get(`${API_URL}/carts`, {
+                            params: {
+                              userID: userData.id,
+                            },
+                          })
+                            .then((response) => {
+                              dispatch({
+                                type: 'FILL_CART',
+                                payload: response.data,
+                              });
+                              setThankyouMsg(true);
+                              document.body.scrollIntoView();
+                              setTimeout(() => {
+                                navigate(`/`, { replace: true });
+                              }, 3000);
+                            })
+                            .catch(() => {
+                              toast.error('Unable to update cart data!', { position: 'bottom-left', theme: 'colored' });
+                            });
+                        });
+                      } else {
+                        Axios.patch(`${API_URL}/users/${userData.id}`, {
+                          checkoutItems: [],
+                        })
+                          .then(() => {
+                            Axios.get(`${API_URL}/carts`, {
+                              params: {
+                                userID: userData.id,
+                              },
+                            })
+                              .then((response) => {
+                                dispatch({
+                                  type: 'FILL_CART',
+                                  payload: response.data,
+                                });
+                                setThankyouMsg(true);
+                                document.body.scrollIntoView();
+                                setTimeout(() => {
+                                  navigate(`/`, { replace: true });
+                                }, 4000);
+                              })
+                              .catch(() => {
+                                toast.error('Unable to update cart data!', { position: 'bottom-left', theme: 'colored' });
+                              });
+                          })
+                          .catch(() => {
+                            toast.error('Unable to clear user checkout items!', { position: 'bottom-left', theme: 'colored' });
+                          });
+                      }
                     })
                     .catch(() => {
-                      toast.error('Unable to update cart data!', { position: 'bottom-left', theme: 'colored' });
+                      toast.error('Unable to update product sold quantity!', { position: 'bottom-left', theme: 'colored' });
                     });
                 })
                 .catch(() => {
-                  toast.warn('Unable to clear user checkout items!', { position: 'bottom-left', theme: 'colored' });
+                  toast.error('Unable to update database product stock!', { position: 'bottom-left', theme: 'colored' });
                 });
-            }
-          });
+            })
+            .catch(() => {
+              toast.error('Unable to remove cart data!', { position: 'bottom-left', theme: 'colored' });
+            });
         })
         .catch(() => {
           toast.error('Unable to process transaction', { position: 'bottom-left', theme: 'colored' });
@@ -396,7 +462,7 @@ const Checkout = () => {
               <div className="checkout-billinginfo-container">
                 {userData.checkoutDataPref ? null : (
                   <div className="checkout-info-prompt-container">
-                    <span>Use this form as your default checkout info?</span>
+                    <span>Always use this form as your checkout info?</span>
                     <Switch
                       handleDiameter={18}
                       height={20}

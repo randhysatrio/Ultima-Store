@@ -14,11 +14,9 @@ import ProductCardAll from '../components/ProductCardAll';
 import Axios from 'axios';
 import { API_URL } from '../assets/constants';
 import { useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
 const AllProducts = () => {
   const { state } = useLocation();
-
   const [productList, setProductList] = useState([]);
   const [pageRenderer, setPageRenderer] = useState(0);
   const [category, setCategory] = useState('');
@@ -32,6 +30,7 @@ const AllProducts = () => {
     if (state.passed_category) {
       Axios.get(`${API_URL}/products`, {
         params: {
+          available: true,
           category: state.passed_category,
         },
       })
@@ -46,6 +45,7 @@ const AllProducts = () => {
     } else if (category) {
       Axios.get(`${API_URL}/products`, {
         params: {
+          available: true,
           category,
         },
       })
@@ -58,7 +58,11 @@ const AllProducts = () => {
           alert('Unable to get selected product category');
         });
     } else {
-      Axios.get(`${API_URL}/products`)
+      Axios.get(`${API_URL}/products`, {
+        params: {
+          available: true,
+        },
+      })
         .then((response) => {
           let result_data;
           if (state.search_key) {
