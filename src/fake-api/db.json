@@ -28,9 +28,7 @@
       "checkoutDataPref": true,
       "role": "user",
       "id": 2,
-      "checkoutItems": [
-        4
-      ]
+      "checkoutItems": []
     },
     {
       "firstname": "Steve",
@@ -1018,26 +1016,6 @@
   ],
   "carts": [
     {
-      "userID": 2,
-      "username": "Ham44",
-      "productID": 8,
-      "productName": "Asus ROG MAXIMUS Z690 EXTREME GLACIAL",
-      "productImage": "https://dlcdnwebimgs.asus.com/gain/A62B3DD1-3884-45BE-A81A-8E13D9CF0E26/w717/h525",
-      "productPrice": 34000000,
-      "productQty": 1,
-      "id": 4
-    },
-    {
-      "userID": 3,
-      "username": "appleguy",
-      "productID": 8,
-      "productName": "Asus ROG MAXIMUS Z690 EXTREME GLACIAL",
-      "productImage": "https://dlcdnwebimgs.asus.com/gain/A62B3DD1-3884-45BE-A81A-8E13D9CF0E26/w717/h525",
-      "productPrice": 34000000,
-      "productQty": 1,
-      "id": 5
-    },
-    {
       "userID": 1,
       "username": "randhysatrio",
       "productID": 5,
@@ -1149,7 +1127,7 @@
       "price": 34000000,
       "new": true,
       "best": false,
-      "stock": 10,
+      "stock": 13,
       "available": true,
       "sold": 0
     },
@@ -1331,7 +1309,7 @@
       "price": 28400000,
       "new": true,
       "best": false,
-      "stock": 11,
+      "stock": 13,
       "available": true,
       "sold": 0
     },
@@ -1487,7 +1465,7 @@
       "price": 41600000,
       "new": false,
       "best": true,
-      "stock": 10,
+      "stock": 11,
       "available": true,
       "sold": 0
     },
@@ -1854,6 +1832,88 @@
       "stock": 10,
       "available": true,
       "sold": 0
+    }
+  ],
+  "reviews": [
+    {
+      "userID": 1,
+      "productID": 8,
+      "stars": 2,
+      "username": "randhysatrio",
+      "title": "One giant, expensive mistake..",
+      "content": "Clearly I didn't read the product description thorough, because if I did, I wouldn't buy it because this things needs a watercooled setup to perform well! Now I have the latest, top-of-the-line, 34mil mobo just laying around collecting dust.. ",
+      "anonymus": false,
+      "reviewYear": 2022,
+      "reviewMonth": 2,
+      "reviewDate": 3,
+      "reviewHours": 16,
+      "reviewMinutes": "01",
+      "reviewSeconds": "42",
+      "id": 1
+    },
+    {
+      "userID": 3,
+      "productID": 8,
+      "stars": 5,
+      "username": "appleguy",
+      "title": "Best mobo I've had probably.. ever!",
+      "content": "Even though the price is a bit overly expensive, this motherboard works like a champ! My 12900K could run 5.5GHz all day long thanks to this board. The RGB lightning also looks sick! Shipping times also was faster than I expected. 10/5 would buy again\n..(if my wallet allowed)",
+      "anonymus": false,
+      "reviewYear": 2022,
+      "reviewMonth": 2,
+      "reviewDate": 3,
+      "reviewHours": 19,
+      "reviewMinutes": "26",
+      "reviewSeconds": "28",
+      "id": 2
+    },
+    {
+      "userID": 3,
+      "productID": 55,
+      "stars": 5,
+      "username": "appleguy",
+      "title": "The Ferrari of memory",
+      "content": "What can I say... super lightning fast! Perfect for any imaginable task that you throw at it",
+      "anonymus": true,
+      "reviewYear": 2022,
+      "reviewMonth": 2,
+      "reviewDate": 3,
+      "reviewHours": 16,
+      "reviewMinutes": "13",
+      "reviewSeconds": "00",
+      "id": 3
+    },
+    {
+      "userID": 3,
+      "productID": 50,
+      "stars": 5,
+      "username": "appleguy",
+      "title": "Intel couldn't have done better",
+      "content": "Absolutely amazing. 16 core of raw processing powers. You probably wouldn't need this if you just need it for gaming, but for task such as multimedia. Just wow. Only downside is I need to buy another motherboard that have the proper socket for this chip",
+      "anonymus": false,
+      "reviewYear": 2022,
+      "reviewMonth": 2,
+      "reviewDate": 3,
+      "reviewHours": 17,
+      "reviewMinutes": "56",
+      "reviewSeconds": "17",
+      "id": 4
+    },
+    {
+      "userID": 2,
+      "productID": 8,
+      "stars": 5,
+      "username": "Ham44",
+      "title": "Crazy good and crazy expensive",
+      "content": "Well with great product comes a great price tag.. Nevertheless, it's amazing what this motherboard is capable of. Would I probably buy this level of motherboard again in the future? Probably no.  My wife would kill me. But until then, I'll be overclocking the heck out of this board!",
+      "anonymus": false,
+      "reviewYear": 2022,
+      "reviewMonth": 2,
+      "reviewDate": 3,
+      "reviewHours": 19,
+      "reviewMinutes": "51",
+      "reviewSeconds": "37",
+      "id": 5
     }
   ]
 }

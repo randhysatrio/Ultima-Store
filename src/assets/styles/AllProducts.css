@@ -177,6 +177,10 @@
   -moz-box-shadow: 2px 2px 223px -86px rgba(66, 131, 150, 0.67);
 }
 
+.btn-page:active {
+  transform: scale(0.95);
+}
+
 .error-message-container {
   height: 70vh;
   display: flex;
