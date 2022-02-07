@@ -36,20 +36,6 @@ const ProductDetails = () => {
   const [titleError, setTitleError] = useState('');
   const [contentError, setContentError] = useState('');
 
-  // const fetchProductData = () => {
-  //   Axios.get(`${API_URL}/products`, {
-  //     params: {
-  //       id: params.productID,
-  //     },
-  //   })
-  //     .then((response) => {
-  //       setProductData(response.data[0]);
-  //     })
-  //     .catch(() => {
-  //       toast.error('Unable to load product data', { position: 'bottom-left', theme: 'colored' });
-  //     });
-  // };
-
   const fetchProductData = async () => {
     try {
       const response = await Axios.get(`${API_URL}/products`, {
@@ -120,7 +106,7 @@ const ProductDetails = () => {
         toast.success('Added this item product quantity!', { position: 'bottom-left', theme: 'colored' });
         updateCartData(userGlobal.id);
       } else {
-        await Axios.post(`${API_URL}/car`, {
+        await Axios.post(`${API_URL}/carts`, {
           userID: userGlobal.id,
           username: userGlobal.username,
           productID: productData.id,
